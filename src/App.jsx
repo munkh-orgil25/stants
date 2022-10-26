@@ -2,6 +2,9 @@ import { Canvas } from '@react-three/fiber'
 import { XRButton, XR } from '@react-three/xr'
 import { useEffect, useRef, useState } from 'react'
 import { BackSide } from 'three'
+import { Route } from 'wouter'
+import Home from './pages/Home'
+import Menu from './pages/Menu'
 import WebCanvas from './WebCanvas'
 import XRCanvas from './XRCanvas'
 
@@ -27,25 +30,19 @@ function App() {
     <div className="main">
       <div className="home_section">
         <div className="background">
-          <img src="/images/bg.png" alt="background" />
+          <img src="/images/bg2.png" alt="background" />
         </div>
-        <div className="mask" />
-        <div className="text-w">
-          <h1 className="title">
-            <div className="line">Дулааны Цахилгаан</div>
-            <div className="line">Станц</div>
-          </h1>
-        </div>
-      </div>
-      {supported ? (
-        <XRButton mode="VR" onClick={() => setStart('xr')}>
-          Эхлэх XR
-        </XRButton>
-      ) : (
-        <button onClick={() => setStart('web')}>Эхлэх Web</button>
-      )}
 
-      {start === 'xr' ? <XRCanvas /> : start === 'web' ? <WebCanvas /> : null}
+        <Route path="/">
+          <Home setStart={setStart} supported={supported} />
+        </Route>
+
+        <Route path="/menu">
+          <Menu />
+        </Route>
+      </div>
+
+      {/* {start === 'xr' ? <XRCanvas /> : start === 'web' ? <WebCanvas /> : null} */}
     </div>
   )
 }
