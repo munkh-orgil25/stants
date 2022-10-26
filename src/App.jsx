@@ -24,7 +24,19 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <div className="main">
+      <div className="home_section">
+        <div className="background">
+          <img src="/images/bg.png" alt="background" />
+        </div>
+        <div className="mask" />
+        <div className="text-w">
+          <h1 className="title">
+            <div className="line">Дулааны Цахилгаан</div>
+            <div className="line">Станц</div>
+          </h1>
+        </div>
+      </div>
       {supported ? (
         <XRButton mode="VR" onClick={() => setStart('xr')}>
           Эхлэх XR
@@ -32,16 +44,8 @@ function App() {
       ) : (
         <button onClick={() => setStart('web')}>Эхлэх Web</button>
       )}
-      {start === 'xr' ? <XRCanvas /> : start === 'web' ? <WebCanvas /> : null}
 
-      {/* {supported ? (
-        <XRButton mode="VR" onClick={() => setStart('xr')}>
-          Эхлэх XR
-        </XRButton>
-      ) : (
-        <button onClick={() => setStart('web')}>Эхлэх Web</button>
-      )}
-      {start === 'xr' ? <XRCanvas /> : start === 'web' ? <WebCanvas /> : null} */}
+      {start === 'xr' ? <XRCanvas /> : start === 'web' ? <WebCanvas /> : null}
     </div>
   )
 }

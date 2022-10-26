@@ -1,5 +1,6 @@
 @import './colors';
 @import './reset';
+@import './home.scss';
 
 html {
   font-weight: bolder;
@@ -27,4 +28,10 @@ body {
   height: 100vh;
   width: 100vw;
   position: fixed;
+}
+
+.main {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
 }
