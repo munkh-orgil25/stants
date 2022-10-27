@@ -2,8 +2,15 @@ import { Canvas } from '@react-three/fiber'
 import { XRButton, XR } from '@react-three/xr'
 import { useEffect, useRef, useState } from 'react'
 import { BackSide } from 'three'
+import { Route } from 'wouter'
+import WebCanvasWrapper from './components/WebCanvasWrapper'
+import Home from './pages/Home'
+import Menu from './pages/Menu'
+import Electricity from './scenes/Electricity'
+import Height from './scenes/Height'
 import WebCanvas from './WebCanvas'
 import XRCanvas from './XRCanvas'
+import Scope from './components/Scope'
 
 function App() {
   const [supported, setSupported] = useState()
@@ -27,25 +34,31 @@ function App() {
     <div className="main">
       <div className="home_section">
         <div className="background">
-          <img src="/images/bg.png" alt="background" />
+          <img src="/images/bg2.png" alt="background" />
         </div>
-        <div className="mask" />
-        <div className="text-w">
-          <h1 className="title">
-            <div className="line">Дулааны Цахилгаан</div>
-            <div className="line">Станц</div>
-          </h1>
-        </div>
-      </div>
-      {supported ? (
-        <XRButton mode="VR" onClick={() => setStart('xr')}>
-          Эхлэх XR
-        </XRButton>
-      ) : (
-        <button onClick={() => setStart('web')}>Эхлэх Web</button>
-      )}
 
-      {start === 'xr' ? <XRCanvas /> : start === 'web' ? <WebCanvas /> : null}
+        <Route path="/">
+          <Home setStart={setStart} supported={supported} />
+        </Route>
+
+        <Route path="/menu">
+          <Menu />
+        </Route>
+
+        <Scope base="/1">
+          <WebCanvasWrapper>
+            <Height />
+          </WebCanvasWrapper>
+        </Scope>
+
+        <Scope base="/2">
+          <WebCanvasWrapper>
+            <Electricity />
+          </WebCanvasWrapper>
+        </Scope>
+      </div>
+
+      {/* {start === 'xr' ? <XRCanvas /> : start === 'web' ? <WebCanvas /> : null} */}
     </div>
   )
 }
