@@ -3,10 +3,14 @@ import { XRButton, XR } from '@react-three/xr'
 import { useEffect, useRef, useState } from 'react'
 import { BackSide } from 'three'
 import { Route } from 'wouter'
+import WebCanvasWrapper from './components/WebCanvasWrapper'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
+import Electricity from './scenes/Electricity'
+import Height from './scenes/Height'
 import WebCanvas from './WebCanvas'
 import XRCanvas from './XRCanvas'
+import Scope from './components/Scope'
 
 function App() {
   const [supported, setSupported] = useState()
@@ -40,6 +44,18 @@ function App() {
         <Route path="/menu">
           <Menu />
         </Route>
+
+        <Scope base="/1">
+          <WebCanvasWrapper>
+            <Height />
+          </WebCanvasWrapper>
+        </Scope>
+
+        <Scope base="/2">
+          <WebCanvasWrapper>
+            <Electricity />
+          </WebCanvasWrapper>
+        </Scope>
       </div>
 
       {/* {start === 'xr' ? <XRCanvas /> : start === 'web' ? <WebCanvas /> : null} */}

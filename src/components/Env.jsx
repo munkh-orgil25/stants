@@ -3,7 +3,7 @@ import { BackSide } from 'three'
 
 const Env = ({ map }) => {
   return (
-    <mesh scale={20}>
+    <mesh scale={50}>
       <sphereBufferGeometry />
       <meshBasicMaterial side={BackSide} map={map} transparent />
     </mesh>
