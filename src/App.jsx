@@ -7,10 +7,10 @@ import WebCanvasWrapper from './components/WebCanvasWrapper'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
 import Electricity from './scenes/Electricity'
-import Height from './scenes/Height'
 import WebCanvas from './WebCanvas'
 import XRCanvas from './XRCanvas'
 import Scope from './components/Scope'
+import Height from './scenes/Height'
 
 function App() {
   const [supported, setSupported] = useState()
