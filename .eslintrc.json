@@ -21,6 +21,9 @@
     "no-unused-vars": "warn",
     "no-shadow": "off",
     "react/prop-types": "off",
+    "react/no-unknown-property": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {

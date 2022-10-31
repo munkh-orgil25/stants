@@ -6,11 +6,11 @@ import { Route } from 'wouter'
 import WebCanvasWrapper from './components/WebCanvasWrapper'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
-import Electricity from './scenes/Electricity'
 import WebCanvas from './WebCanvas'
 import XRCanvas from './XRCanvas'
 import Scope from './components/Scope'
 import Height from './scenes/Height'
+import Electricity from './scenes/Electricity'
 
 function App() {
   const [supported, setSupported] = useState()

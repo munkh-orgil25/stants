@@ -3,7 +3,7 @@ import { Route } from 'wouter'
 import First from './First'
 import Second from './Second'
 
-const Height = () => {
+function Height() {
   return (
     <>
       <Route path="/">
