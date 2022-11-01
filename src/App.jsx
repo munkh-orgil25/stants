@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react'
 import { Route, useLocation } from 'wouter'
+import { Canvas } from '@react-three/fiber'
+import { Controllers, XR } from '@react-three/xr'
+import { OrbitControls } from '@react-three/drei'
 import WebCanvasWrapper from './components/WebCanvasWrapper'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
 import Scope from './components/Scope'
 import Height from './scenes/Height'
 import Electricity from './scenes/Electricity'
+import XRApp from './pages/XRApp'
 
 function App() {
   const [supported, setSupported] = useState(false)
+  const [startXr, setStartXr] = useState(false)
 
   useEffect(() => {
     if (navigator.xr) {
@@ -32,7 +37,7 @@ function App() {
         </div>
 
         <Route path="/">
-          <Home supported={supported} />
+          <Home supported={supported} setStartXr={setStartXr} />
         </Route>
 
         <Route path="/menu">
@@ -57,6 +62,16 @@ function App() {
           </WebCanvasWrapper>
         </Scope>
       </div>
+
+      {startXr ? (
+        <Canvas>
+          <XR>
+            <XRApp />
+            <Controllers />
+          </XR>
+          <OrbitControls />
+        </Canvas>
+      ) : null}
 
       {/* {start === 'xr' ? <XRCanvas /> : start === 'web' ? <WebCanvas /> : null} */}
     </div>

@@ -10,16 +10,16 @@ export default function XRApp() {
   const { isPresenting, referenceSpace } = useXR()
 
   useEffect(() => {
-    // console.log(isPresenting, referenceSpace)
+    setLocation('/xr/menu')
   }, [isPresenting])
 
   return (
     <>
-      <Route path="/">
+      <Route path="/xr/menu">
         <XRMenu setLocation={setLocation} />
       </Route>
-      <Scope base="/1">
-        <XRElectricity />
+      <Scope base="/xr/1">
+        <XRElectricity setLocation={setLocation} />
       </Scope>
     </>
   )
