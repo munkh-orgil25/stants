@@ -1,20 +1,20 @@
-import { Canvas } from '@react-three/fiber'
-import { XRButton, XR } from '@react-three/xr'
-import { useEffect, useRef, useState } from 'react'
-import { BackSide } from 'three'
-import { Route } from 'wouter'
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react/function-component-definition */
+/* eslint-disable react/jsx-props-no-spreading */
+import { Suspense, useEffect, useState } from 'react'
+import { Route, useLocation } from 'wouter'
 import WebCanvasWrapper from './components/WebCanvasWrapper'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
-import WebCanvas from './WebCanvas'
-import XRCanvas from './XRCanvas'
 import Scope from './components/Scope'
 import Height from './scenes/Height'
 import Electricity from './scenes/Electricity'
+import XRMenu from './pages/XRMenu'
+import XRCanvasWrapper from './components/XRCanvasWrapper'
 
 function App() {
   const [supported, setSupported] = useState()
-  const [start, setStart] = useState(null)
+  const [location, setLocation] = useLocation()
 
   useEffect(() => {
     if (navigator.xr) {
@@ -38,11 +38,17 @@ function App() {
         </div>
 
         <Route path="/">
-          <Home setStart={setStart} supported={supported} />
+          <Home supported={supported} setLocation={setLocation} />
         </Route>
 
         <Route path="/menu">
           <Menu />
+        </Route>
+
+        <Route path="/xr/menu">
+          <XRCanvasWrapper>
+            <XRMenu />
+          </XRCanvasWrapper>
         </Route>
 
         <Scope base="/1">

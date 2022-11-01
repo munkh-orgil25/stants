@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import { XR } from '@react-three/xr'
 import { BackSide } from 'three'
 
-const XRCanvas = () => {
+function XRCanvas() {
   return (
     <div className="canvas">
       <Canvas>

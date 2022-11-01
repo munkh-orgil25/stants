@@ -1,7 +1,7 @@
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
-const WebCanvasWrapper = ({ children }) => {
+function WebCanvasWrapper({ children }) {
   return (
     <div className="canvas">
       <Canvas>

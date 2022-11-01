@@ -2,7 +2,7 @@ import { XRButton } from '@react-three/xr'
 import React from 'react'
 import { Link } from 'wouter'
 
-const Home = ({ setStart, supported }) => {
+function Home({ setLocation, supported }) {
   return (
     <div className="content-w">
       <div className="illustration-w">
@@ -12,14 +12,16 @@ const Home = ({ setStart, supported }) => {
         {supported ? (
           <XRButton
             mode="VR"
-            onClick={() => setStart('xr')}
+            onClick={() => setLocation('/xr/menu')}
             className="start-btn"
           >
             Эхлэх
           </XRButton>
         ) : (
           <Link href="/menu">
-            <button className="start-btn">Эхлэх</button>
+            <button type="button" className="start-btn">
+              Эхлэх
+            </button>
           </Link>
         )}
       </div>
