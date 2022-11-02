@@ -24,7 +24,7 @@ export default function First({ setLocation }) {
       {/* INFO */}
       <group ref={infoRef} position={[-2, 0, 0]}>
         <HoverButton
-          position={[0, -1, -0.75]}
+          position={[0, 0, 0]}
           rotation={[Math.PI * 0.5, Math.PI * 0.5, 0]}
           scale={0.15}
           text="Унших"
