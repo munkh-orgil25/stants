@@ -1,35 +1,30 @@
-import { Environment } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
 import { Interactive } from '@react-three/xr'
 import React, { useEffect, useState } from 'react'
 import { CubeTextureLoader } from 'three'
 import XRLoading from '../components/XRLoading'
 
-export default function XRMenu({ setLocation }) {
-  const scene = useThree((state) => state.scene)
+export default function XRMenu({ setLocation, setEnvPath }) {
   const envLoader = new CubeTextureLoader()
+  const [envLoaded, setEnvLoaded] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [env, setEnv] = useState(null)
 
   useEffect(() => {
-    setEnv(
-      envLoader
-        .setPath('/textures/2.1/')
-        .load(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'])
-    )
+    envLoader
+      .setPath('/textures/menu/')
+      .load(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], () =>
+        setEnvLoaded(true)
+      )
   }, [])
 
   useEffect(() => {
-    if (env) {
-      setLoading(false)
-    }
-  }, [env])
+    setEnvPath('/textures/menu/')
+  }, [])
 
   useEffect(() => {
-    if (location === '/xr/menu') {
-      scene.background = env
+    if (envLoaded) {
+      setLoading(false)
     }
-  }, [location])
+  }, [envLoaded])
 
   if (loading) {
     return <XRLoading />
@@ -43,7 +38,7 @@ export default function XRMenu({ setLocation }) {
           <meshBasicMaterial color="green" />
         </mesh>
       </Interactive>
-      <Interactive onSelect={() => setLocation('/xr/1/1')}>
+      <Interactive onSelect={() => setLocation('/xr/2')}>
         <mesh position={[-0.5, 1.5, -2]} scale={0.2}>
           <boxBufferGeometry />
           <meshBasicMaterial color="blue" />

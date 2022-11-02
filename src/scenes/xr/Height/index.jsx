@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { CubeTextureLoader } from 'three'
 import { Route } from 'wouter'
-import First from './First'
 import XRLoading from '../../../components/XRLoading'
+// scenes
+import First from './First'
 import Second from './Second'
 
-export default function XRElectricity({ setLocation, location, setEnvPath }) {
+export default function XRHeight({ setLocation, location, setEnvPath }) {
   const envLoader = new CubeTextureLoader()
   const [loading, setLoading] = useState(true)
   const [env1Loaded, setEnv1Loaded] = useState(null)
@@ -31,11 +32,11 @@ export default function XRElectricity({ setLocation, location, setEnvPath }) {
   }, [env1Loaded, env2Loaded])
 
   useEffect(() => {
-    if (location === '/xr/2') {
-      setEnvPath('/textures/2.1/')
+    if (location === '/xr/1') {
+      setEnvPath('/textures/1.1/')
     }
-    if (location === '/xr/2/1') {
-      setEnvPath('/textures/2.2/')
+    if (location === '/xr/1/1') {
+      setEnvPath('/textures/1.2/')
     }
   }, [location])
 

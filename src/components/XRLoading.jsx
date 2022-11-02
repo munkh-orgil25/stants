@@ -1,7 +1,8 @@
 import { useXR } from '@react-three/xr'
 import { useEffect, useRef, useState } from 'react'
-import { BackSide } from 'three'
+import { BackSide, DoubleSide } from 'three'
 import { a, useTrail } from '@react-spring/three'
+import { Text } from '@react-three/drei'
 
 function XRLoading() {
   const { player, isPresenting } = useXR()
@@ -32,10 +33,15 @@ function XRLoading() {
         <meshBasicMaterial color="#000" side={BackSide} />
       </mesh>
 
-      <group ref={ref} position={[0, 0, -2]} scale={0.05}>
+      <group
+        ref={ref}
+        position={[-3, 0, 0]}
+        rotation={[0, Math.PI * 0.5, 0]}
+        scale={0.1}
+      >
         {trails.map((styles, index) => (
           <a.mesh
-            position={[index * 3 - 3, 0, 0]}
+            position={[0, index * 3 - 3, 0]}
             material-opacity={styles.opacity}
             // eslint-disable-next-line react/no-array-index-key
             key={index}
