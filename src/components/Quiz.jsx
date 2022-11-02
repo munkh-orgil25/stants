@@ -34,9 +34,12 @@ export default function Quiz({ quiz, visible, setActiveQuiz }) {
         />
       ))}
       <Result
-        visible
+        visible={correct !== null}
         correct={correct}
-        onClick={() => setActiveQuiz(quiz.id + 1)}
+        onClick={() => {
+          setActiveQuiz(quiz.id + 1)
+          setCorrect(null)
+        }}
       />
     </group>
   )
