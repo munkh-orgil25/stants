@@ -23,6 +23,9 @@ body {
 body {
   min-height: 100vh;
 }
+.test-btn {
+  z-index: 100000;
+}
 
 .canvas {
   height: 100vh;
