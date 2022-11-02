@@ -2,11 +2,13 @@ import { Interactive, useXR } from '@react-three/xr'
 import { useEffect, useState } from 'react'
 import { a, useSpring, config } from '@react-spring/three'
 import { useFrame } from '@react-three/fiber'
+import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
 import InfoText from '../../../components/InfoText'
 import Question from '../../../components/Question'
 import Answer from '../../../components/Answer'
 import Quiz from '../../../components/Quiz'
+import Result from '../../../components/Result'
 
 const questions = [
   {
@@ -74,6 +76,32 @@ export default function First({ setLocation }) {
   const [infoVisible, setInfoVisible] = useState(false)
   const [activeQuiz, setActiveQuiz] = useState(0)
   const { player, isPresenting } = useXR()
+  const [answered, setAnswered] = useState(false)
+  const [correct, setCorrect] = useState(false)
+
+  const styles = useSpring({
+    overlay: answered ? 0.45 : 0,
+  })
+
+  const handleAnswer = (id) => {
+    if (id === questions[activeQuiz].correct) {
+      setCorrect(true)
+      setAnswered(true)
+    } else {
+      setCorrect(false)
+      setAnswered(true)
+    }
+  }
+
+  const handleResultClick = () => {
+    if (activeQuiz === 5) {
+      setActiveQuiz(0)
+      setAnswered(false)
+    } else {
+      setActiveQuiz(activeQuiz + 1)
+      setAnswered(false)
+    }
+  }
 
   return (
     <group>
@@ -98,23 +126,39 @@ export default function First({ setLocation }) {
       </group>
 
       {/* QUIZ */}
-      <group position={[4, 0.6, -5]} rotation={[0, -0.75, 0]}>
+      <group position={[4, 0.6, -6]} rotation={[0, -0.75, 0]} scale={0.9}>
         <HoverButton
           position={[0, 0, -0.01]}
-          scale={0.5}
+          scale={0.6}
           text="Шалгах"
           onClick={() => setActiveQuiz(1)}
         />
         {questions.map((q) => (
-          <group key={q.id} position={[-1, 1, 4]} rotation={[0, 0.4, 0]}>
-            <Quiz
-              quiz={q}
-              visible={q.id === activeQuiz}
-              setActiveQuiz={setActiveQuiz}
-            />
-          </group>
+          <Quiz
+            position={[-1, 1, 5]}
+            rotation={[0, 0.7, 0]}
+            scale={1.5}
+            key={q.id}
+            quiz={q}
+            visible={q.id === activeQuiz}
+            handleClick={handleAnswer}
+          />
         ))}
       </group>
+
+      <Result
+        position={[0.2, 1.6, -2]}
+        scale={0.6}
+        visible={answered}
+        correct={correct}
+        onClick={handleResultClick}
+      />
+
+      {/* OVERLAY */}
+      <a.mesh scale={3} material-opacity={styles.overlay}>
+        <sphereBufferGeometry />
+        <meshBasicMaterial transparent color="#282828" side={BackSide} />
+      </a.mesh>
     </group>
   )
 }

@@ -21,7 +21,11 @@ export default function Answer({
   })
 
   return (
-    <Interactive onSelect={() => onClick(answer.id)}>
+    <Interactive
+      onSelect={() => onClick(answer.id)}
+      onBlur={() => setHovered(false)}
+      onHover={() => setHovered(true)}
+    >
       <group
         scale={scale}
         position={position}

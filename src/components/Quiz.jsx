@@ -1,21 +1,20 @@
 import React, { useState } from 'react'
+import { useSpring, a } from '@react-spring/three'
+import { BackSide } from 'three'
 import Answer from './Answer'
 import Question from './Question'
 import Result from './Result'
 
-export default function Quiz({ quiz, visible, setActiveQuiz }) {
-  const [correct, setCorrect] = useState(null)
-
-  const handleClick = (id) => {
-    if (id === quiz.correct) {
-      setCorrect(true)
-    } else {
-      setCorrect(false)
-    }
-  }
-
+export default function Quiz({
+  quiz,
+  visible,
+  position,
+  rotation,
+  scale,
+  handleClick,
+}) {
   return (
-    <group>
+    <group position={position} rotation={rotation} scale={scale}>
       <Question
         visible={visible}
         onClick={() => {}}
@@ -33,14 +32,6 @@ export default function Quiz({ quiz, visible, setActiveQuiz }) {
           onClick={handleClick}
         />
       ))}
-      <Result
-        visible={correct !== null}
-        correct={correct}
-        onClick={() => {
-          setActiveQuiz(quiz.id + 1)
-          setCorrect(null)
-        }}
-      />
     </group>
   )
 }
