@@ -1,7 +1,7 @@
 import { useThree } from '@react-three/fiber'
 import { useXR } from '@react-three/xr'
 import { useEffect, useState } from 'react'
-import { CubeTextureLoader } from 'three'
+import { CubeTextureLoader, LinearEncoding, sRGBEncoding } from 'three'
 import { Route, useLocation } from 'wouter'
 import Scope from '../components/Scope'
 import XRElectricity from '../scenes/xr/Electricity'
@@ -21,10 +21,10 @@ export default function XRApp() {
 
   useEffect(() => {
     if (envPath) {
-      console.log(envPath)
       const envCube = envLoader
         .setPath(envPath)
         .load(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'])
+      envCube.encoding = sRGBEncoding
       scene.background = envCube
     }
   }, [envPath])

@@ -1,12 +1,10 @@
+/* eslint-disable prefer-destructuring */
 import { Interactive, useXR } from '@react-three/xr'
 import { useEffect, useState } from 'react'
 import { a, useSpring, config } from '@react-spring/three'
-import { useFrame } from '@react-three/fiber'
 import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
 import InfoText from '../../../components/InfoText'
-import Question from '../../../components/Question'
-import Answer from '../../../components/Answer'
 import Quiz from '../../../components/Quiz'
 import Result from '../../../components/Result'
 
@@ -78,6 +76,7 @@ export default function First({ setLocation }) {
   const { player, isPresenting } = useXR()
   const [answered, setAnswered] = useState(false)
   const [correct, setCorrect] = useState(false)
+  const [move, setMove] = useState(false)
 
   const styles = useSpring({
     overlay: answered ? 0.45 : 0,
@@ -103,8 +102,41 @@ export default function First({ setLocation }) {
     }
   }
 
+  // Move Player
+  const [, moveApi] = useSpring(() => ({
+    pos: [0, 0, 0],
+    config: config.molasses,
+  }))
+
+  const nextScene = () => {
+    setLocation('/xr/1/1')
+  }
+
+  // useEffect(() => {
+  //   if (move) {
+  //     console.log('moved')
+  //     moveApi.start({
+  //       pos: [0, 0, 0],
+  //       onChange: ({ value }) => {
+  //         player.position.x = value.pos[0]
+  //         player.position.y = value.pos[1]
+  //         player.position.z = value.pos[2]
+  //       },
+  //     })
+  //   }
+  // }, [move])
+
   return (
     <group>
+      {/* TP */}
+      <HoverButton
+        position={[2.5, 6, -8]}
+        rotation={[0, 0, 0]}
+        scale={1}
+        text="Шилжих"
+        onClick={nextScene}
+      />
+
       {/* INFO */}
       <group position={[-4, 0.6, -5]} rotation={[0, 0.75, 0]}>
         <HoverButton
