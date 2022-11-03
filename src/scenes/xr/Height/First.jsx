@@ -84,7 +84,7 @@ export default function First({ setLocation }) {
   })
 
   const handleAnswer = (id) => {
-    if (id === questions[activeQuiz].correct) {
+    if (id === questions[activeQuiz - 1].correct) {
       setCorrect(true)
       setAnswered(true)
     } else {
@@ -155,7 +155,7 @@ export default function First({ setLocation }) {
       />
 
       {/* OVERLAY */}
-      <a.mesh scale={3} material-opacity={styles.overlay}>
+      <a.mesh scale={3} material-opacity={styles.overlay} visible={answered}>
         <sphereBufferGeometry />
         <meshBasicMaterial transparent color="#282828" side={BackSide} />
       </a.mesh>
