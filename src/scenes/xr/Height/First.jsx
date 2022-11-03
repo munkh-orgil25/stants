@@ -204,7 +204,13 @@
 // }
 
 import React, { useState, useEffect } from 'react'
-import { a, useSpring, useSpringRef } from '@react-spring/three'
+import {
+  a,
+  config,
+  useChain,
+  useSpring,
+  useSpringRef,
+} from '@react-spring/three'
 import { BackSide } from 'three'
 import { Interactive } from '@react-three/xr'
 
@@ -215,15 +221,28 @@ export default function First({ env, visible, setCurrent }) {
     setAnimate(false)
   }
 
-  const styles = useSpring({
-    scale: animate ? 20 : 10,
-    opacity: animate ? 1 : 0,
-    onRest: () => {
-      if (animate === false) {
+  const scaleApi = useSpringRef()
+  const { scale } = useSpring({
+    ref: scaleApi,
+    config: config.slow,
+    from: { scale: animate ? 5 : 20 },
+    to: { scale: animate ? 20 : 5 },
+  })
+
+  const opacityApi = useSpringRef()
+  const { opacity } = useSpring({
+    ref: opacityApi,
+    config: config.slow,
+    from: { opacity: 1 },
+    to: { opacity: animate ? 1 : 0 },
+    onChange: () => {
+      if (opacity.get() < 0.3 && !animate) {
         setCurrent(2)
       }
     },
   })
+
+  useChain(animate ? [opacityApi, scaleApi] : [scaleApi, opacityApi], [0, 0.2])
 
   useEffect(() => {
     if (visible) {
@@ -233,7 +252,7 @@ export default function First({ env, visible, setCurrent }) {
 
   return (
     <group visible={visible}>
-      <a.mesh scale={styles.scale} material-opacity={styles.opacity}>
+      <a.mesh scale={scale} material-opacity={opacity}>
         <sphereGeometry />
         <meshBasicMaterial side={BackSide} map={env} transparent />
       </a.mesh>
