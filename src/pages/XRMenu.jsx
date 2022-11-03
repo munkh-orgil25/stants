@@ -1,37 +1,20 @@
+import { useTexture } from '@react-three/drei'
 import { Interactive } from '@react-three/xr'
 import React, { useEffect, useState } from 'react'
-import { CubeTextureLoader } from 'three'
+import { BackSide, CubeTextureLoader } from 'three'
 import XRLoading from '../components/XRLoading'
 
 export default function XRMenu({ setLocation, setEnvPath }) {
-  const envLoader = new CubeTextureLoader()
   const [envLoaded, setEnvLoaded] = useState(null)
   const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    envLoader
-      .setPath('/textures/menu/')
-      .load(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], () =>
-        setEnvLoaded(true)
-      )
-  }, [])
-
-  useEffect(() => {
-    setEnvPath('/textures/menu/')
-  }, [])
-
-  useEffect(() => {
-    if (envLoaded) {
-      setLoading(false)
-    }
-  }, [envLoaded])
-
-  if (loading) {
-    return <XRLoading />
-  }
+  // const envMap = useTexture('/textures/')
 
   return (
     <group>
+      <mesh scale={20}>
+        <sphereGeometry />
+        <meshBasicMaterial side={BackSide} color="white" />
+      </mesh>
       <Interactive onSelect={() => setLocation('/xr/1')}>
         <mesh
           position={[0.5, 1.5, -2]}

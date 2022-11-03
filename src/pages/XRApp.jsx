@@ -9,8 +9,6 @@ import XRHeight from '../scenes/xr/Height'
 import XRMenu from './XRMenu'
 
 export default function XRApp() {
-  const scene = useThree((state) => state.scene)
-  const envLoader = new CubeTextureLoader()
   const [location, setLocation] = useLocation()
   const { isPresenting } = useXR()
   const [envPath, setEnvPath] = useState(null)
@@ -18,16 +16,6 @@ export default function XRApp() {
   useEffect(() => {
     setLocation('/xr/menu')
   }, [isPresenting])
-
-  useEffect(() => {
-    if (envPath) {
-      const envCube = envLoader
-        .setPath(envPath)
-        .load(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'])
-      envCube.encoding = sRGBEncoding
-      scene.background = envCube
-    }
-  }, [envPath])
 
   return (
     <>

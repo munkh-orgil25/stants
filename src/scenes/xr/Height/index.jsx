@@ -1,44 +1,38 @@
 import { useEffect, useState } from 'react'
-import { CubeTextureLoader } from 'three'
+import { useSpring } from 'react-spring'
+import { BackSide, TextureLoader } from 'three'
 import { Route } from 'wouter'
+import { a, useSpringRef } from '@react-spring/three'
 import XRLoading from '../../../components/XRLoading'
 // scenes
 import First from './First'
 import Second from './Second'
 
 export default function XRHeight({ setLocation, location, setEnvPath }) {
-  const envLoader = new CubeTextureLoader()
+  const [current, setCurrent] = useState(1)
+  const [env1, setEnv1] = useState(null)
+  const [env2, setEnv2] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [env1Loaded, setEnv1Loaded] = useState(null)
-  const [env2Loaded, setEnv2Loaded] = useState(null)
+  const textureLoader = new TextureLoader()
 
   useEffect(() => {
-    envLoader
-      .setPath('/textures/2.1/')
-      .load(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], () =>
-        setEnv1Loaded(true)
-      )
-    envLoader
-      .setPath('/textures/2.2/')
-      .load(['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'], () =>
-        setEnv2Loaded(true)
-      )
+    textureLoader.load('/textures/1/1.jpg', (texture) => {
+      setEnv1(texture)
+    })
+    textureLoader.load('/textures/1/2.jpg', (texture) => {
+      setEnv2(texture)
+    })
   }, [])
 
   useEffect(() => {
-    if (env1Loaded && env2Loaded) {
+    if (env1 && env2) {
       setLoading(false)
     }
-  }, [env1Loaded, env2Loaded])
+  }, [env1, env2])
 
   useEffect(() => {
-    if (location === '/xr/1') {
-      setEnvPath('/textures/1.1/')
-    }
-    if (location === '/xr/1/1') {
-      setEnvPath('/textures/1.2/')
-    }
-  }, [location])
+    console.log('current', 2)
+  }, [current])
 
   if (loading) {
     return <XRLoading />
@@ -46,12 +40,15 @@ export default function XRHeight({ setLocation, location, setEnvPath }) {
 
   return (
     <>
-      <Route path="/">
+      <First visible={current === 1} env={env1} setCurrent={setCurrent} />
+      <Second visible={current === 2} env={env2} setCurrent={setCurrent} />
+
+      {/* <Route path="/">
         <First setLocation={setLocation} />
       </Route>
       <Route path="/1">
         <Second setLocation={setLocation} />
-      </Route>
+      </Route> */}
     </>
   )
 }
