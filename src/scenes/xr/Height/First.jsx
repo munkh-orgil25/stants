@@ -251,8 +251,8 @@ export default function First({ env, visible, setCurrent }) {
   }, [visible])
 
   return (
-    <group visible>
-      <a.mesh scale={scale} material-opacity={opacity}>
+    <group>
+      <a.mesh scale={scale} material-opacity={opacity} position={[0, 1.5, 0]}>
         <sphereGeometry />
         <meshBasicMaterial side={BackSide} map={env} transparent />
       </a.mesh>
