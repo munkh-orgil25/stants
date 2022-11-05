@@ -29,7 +29,7 @@ export default function Second({ env, setCurrent, visible }) {
 
   return (
     <group>
-      <a.mesh scale={scale} material-opacity={1} position={[0, 1.5, 0]}>
+      <a.mesh scale={scale} material-opacity={1} position={[0, 0, 0]}>
         <sphereGeometry />
         <meshBasicMaterial side={BackSide} map={env} transparent />
       </a.mesh>
