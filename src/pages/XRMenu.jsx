@@ -26,7 +26,11 @@ export default function XRMenu({ setLocation, setEnvPath }) {
         </mesh>
       </Interactive>
       <Interactive onSelect={() => setLocation('/xr/2')}>
-        <mesh position={[-0.5, 1.5, -2]} scale={0.2}>
+        <mesh
+          onClick={() => setLocation('/xr/2')}
+          position={[-0.5, 1.5, -2]}
+          scale={0.2}
+        >
           <boxBufferGeometry />
           <meshBasicMaterial color="blue" />
         </mesh>

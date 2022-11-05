@@ -225,8 +225,8 @@ export default function First({ env, visible, setCurrent }) {
   const { scale } = useSpring({
     ref: scaleApi,
     config: config.slow,
-    from: { scale: animate ? 5 : 20 },
-    to: { scale: animate ? 20 : 5 },
+    from: { scale: animate ? 0 : 20 },
+    to: { scale: animate ? 20 : 0 },
   })
 
   const opacityApi = useSpringRef()
@@ -251,7 +251,7 @@ export default function First({ env, visible, setCurrent }) {
   }, [visible])
 
   return (
-    <group visible={visible}>
+    <group visible>
       <a.mesh scale={scale} material-opacity={opacity}>
         <sphereGeometry />
         <meshBasicMaterial side={BackSide} map={env} transparent />

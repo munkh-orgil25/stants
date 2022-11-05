@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useSpring } from 'react-spring'
-import { BackSide, TextureLoader } from 'three'
-import { Route } from 'wouter'
-import { a, useSpringRef } from '@react-spring/three'
+import { TextureLoader } from 'three'
 import XRLoading from '../../../components/XRLoading'
 // scenes
 import First from './First'
 import Second from './Second'
 
-export default function XRHeight({ setLocation, location, setEnvPath }) {
+export default function XRHeight({ setLocation, location }) {
   const [current, setCurrent] = useState(1)
   const [env1, setEnv1] = useState(null)
   const [env2, setEnv2] = useState(null)

@@ -11,7 +11,6 @@ import XRMenu from './XRMenu'
 export default function XRApp() {
   const [location, setLocation] = useLocation()
   const { isPresenting } = useXR()
-  const [envPath, setEnvPath] = useState(null)
 
   useEffect(() => {
     setLocation('/xr/menu')
@@ -20,25 +19,13 @@ export default function XRApp() {
   return (
     <>
       <Route path="/xr/menu">
-        <XRMenu
-          setLocation={setLocation}
-          setEnvPath={setEnvPath}
-          location={location}
-        />
+        <XRMenu setLocation={setLocation} location={location} />
       </Route>
       <Scope base="/xr/1">
-        <XRHeight
-          setLocation={setLocation}
-          setEnvPath={setEnvPath}
-          location={location}
-        />
+        <XRHeight setLocation={setLocation} location={location} />
       </Scope>
       <Scope base="/xr/2">
-        <XRElectricity
-          setLocation={setLocation}
-          setEnvPath={setEnvPath}
-          location={location}
-        />
+        <XRElectricity setLocation={setLocation} location={location} />
       </Scope>
     </>
   )

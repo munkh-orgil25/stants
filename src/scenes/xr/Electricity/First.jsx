@@ -1,14 +1,66 @@
 import { Interactive } from '@react-three/xr'
+import { useState, useEffect } from 'react'
+import {
+  a,
+  config,
+  useChain,
+  useSpring,
+  useSpringRef,
+} from '@react-spring/three'
+import { BackSide } from 'three'
 
-export default function First({ setLocation }) {
+export default function First({ env, setCurrent, visible }) {
+  const [animate, setAnimate] = useState(true)
+
+  const handleNext = () => {
+    setAnimate(false)
+  }
+
+  const scaleApi = useSpringRef()
+  const { scale } = useSpring({
+    ref: scaleApi,
+    config: config.slow,
+    from: { scale: animate ? 5 : 20 },
+    to: { scale: animate ? 20 : 5 },
+  })
+
+  const opacityApi = useSpringRef()
+  const { opacity } = useSpring({
+    ref: opacityApi,
+    config: config.slow,
+    from: { opacity: 1 },
+    to: { opacity: animate ? 1 : 0 },
+    onChange: () => {
+      if (opacity.get() < 0.1 && !animate) {
+        setCurrent(2)
+      }
+    },
+  })
+
+  useChain(animate ? [opacityApi, scaleApi] : [scaleApi, opacityApi], [0, 0.4])
+
+  useEffect(() => {
+    if (visible) {
+      setAnimate(true)
+    }
+  }, [visible])
+
   return (
-    <group>
-      <Interactive onSelect={() => setLocation('/xr/2/1')}>
-        <mesh position={[0.5, 1.5, -2]} scale={0.2}>
-          <boxBufferGeometry />
-          <meshBasicMaterial color="red" />
-        </mesh>
-      </Interactive>
+    <group visible={visible}>
+      {/* BG */}
+      <a.mesh scale={scale} material-opacity={opacity}>
+        <sphereGeometry />
+        <meshBasicMaterial map={env} transparent side={BackSide} />
+      </a.mesh>
+
+      <a.group>
+        <Interactive onSelect={handleNext}>
+          <mesh onClick={handleNext} position={[0, 1.5, -2]} scale={0.2}>
+            <sphereGeometry />
+            <meshBasicMaterial />
+          </mesh>
+        </Interactive>
+      </a.group>
     </group>
   )
 }
