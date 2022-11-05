@@ -18,7 +18,7 @@ export default function Second({ env, visible, setCurrent }) {
 
   const { scale } = useSpring({
     config: config.slow,
-    scale: animate ? 30 : 20,
+    scale: animate ? 30 : 21,
     onChange: () => {
       if (scale.get() < 23 && !animate) {
         setCurrent(1)
