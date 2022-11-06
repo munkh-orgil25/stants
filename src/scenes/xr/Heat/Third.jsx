@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
-import { Interactive } from '@react-three/xr'
+import { Interactive, useXR } from '@react-three/xr'
 import HoverButton from '../../../components/HoverButton'
 
 export default function Third({ env, setCurrent, visible }) {
+  const { player } = useXR()
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 41, objScale: 0, opacity: 0 },
   }))
+
+  useEffect(() => {
+    player.position.set(0, -1.2, 0)
+  }, [])
 
   const handlePrev = () => {
     api.start({

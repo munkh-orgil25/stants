@@ -12,10 +12,11 @@ export default function FinalResult({
   rotation = [0, 0, 0],
   onClick,
   score,
+  limit = 2,
   retry,
   next,
 }) {
-  const won = score > 2
+  const won = score > limit
   const bgAlpha = useTexture('/textures/info/bgAlpha.png', (texture) => {
     texture.magFilter = NearestFilter
     texture.minFilter = NearestFilter

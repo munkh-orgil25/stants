@@ -183,6 +183,7 @@ export default function Sixth({ env, setCurrent, visible }) {
         visible={showFinal}
         onClick={() => setShowFinal(false)}
         score={score}
+        limit={1}
         retry={() => {
           setShowFinal(false)
           setFinished(false)
