@@ -65,7 +65,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[0, 0.3, -2.8]}
+          position={[0.1, 0.4, -2.8]}
           rotation={[0, 0, 0]}
           scale={spring.objScale}
           text="Шилжих"
@@ -76,7 +76,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
-          position={[0.1, 0.3, 2.8]}
+          position={[0.1, 0.4, 2.5]}
           rotation={[0, Math.PI, 0]}
           scale={spring.objScale}
           text="Буцах"

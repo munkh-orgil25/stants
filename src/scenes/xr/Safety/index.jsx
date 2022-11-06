@@ -14,7 +14,7 @@ import Ninth from './Ninth'
 import Tenth from './Tenth'
 
 export default function XRSafety({ setLocation, location }) {
-  const [current, setCurrent] = useState(9)
+  const [current, setCurrent] = useState(3)
   const [env1, setEnv1] = useState(null)
   const [env2, setEnv2] = useState(null)
   const [env3, setEnv3] = useState(null)
