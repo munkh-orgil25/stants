@@ -12,9 +12,10 @@ import Seventh from './Seventh'
 import Eighth from './Eighth'
 import Ninth from './Ninth'
 import Tenth from './Tenth'
+import Navigation from '../../../components/Navigation'
 
 export default function XRSafety({ setLocation, location }) {
-  const [current, setCurrent] = useState(9)
+  const [current, setCurrent] = useState(1)
   const [env1, setEnv1] = useState(null)
   const [env2, setEnv2] = useState(null)
   const [env3, setEnv3] = useState(null)
