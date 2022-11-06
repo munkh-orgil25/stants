@@ -14,7 +14,7 @@ import Ninth from './Ninth'
 import Tenth from './Tenth'
 
 export default function XRSafety({ setLocation, location }) {
-  const [current, setCurrent] = useState(6)
+  const [current, setCurrent] = useState(9)
   const [env1, setEnv1] = useState(null)
   const [env2, setEnv2] = useState(null)
   const [env3, setEnv3] = useState(null)
@@ -58,12 +58,6 @@ export default function XRSafety({ setLocation, location }) {
     })
     textureLoader.load('/textures/4/10.png', (texture) => {
       setEnv10(texture)
-    })
-    textureLoader.load('/textures/4/1.png', (texture) => {
-      setEnv1(texture)
-    })
-    textureLoader.load('/textures/4/2.png', (texture) => {
-      setEnv2(texture)
     })
   }, [])
 

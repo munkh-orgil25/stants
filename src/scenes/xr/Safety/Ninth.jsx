@@ -68,7 +68,7 @@ export default function Ninth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-2, -0.5, -2.94]}
+          position={[-2.7, -0.4, -3]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
           text="Шилжих"
