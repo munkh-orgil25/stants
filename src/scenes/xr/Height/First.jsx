@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import { Interactive, useXR } from '@react-three/xr'
+import { useState, useEffect } from 'react'
 import {
   a,
   config,
@@ -7,10 +8,17 @@ import {
   useSpringRef,
 } from '@react-spring/three'
 import { BackSide } from 'three'
-import { Interactive } from '@react-three/xr'
+import HoverButton from '../../../components/HoverButton'
+import InfoText from '../../../components/InfoText'
 
-export default function First({ env, visible, setCurrent }) {
+export default function First({ env, setCurrent, visible }) {
+  const { player } = useXR()
   const [animate, setAnimate] = useState(true)
+  const [infoVisible, setInfoVisible] = useState(false)
+
+  useEffect(() => {
+    player.position.set(0, 0, 0)
+  }, [])
 
   const handleNext = () => {
     setAnimate(false)
@@ -20,8 +28,8 @@ export default function First({ env, visible, setCurrent }) {
   const { scale } = useSpring({
     ref: scaleApi,
     config: config.slow,
-    from: { scale: animate ? 0 : 20 },
-    to: { scale: animate ? 20 : 0 },
+    from: { scale: animate ? 5 : 20 },
+    to: { scale: animate ? 20 : 5 },
   })
 
   const opacityApi = useSpringRef()
@@ -31,11 +39,13 @@ export default function First({ env, visible, setCurrent }) {
     from: { opacity: 1 },
     to: { opacity: animate ? 1 : 0 },
     onChange: () => {
-      if (opacity.get() < 0.3 && !animate) {
+      if (opacity.get() < 0.25 && !animate) {
         setCurrent(2)
       }
     },
   })
+
+  // OJBECTS
 
   useChain(animate ? [opacityApi, scaleApi] : [scaleApi, opacityApi], [0, 0.4])
 
@@ -46,17 +56,47 @@ export default function First({ env, visible, setCurrent }) {
   }, [visible])
 
   return (
-    <group>
-      <a.mesh scale={scale} material-opacity={opacity} position={[0, 1.5, 0]}>
+    <group visible={visible}>
+      {/* BG */}
+      <a.mesh
+        scale={scale}
+        material-opacity={opacity}
+        position={[0, 0, 0]}
+        rotation={[0, 1.5, 0]}
+      >
         <sphereGeometry />
-        <meshBasicMaterial side={BackSide} map={env} transparent />
+        <meshBasicMaterial map={env} transparent side={BackSide} />
       </a.mesh>
 
+      {/* INFO */}
+      <HoverButton
+        position={[1, 0.25, -2.5]}
+        rotation={[0, -0.25, 0]}
+        scale={0.2}
+        text="Унших"
+        onClick={() => setInfoVisible(true)}
+      />
+      <Interactive onSelect={() => setInfoVisible(false)}>
+        <InfoText
+          visible={infoVisible}
+          onClick={() => setInfoVisible(false)}
+          scale={1}
+          position={[0, 0.3, -2]}
+          rotation={[0, 0, 0]}
+          title="Өндөрт шат тавцан дээр ажиллах"
+          text="1,3 метрээс дээш өндөрт зориулалтын (нэмэлт бэхлэгээ хийгдсэн, пайзтай, шат тавцанг акт үйлдэж хүлээлцсэн гэх мэт) шат тавьсан дээр ажил гүйцэтгэх ёстой. Та өндөр ажил гүйцэтгэх үед өнөөдрийн бүсийг тогтмол зүүж амин цэг, амин олсноос бүсийг бэхлэж ажил гүйцэтгэх ёстой. Өндөр .  Биё биендээ хяналт тавьж, өндөөр биет унагаахгүй болгоомжтой ажил гүйцэтгэх."
+        />
+      </Interactive>
+
+      {/* TP */}
       <Interactive onSelect={handleNext}>
-        <mesh onClick={handleNext} position={[0, 1.5, -2]}>
-          <boxGeometry />
-          <meshBasicMaterial />
-        </mesh>
+        <HoverButton
+          position={[-0.5, 2.5, -3]}
+          rotation={[0, 0.25, 0]}
+          scale={0.2}
+          text="Шилжих"
+          onClick={handleNext}
+        />
       </Interactive>
     </group>
   )

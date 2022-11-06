@@ -8,7 +8,6 @@ import {
   useSpringRef,
 } from '@react-spring/three'
 import { BackSide } from 'three'
-import { useControls } from 'leva'
 import HoverButton from '../../../components/HoverButton'
 import InfoText from '../../../components/InfoText'
 
@@ -16,14 +15,9 @@ export default function First({ env, setCurrent, visible }) {
   const { player } = useXR()
   const [animate, setAnimate] = useState(true)
   const [infoVisible, setInfoVisible] = useState(false)
-  const { x, y, z } = useControls({
-    x: { min: -3.14, max: 3.14, value: 0, step: 0.01 },
-    y: { min: -3.14, max: 3.14, value: 0, step: 0.01 },
-    z: { min: -3.14, max: 3.14, value: 0, step: 0.01 },
-  })
 
   useEffect(() => {
-    player.position.set(0, -1.2, 0)
+    player.position.set(0, 0, 0)
   }, [])
 
   const handleNext = () => {
@@ -90,7 +84,7 @@ export default function First({ env, setCurrent, visible }) {
           position={[0, 0.3, -2]}
           rotation={[0, 0, 0]}
           title="ХХБ дахь цахилгааны аюул."
-          text="1,3 метрээс дээш өндөрт зориулалтын (нэмэлт бэхлэгээ хийгдсэн, пайзтай, шат тавцанг акт үйлдэж хүлээлцсэн гэх мэт) шат тавьсан дээр ажил гүйцэтгэх ёстой. Та өндөр ажил гүйцэтгэх үед өнөөдрийн бүсийг тогтмол зүүж амин цэг, амин олсноос бүсийг бэхлэж ажил гүйцэтгэх ёстой. Өндөр .  Биё биендээ хяналт тавьж, өндөөр биет унагаахгүй болгоомжтой ажил гүйцэтгэх."
+          text="Цахилгааны Хаалттай хувиарлах байгууламж ( ХХБ) нь цахилгаан тоноглолын таслах,залгах аппаратур , удирдлагын хэлхээ байралдаг сэлгэн залгалт хийгддэг онц чухал объект юм."
         />
       </Interactive>
 

@@ -27,10 +27,6 @@ export default function XRHeight({ setLocation, location }) {
     }
   }, [env1, env2])
 
-  useEffect(() => {
-    console.log('current', 2)
-  }, [current])
-
   if (loading) {
     return <XRLoading />
   }
@@ -39,13 +35,6 @@ export default function XRHeight({ setLocation, location }) {
     <>
       <First visible={current === 1} env={env1} setCurrent={setCurrent} />
       <Second visible={current === 2} env={env2} setCurrent={setCurrent} />
-
-      {/* <Route path="/">
-        <First setLocation={setLocation} />
-      </Route>
-      <Route path="/1">
-        <Second setLocation={setLocation} />
-      </Route> */}
     </>
   )
 }
