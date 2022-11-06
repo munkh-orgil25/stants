@@ -6,29 +6,39 @@ import { Interactive } from '@react-three/xr'
 export default function Third({ env, setCurrent, visible }) {
   const [show, setShow] = useState(true)
   const [spring, api] = useSpring(() => ({
-    from: { scale: 41, objScale: 0 },
+    from: { scale: 41, opacity: 0, objScale: 0 },
   }))
 
   const handlePrev = () => {
     // setIntro(false)
     api.start({
-      from: { scale: 20, objScale: 1 },
-      to: { scale: 41, objScale: 0 },
+      from: { scale: 20, opacity: 1, objScale: 1 },
+      to: { scale: 41, opacity: 0, objScale: 0 },
+      onChange: () => {
+        if (spring.opacity.get() < 0.3) {
+          setShow(false)
+          setCurrent(2)
+        }
+      },
     })
-    setCurrent(2)
   }
 
   const handleNext = () => {
     api.start({
-      from: { scale: 20, objScale: 1 },
-      to: { scale: 0, objScale: 0 },
+      from: { scale: 20, opacity: 1, objScale: 1 },
+      to: { scale: 0, opacity: 0, objScale: 0 },
+      onChange: () => {
+        if (spring.opacity.get() < 0.3) {
+          setShow(false)
+          // setCurrent(4)
+        }
+      },
     })
-    // setCurrent(3)
   }
 
   useEffect(() => {
     if (visible) {
-      // setIntro(true)
+      setShow(true)
       api.start({
         to: { scale: 20, objScale: 1 },
       })

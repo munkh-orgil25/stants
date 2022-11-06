@@ -71,23 +71,34 @@ export default function HoverButton({
         {/* BASE WHITE */}
         <a.mesh position={[0, 0, 0]} scale={baseWhite.scale}>
           <planeBufferGeometry />
-          <meshBasicMaterial color="white" transparent alphaMap={baseAlpha} />
+          <meshBasicMaterial
+            color="white"
+            transparent
+            alphaMap={baseAlpha}
+            alphaTest={0.1}
+          />
         </a.mesh>
 
         {/* BASE INNER */}
         <a.mesh position={[0, 0, -0.01]} scale={baseOuter.innerScale}>
           <planeBufferGeometry />
-          <meshBasicMaterial color="#006DB6" transparent alphaMap={baseAlpha} />
+          <meshBasicMaterial
+            color="#006DB6"
+            transparent
+            alphaMap={baseAlpha}
+            alphaTest={0.1}
+          />
         </a.mesh>
 
         {/* BASE OUTER  */}
         <a.mesh position={[0, 0, -0.02]} scale={baseOuter.outerScale}>
           <planeBufferGeometry />
           <meshBasicMaterial
-            color="#006DB6"
-            opacity={0.5}
+            color="#73A9CE"
+            opacity={1}
             transparent
             alphaMap={baseAlpha}
+            alphaTest={0.1}
           />
         </a.mesh>
 

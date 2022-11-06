@@ -30,19 +30,21 @@ export default function InfoText({
         <a.mesh scale={styles.outerScale} position={[0, 0, -0.02]}>
           <planeBufferGeometry args={[1.85, 1]} />
           <meshBasicMaterial
-            color="#006DB6"
+            color="#73A9CE"
             transparent
             alphaMap={bgAlpha}
-            opacity={0.5}
+            opacity={1}
+            alphaTest={0.1}
           />
         </a.mesh>
         <a.mesh scale={styles.innerScale} position={[0, 0, -0.01]}>
-          <planeBufferGeometry args={[1.975, 1]} />
+          <planeBufferGeometry args={[1.975, 1.02]} />
           <meshBasicMaterial
             color="#006DB6"
             transparent
             alphaMap={bgAlpha}
             opacity={1}
+            alphaTest={0.1}
           />
         </a.mesh>
         <a.mesh scale={styles.baseScale}>
