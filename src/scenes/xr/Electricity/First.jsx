@@ -42,7 +42,7 @@ export default function First({ env, setCurrent, visible }) {
     },
   })
 
-  useChain(animate ? [opacityApi, scaleApi] : [scaleApi, opacityApi], [0, 0.2])
+  useChain(animate ? [opacityApi, scaleApi] : [scaleApi, opacityApi], [0, 0.4])
 
   useEffect(() => {
     if (visible) {
