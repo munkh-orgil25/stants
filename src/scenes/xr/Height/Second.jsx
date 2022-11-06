@@ -1,4 +1,4 @@
-import { Interactive } from '@react-three/xr'
+import { Interactive, useXR } from '@react-three/xr'
 import { useState, useEffect } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
@@ -70,10 +70,15 @@ const questions = [
 ]
 
 export default function Second({ env, setCurrent, visible }) {
+  const { player } = useXR()
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 40, objScale: 0, opacity: 0 },
   }))
+
+  useEffect(() => {
+    player.position.set(0, -1.3, 0)
+  }, [])
 
   const handlePrev = () => {
     // setIntro(false)
@@ -202,7 +207,7 @@ export default function Second({ env, setCurrent, visible }) {
 
       <FinalResult
         position={[0, 1, -2]}
-        scale={1}
+        scale={0.8}
         visible={showFinal}
         onClick={() => setShowFinal(false)}
         score={score}
@@ -212,7 +217,7 @@ export default function Second({ env, setCurrent, visible }) {
           setActiveQuiz(1)
           setScore(0)
         }}
-        next={handleNext}
+        next={handlePrev}
       />
 
       {/* OVERLAY */}
@@ -224,9 +229,9 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
-          position={[0.1, 0, -3]}
-          rotation={[0, 0, 0]}
-          scale={0.1}
+          position={[0, -2, -3]}
+          rotation={[-1, 0, 0]}
+          scale={0.2}
           text="Буцах"
           onClick={handlePrev}
         />
