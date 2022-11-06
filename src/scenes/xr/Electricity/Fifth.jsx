@@ -4,7 +4,7 @@ import { BackSide } from 'three'
 import { Interactive } from '@react-three/xr'
 import HoverButton from '../../../components/HoverButton'
 
-export default function Third({ env, setCurrent, visible }) {
+export default function Fifth({ env, setCurrent, visible }) {
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 41, objScale: 0, opacity: 0 },
@@ -18,7 +18,7 @@ export default function Third({ env, setCurrent, visible }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(2)
+          setCurrent(4)
         }
       },
     })
@@ -32,7 +32,7 @@ export default function Third({ env, setCurrent, visible }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(4)
+          setCurrent(6)
         }
       },
     })
@@ -54,7 +54,7 @@ export default function Third({ env, setCurrent, visible }) {
         scale={spring.scale}
         material-opacity={spring.opacity}
         position={[0, 0, 0]}
-        rotation={[0, -1.1, 0]}
+        rotation={[0, -0.7, 0]}
       >
         <sphereGeometry />
         <meshBasicMaterial side={BackSide} map={env} transparent />
@@ -63,7 +63,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[0, 0.3, -2.8]}
+          position={[0, 0.3, -2.65]}
           rotation={[0, 0, 0]}
           scale={0.1}
           text="Шилжих"
@@ -74,7 +74,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
-          position={[0.1, 0.3, 2.8]}
+          position={[0.1, 0.3, 2.65]}
           rotation={[0, Math.PI, 0]}
           scale={0.1}
           text="Буцах"

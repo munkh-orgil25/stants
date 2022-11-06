@@ -12,12 +12,21 @@ export default function FinalResult({
   rotation = [0, 0, 0],
   onClick,
   score,
+  retry,
+  next,
 }) {
   const won = score > 2
   const bgAlpha = useTexture('/textures/info/bgAlpha.png', (texture) => {
     texture.magFilter = NearestFilter
     texture.minFilter = NearestFilter
   })
+  const optionAlpha = useTexture(
+    '/textures/info/answerAlpha.png',
+    (texture) => {
+      texture.magFilter = NearestFilter
+      texture.minFilter = NearestFilter
+    }
+  )
   const rightAlpha = useTexture(
     '/textures/button/circleWrong.png',
     (texture) => {
@@ -37,19 +46,20 @@ export default function FinalResult({
   const innerColor = won ? '#65B03B' : '#E73A39'
 
   const styles = useSpring({
-    outerScale: visible ? 1.2 : 0,
-    innerScale: visible ? 1.05 : 0,
     baseScale: visible ? 1 : 0,
+    innerScale: visible ? 1.1 : 0,
+    outerScale: visible ? 1.2 : 0,
+    buttonScale: visible ? 0.5 : 0,
   })
 
   return (
-    <Interactive onSelect={onClick}>
-      <group
-        scale={scale}
-        position={position}
-        rotation={rotation}
-        onClick={onClick}
-      >
+    <group
+      scale={scale}
+      position={position}
+      rotation={rotation}
+      onClick={onClick}
+    >
+      <Interactive onSelect={onClick}>
         <a.mesh scale={styles.outerScale} position={[0, 0, -0.02]}>
           <planeBufferGeometry args={[1.85, 1]} />
           <meshBasicMaterial
@@ -109,7 +119,63 @@ export default function FinalResult({
             Та {score} оноо авсан байна.
           </Text>
         </a.mesh>
-      </group>
-    </Interactive>
+      </Interactive>
+      <Interactive onSelect={retry}>
+        <a.mesh
+          onClick={retry}
+          scale={styles.buttonScale}
+          position={[-0.55, -0.8, 0]}
+        >
+          <planeBufferGeometry args={[2, 0.5]} />
+          <meshBasicMaterial
+            color="#EFF7FE"
+            transparent
+            alphaMap={optionAlpha}
+            alphaTest={0.1}
+          />
+          <Text
+            position={[0, 0, 0.1]}
+            color="#282828"
+            fontSize={0.15}
+            anchorX="center"
+            anchorY="middle"
+            font="/fonts/nunito.ttf"
+            outlineColor="#282828"
+            outlineWidth={0.005}
+            maxWidth={20}
+          >
+            Дахин оролдох
+          </Text>
+        </a.mesh>
+      </Interactive>
+      <Interactive onSelect={next}>
+        <a.mesh
+          onClick={next}
+          scale={styles.buttonScale}
+          position={[0.55, -0.8, 0]}
+        >
+          <planeBufferGeometry args={[2, 0.5]} />
+          <meshBasicMaterial
+            color="#EFF7FE"
+            transparent
+            alphaMap={optionAlpha}
+            alphaTest={0.1}
+          />
+          <Text
+            position={[0, 0, 0.1]}
+            color="#282828"
+            fontSize={0.15}
+            anchorX="center"
+            anchorY="middle"
+            font="/fonts/nunito.ttf"
+            outlineColor="#282828"
+            outlineWidth={0.005}
+            maxWidth={20}
+          >
+            Цаашлах
+          </Text>
+        </a.mesh>
+      </Interactive>
+    </group>
   )
 }

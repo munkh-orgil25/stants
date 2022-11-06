@@ -70,7 +70,7 @@ const questions = [
 ]
 
 export default function Second({ env, setCurrent, visible }) {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 40, objScale: 0, opacity: 0 },
   }))
@@ -204,6 +204,13 @@ export default function Second({ env, setCurrent, visible }) {
         visible={showFinal}
         onClick={() => setShowFinal(false)}
         score={score}
+        retry={() => {
+          setShowFinal(false)
+          setFinished(false)
+          setActiveQuiz(1)
+          setScore(0)
+        }}
+        next={handleNext}
       />
 
       {/* OVERLAY */}
@@ -220,6 +227,17 @@ export default function Second({ env, setCurrent, visible }) {
           scale={0.1}
           text="Шилжих"
           onClick={handleNext}
+        />
+      </Interactive>
+
+      {/* TP */}
+      <Interactive onSelect={handlePrev}>
+        <HoverButton
+          position={[0.25, 0.3, 3]}
+          rotation={[0, Math.PI, 0]}
+          scale={0.1}
+          text="Буцах"
+          onClick={handlePrev}
         />
       </Interactive>
     </group>
