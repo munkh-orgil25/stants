@@ -7,12 +7,12 @@ import HoverButton from '../../../components/HoverButton'
 export default function Sixth({ env, setCurrent, visible }) {
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
-    from: { scale: 41, objScale: 0, opacity: 0 },
+    from: { scale: 41, objScale: 0.1, opacity: 0 },
   }))
 
   const handlePrev = () => {
     api.start({
-      from: { scale: 20, opacity: 1, objScale: 1 },
+      from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
       config: config.slow,
       onChange: () => {
@@ -28,9 +28,11 @@ export default function Sixth({ env, setCurrent, visible }) {
     if (visible) {
       setShow(true)
       api.start({
-        to: { scale: 20, objScale: 1, opacity: 1 },
+        to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,
       })
+    } else {
+      setShow(false)
     }
   }, [visible])
 
@@ -51,7 +53,7 @@ export default function Sixth({ env, setCurrent, visible }) {
         <HoverButton
           position={[0, 0.3, -2.62]}
           rotation={[0, 0, 0]}
-          scale={0.1}
+          scale={spring.objScale}
           text="Буцах"
           onClick={handlePrev}
         />

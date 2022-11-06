@@ -65,7 +65,7 @@ export default function HoverButton({
       onHover={() => setHovered(true)}
       onSelect={onClick}
     >
-      <group
+      <a.group
         position={position}
         scale={scale}
         rotation={rotation}
@@ -135,7 +135,7 @@ export default function HoverButton({
             {text}
           </Text>
         </a.mesh>
-      </group>
+      </a.group>
     </Interactive>
   )
 }
