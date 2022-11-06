@@ -1,4 +1,3 @@
-import { useThree } from '@react-three/fiber'
 import { Interactive, useXR } from '@react-three/xr'
 import { useEffect, useState } from 'react'
 import { BackSide } from 'three'
@@ -50,7 +49,7 @@ export default function XRApp() {
         onSqueezeStart={() => setNavVisible(true)}
         onSqueezeEnd={() => setNavVisible(false)}
       >
-        <mesh visible={false} scale={3}>
+        <mesh visible={false} scale={10}>
           <sphereGeometry />
           <meshBasicMaterial color="blue" side={BackSide} />
         </mesh>
