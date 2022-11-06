@@ -68,7 +68,7 @@ export default function Seventh({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-2, -0.5, -2.96]}
+          position={[-2.8, -0.75, -2.96]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
           text="Шилжих"
@@ -79,7 +79,7 @@ export default function Seventh({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
-          position={[2.5, -0.5, -2.96]}
+          position={[3, -0.75, -2.96]}
           rotation={[0, -0.5, 0]}
           scale={0.1}
           text="Буцах"
