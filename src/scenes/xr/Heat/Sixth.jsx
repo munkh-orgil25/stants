@@ -118,7 +118,7 @@ export default function Sixth({ env, setCurrent, visible }) {
   }
 
   const handleResultClick = () => {
-    if (activeQuiz === 5) {
+    if (activeQuiz === 3) {
       setActiveQuiz(0)
       setFinished(true)
       setShowFinal(true)
