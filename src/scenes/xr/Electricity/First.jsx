@@ -45,7 +45,7 @@ export default function First({ env, setCurrent, visible }) {
     from: { opacity: 1 },
     to: { opacity: animate ? 1 : 0 },
     onChange: () => {
-      if (opacity.get() < 0.1 && !animate) {
+      if (opacity.get() < 0.25 && !animate) {
         setCurrent(2)
       }
     },

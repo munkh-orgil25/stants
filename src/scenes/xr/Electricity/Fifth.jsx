@@ -12,7 +12,7 @@ export default function Fifth({ env, setCurrent, visible }) {
 
   const handlePrev = () => {
     api.start({
-      from: { scale: 20, opacity: 0.1, objScale: 1 },
+      from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
       config: config.slow,
       onChange: () => {
@@ -26,7 +26,7 @@ export default function Fifth({ env, setCurrent, visible }) {
 
   const handleNext = () => {
     api.start({
-      from: { scale: 20, opacity: 0.1, objScale: 1 },
+      from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 0, opacity: 0, objScale: 0 },
       config: config.slow,
       onChange: () => {

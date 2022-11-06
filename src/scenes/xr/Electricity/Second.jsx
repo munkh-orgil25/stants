@@ -72,7 +72,7 @@ const questions = [
 export default function Second({ env, setCurrent, visible }) {
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
-    from: { scale: 40, objScale: 0.1, opacity: 0 },
+    from: { scale: 40, objScale: 0, opacity: 0 },
   }))
 
   const handlePrev = () => {
