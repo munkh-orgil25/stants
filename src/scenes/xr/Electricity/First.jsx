@@ -17,7 +17,7 @@ export default function First({ env, setCurrent, visible }) {
   const [infoVisible, setInfoVisible] = useState(false)
 
   useEffect(() => {
-    player.position.set(0, 0, 0)
+    player.position.set(0, -1.2, 0)
   }, [])
 
   const handleNext = () => {

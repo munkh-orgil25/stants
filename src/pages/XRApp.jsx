@@ -5,6 +5,7 @@ import { CubeTextureLoader, LinearEncoding, sRGBEncoding } from 'three'
 import { Route, useLocation } from 'wouter'
 import Scope from '../components/Scope'
 import XRElectricity from '../scenes/xr/Electricity'
+import XRHeat from '../scenes/xr/Heat'
 import XRHeight from '../scenes/xr/Height'
 import XRMenu from './XRMenu'
 
@@ -26,6 +27,9 @@ export default function XRApp() {
       </Scope>
       <Scope base="/xr/2">
         <XRElectricity setLocation={setLocation} location={location} />
+      </Scope>
+      <Scope base="/xr/3">
+        <XRHeat setLocation={setLocation} location={location} />
       </Scope>
     </>
   )
