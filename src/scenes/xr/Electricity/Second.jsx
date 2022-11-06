@@ -1,10 +1,10 @@
-import { Environment } from '@react-three/drei'
 import { Interactive } from '@react-three/xr'
 import { useState, useEffect } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
 
 export default function Second({ env, setCurrent, visible }) {
+  const [show, setShow] = useState(true)
   const [spring, api] = useSpring(() => ({
     from: { scale: 40, objScale: 0, opacity: 0 },
   }))
@@ -15,8 +15,13 @@ export default function Second({ env, setCurrent, visible }) {
       from: { scale: 20, opacity: 1, objScale: 1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
       config: config.slow,
+      onChange: () => {
+        if (spring.opacity.get() < 0.3) {
+          setShow(false)
+          setCurrent(1)
+        }
+      },
     })
-    setCurrent(1)
   }
 
   const handleNext = () => {
@@ -24,13 +29,18 @@ export default function Second({ env, setCurrent, visible }) {
       from: { scale: 20, opacity: 1, objScale: 1 },
       to: { scale: 0, opacity: 0, objScale: 0 },
       config: config.slow,
+      onChange: () => {
+        if (spring.opacity.get() < 0.3) {
+          setShow(false)
+          setCurrent(3)
+        }
+      },
     })
-    setCurrent(3)
   }
 
   useEffect(() => {
     if (visible) {
-      // setIntro(true)
+      setShow(true)
       api.start({
         to: { scale: 20, objScale: 1, opacity: 1 },
         config: config.slow,
@@ -39,7 +49,7 @@ export default function Second({ env, setCurrent, visible }) {
   }, [visible])
 
   return (
-    <group>
+    <group visible={show}>
       <a.mesh
         scale={spring.scale}
         material-opacity={spring.opacity}

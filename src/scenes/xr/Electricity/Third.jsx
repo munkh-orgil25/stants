@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { a, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
 import { Interactive } from '@react-three/xr'
 
 export default function Third({ env, setCurrent, visible }) {
+  const [show, setShow] = useState(true)
   const [spring, api] = useSpring(() => ({
     from: { scale: 41, objScale: 0 },
   }))
@@ -35,7 +36,7 @@ export default function Third({ env, setCurrent, visible }) {
   }, [visible])
 
   return (
-    <group>
+    <group visible={show}>
       <mesh scale={41}>
         <sphereGeometry />
         <meshBasicMaterial map={env} transparent side={BackSide} />
