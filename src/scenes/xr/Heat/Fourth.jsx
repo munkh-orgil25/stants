@@ -67,7 +67,7 @@ export default function Fourth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-0.75, -0.75, -2.7]}
+          position={[-0.75, 0, -2.7]}
           rotation={[0, 0.35, 0]}
           scale={spring.objScale}
           text="Шилжих"

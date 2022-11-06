@@ -70,7 +70,7 @@ export default function Fifth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[0, -2, -1.8]}
+          position={[0, 0, -1.8]}
           rotation={[-0.5, 0, 0]}
           scale={spring.objScale}
           text="Шилжих"
@@ -81,7 +81,7 @@ export default function Fifth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
-          position={[2, 0.2, -0.5]}
+          position={[2, 2, -0.5]}
           rotation={[0, -1.2, 0]}
           scale={spring.objScale}
           text="Буцах"

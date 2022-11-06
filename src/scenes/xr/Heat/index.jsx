@@ -10,7 +10,7 @@ import Sixth from './Sixth'
 import Third from './Third'
 
 export default function XRHeat({ setLocation }) {
-  const [current, setCurrent] = useState(1)
+  const [current, setCurrent] = useState(6)
   const [env1, setEnv1] = useState(null)
   const [env2, setEnv2] = useState(null)
   const [env3, setEnv3] = useState(null)

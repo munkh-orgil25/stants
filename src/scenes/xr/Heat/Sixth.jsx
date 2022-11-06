@@ -202,7 +202,7 @@ export default function Sixth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
-          position={[-2, 1, -0.3]}
+          position={[-2, 2.5, -0.3]}
           rotation={[0, 1.3, 0]}
           scale={spring.objScale}
           text="Буцах"
