@@ -68,7 +68,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-2.15, -0.35, -2.99]}
+          position={[-2.2, -0.5, -2.99]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
           text="Шилжих"
