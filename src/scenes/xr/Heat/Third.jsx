@@ -46,6 +46,7 @@ export default function Third({ env, setCurrent, visible }) {
   useEffect(() => {
     if (visible) {
       setShow(true)
+      player.position.set(0, -1.2, 0)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,
