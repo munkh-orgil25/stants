@@ -68,7 +68,7 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-1, 4, -3]}
+          position={[-1, 2, -3]}
           rotation={[0, 0.5, 0]}
           scale={0.2}
           text="Шилжих"
