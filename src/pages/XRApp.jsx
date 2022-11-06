@@ -1,13 +1,7 @@
 import { useThree } from '@react-three/fiber'
 import { Interactive, useXR } from '@react-three/xr'
 import { useEffect, useState } from 'react'
-import { sassFalse } from 'sass'
-import {
-  BackSide,
-  CubeTextureLoader,
-  LinearEncoding,
-  sRGBEncoding,
-} from 'three'
+import { BackSide } from 'three'
 import { Route, useLocation } from 'wouter'
 import Navigation from '../components/Navigation'
 import Scope from '../components/Scope'
