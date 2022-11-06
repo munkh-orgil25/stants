@@ -1,9 +1,9 @@
 import { Text, useTexture } from '@react-three/drei'
 import React from 'react'
 
-export default function XRCard({ bgMap, iconMap, position, text }) {
+export default function XRCard({ bgMap, iconMap, position, text, onClick }) {
   return (
-    <group position={position}>
+    <group position={position} onClick={onClick}>
       <mesh>
         <planeGeometry args={[1, 0.676]} />
         <meshBasicMaterial transparent alphaTest={0.1} alphaMap={bgMap} />

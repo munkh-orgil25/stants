@@ -7,6 +7,9 @@ import Scope from '../components/Scope'
 import XRElectricity from '../scenes/xr/Electricity'
 import XRHeat from '../scenes/xr/Heat'
 import XRHeight from '../scenes/xr/Height'
+import XRPressure from '../scenes/xr/Pressure'
+import XRSafety from '../scenes/xr/Safety'
+import XRStairs from '../scenes/xr/Stairs'
 import XRMenu from './XRMenu'
 
 export default function XRApp() {
@@ -30,6 +33,15 @@ export default function XRApp() {
       </Scope>
       <Scope base="/xr/3">
         <XRHeat setLocation={setLocation} location={location} />
+      </Scope>
+      <Scope base="/xr/4">
+        <XRSafety setLocation={setLocation} location={location} />
+      </Scope>
+      <Scope base="/xr/5">
+        <XRStairs setLocation={setLocation} location={location} />
+      </Scope>
+      <Scope base="/xr/6">
+        <XRPressure setLocation={setLocation} location={location} />
       </Scope>
     </>
   )

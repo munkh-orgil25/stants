@@ -16,6 +16,10 @@ export default function First({ env, setCurrent, visible }) {
   const [animate, setAnimate] = useState(true)
   const [infoVisible, setInfoVisible] = useState(false)
 
+  useEffect(() => {
+    player.position.set(0, 0, 0)
+  }, [])
+
   const handleNext = () => {
     setAnimate(false)
   }
@@ -42,11 +46,11 @@ export default function First({ env, setCurrent, visible }) {
   })
 
   // OJBECTS
+
   useChain(animate ? [opacityApi, scaleApi] : [scaleApi, opacityApi], [0, 0.4])
 
   useEffect(() => {
     if (visible) {
-      player.position.set(0, -1.2, 0)
       setAnimate(true)
     }
   }, [visible])
@@ -66,7 +70,7 @@ export default function First({ env, setCurrent, visible }) {
 
       {/* INFO */}
       <HoverButton
-        position={[1, 0.15, -2.5]}
+        position={[1, 0.25, -2.5]}
         rotation={[0, -0.25, 0]}
         scale={0.2}
         text="Унших"
@@ -77,18 +81,18 @@ export default function First({ env, setCurrent, visible }) {
           visible={infoVisible}
           onClick={() => setInfoVisible(false)}
           scale={1}
-          position={[0, 0.5, -2]}
+          position={[0, 0.6, -2]}
           rotation={[0, 0, 0]}
-          title="Аваарын үед аюулгүй газарт очих"
-          text="Үйлдвэр дотор байрлах чанга яригчаар аваарын тухай зарлан мэдээлсэн тохиолдолд та сандралгүй аваарын гарцны тэмдэг тэмдэглэгээг даган өөрт хамгийн ойрхон ЦУГЛАХ ЦЭГТ цуглан дараагийн шийдвэрийг автлаа тэнд байх ёстой."
+          title="Өндөрт шат тавцан дээр ажиллах"
+          text="1,3 метрээс дээш өндөрт зориулалтын (нэмэлт бэхлэгээ хийгдсэн, пайзтай, шат тавцанг акт үйлдэж хүлээлцсэн гэх мэт) шат тавьсан дээр ажил гүйцэтгэх ёстой. Та өндөр ажил гүйцэтгэх үед өнөөдрийн бүсийг тогтмол зүүж амин цэг, амин олсноос бүсийг бэхлэж ажил гүйцэтгэх ёстой. Өндөр .  Биё биендээ хяналт тавьж, өндөөр биет унагаахгүй болгоомжтой ажил гүйцэтгэх."
         />
       </Interactive>
 
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-4, 1, -1]}
-          rotation={[0, 1.5, 0]}
+          position={[-0.5, 2.5, -3]}
+          rotation={[0, 0.25, 0]}
           scale={0.2}
           text="Шилжих"
           onClick={handleNext}

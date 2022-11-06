@@ -50,6 +50,7 @@ export default function First({ env, setCurrent, visible }) {
 
   useEffect(() => {
     if (visible) {
+      player.position.set(0, -1.2, 0)
       setAnimate(true)
     }
   }, [visible])

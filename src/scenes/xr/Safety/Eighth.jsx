@@ -4,7 +4,7 @@ import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
 
-export default function Second({ env, setCurrent, visible }) {
+export default function Eighth({ env, setCurrent, visible }) {
   const { player } = useXR()
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
@@ -20,7 +20,7 @@ export default function Second({ env, setCurrent, visible }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(1)
+          setCurrent(7)
         }
       },
     })
@@ -34,7 +34,7 @@ export default function Second({ env, setCurrent, visible }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(3)
+          setCurrent(9)
         }
       },
     })
@@ -68,7 +68,7 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-2, -0.5, -3]}
+          position={[-2, -0.5, -2.95]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
           text="Шилжих"
@@ -79,7 +79,7 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
-          position={[2.5, -0.5, -3]}
+          position={[2.5, -0.5, -2.95]}
           rotation={[0, -0.5, 0]}
           scale={0.1}
           text="Буцах"

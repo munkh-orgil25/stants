@@ -43,7 +43,7 @@ export default function Second({ env, setCurrent, visible }) {
   useEffect(() => {
     if (visible) {
       setShow(true)
-      player.position.set(0, -1.2, 0)
+      player.position.set(0, 0, 0)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,
@@ -59,7 +59,7 @@ export default function Second({ env, setCurrent, visible }) {
         scale={spring.scale}
         material-opacity={spring.opacity}
         position={[0, 0, 0]}
-        rotation={[0, -1.75, 0]}
+        rotation={[0, 1.15, 0]}
       >
         <sphereGeometry />
         <meshBasicMaterial side={BackSide} map={env} transparent />
@@ -68,9 +68,9 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-2, -0.5, -3]}
+          position={[-1, 2, -3]}
           rotation={[0, 0.5, 0]}
-          scale={0.15}
+          scale={0.2}
           text="Шилжих"
           onClick={handleNext}
         />
@@ -79,8 +79,8 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
-          position={[2.5, -0.5, -3]}
-          rotation={[0, -0.5, 0]}
+          position={[0, 0.3, 3]}
+          rotation={[0, Math.PI, 0]}
           scale={0.1}
           text="Буцах"
           onClick={handlePrev}
