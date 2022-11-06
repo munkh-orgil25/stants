@@ -77,7 +77,7 @@ export default function First({ env, setCurrent, visible }) {
       {/* INFO */}
       <HoverButton
         position={[-1, -0.5, -2.5]}
-        rotation={[0, 0, 0]}
+        rotation={[0, 0.25, 0]}
         scale={0.2}
         text="Унших"
         onClick={() => setInfoVisible(true)}
@@ -95,12 +95,11 @@ export default function First({ env, setCurrent, visible }) {
       </Interactive>
 
       {/* TP */}
-
       <Interactive onSelect={handleNext}>
         <HoverButton
           position={[0.25, 0.3, -3]}
           rotation={[0, 0, 0]}
-          scale={0.15}
+          scale={0.1}
           text="Шилжих"
           onClick={handleNext}
         />

@@ -21,7 +21,7 @@ export default function XRHeight({ setLocation, location }) {
     textureLoader.load('/textures/2/color10.jpg', (texture) => {
       setEnv1(texture)
     })
-    textureLoader.load('/textures/2/color8.jpg', (texture) => {
+    textureLoader.load('/textures/5/color7.jpg', (texture) => {
       setEnv2(texture)
     })
     textureLoader.load('/textures/2/color7.jpg', (texture) => {

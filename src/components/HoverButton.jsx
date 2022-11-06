@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { Text, useTexture } from '@react-three/drei'
 import { useState } from 'react'
 import {
@@ -8,6 +9,7 @@ import {
   useSpringRef,
 } from '@react-spring/three'
 import { Interactive } from '@react-three/xr'
+import { NearestFilter } from 'three'
 
 export default function HoverButton({
   position = [0, 0, 0],
@@ -44,7 +46,10 @@ export default function HoverButton({
     },
   })
 
-  const baseAlpha = useTexture('/textures/button/baseAlpha.png')
+  const baseAlpha = useTexture('/textures/button/baseAlpha.png', (texture) => {
+    texture.magFilter = NearestFilter
+    texture.minFilter = NearestFilter
+  })
   const searchAlpha = useTexture('/textures/button/searchAlpha.png')
 
   useChain(

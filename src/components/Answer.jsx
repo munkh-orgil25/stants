@@ -1,7 +1,9 @@
+/* eslint-disable no-param-reassign */
 import { Text, useTexture } from '@react-three/drei'
 import { useSpring, a } from '@react-spring/three'
 import { useState } from 'react'
 import { Interactive } from '@react-three/xr'
+import { NearestFilter } from 'three'
 
 export default function Answer({
   scale = 1,
@@ -11,7 +13,10 @@ export default function Answer({
   visible,
   onClick,
 }) {
-  const bgAlpha = useTexture('/textures/info/answerAlpha.png')
+  const bgAlpha = useTexture('/textures/info/answerAlpha.png', (texture) => {
+    texture.magFilter = NearestFilter
+    texture.minFilter = NearestFilter
+  })
   const [color, setColor] = useState('#006DB6')
   const [hovered, setHovered] = useState(false)
   const styles = useSpring({
@@ -21,31 +26,37 @@ export default function Answer({
   })
 
   return (
-    <Interactive
-      onSelect={() => onClick(answer.id)}
-      onBlur={() => setHovered(false)}
-      onHover={() => setHovered(true)}
+    <group
+      scale={scale}
+      position={position}
+      rotation={rotation}
+      onClick={() => onClick(answer.id)}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
     >
-      <group
-        scale={scale}
-        position={position}
-        rotation={rotation}
-        onClick={() => onClick(answer.id)}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
+      <a.mesh scale={styles.innerScale} position={[0, 0, -0.01]}>
+        <planeBufferGeometry args={[1.9, 0.28]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          alphaMap={bgAlpha}
+          opacity={1}
+          alphaTest={0.1}
+        />
+      </a.mesh>
+      <Interactive
+        onSelect={() => onClick(answer.id)}
+        onBlur={() => setHovered(false)}
+        onHover={() => setHovered(true)}
       >
-        <a.mesh scale={styles.innerScale} position={[0, 0, -0.01]}>
-          <planeBufferGeometry args={[1.9, 0.28]} />
-          <meshBasicMaterial
-            color={color}
-            transparent
-            alphaMap={bgAlpha}
-            opacity={1}
-          />
-        </a.mesh>
         <a.mesh scale={styles.baseScale}>
           <planeBufferGeometry args={[2, 0.25]} />
-          <meshBasicMaterial color="#EFF7FE" transparent alphaMap={bgAlpha} />
+          <meshBasicMaterial
+            color="#EFF7FE"
+            transparent
+            alphaMap={bgAlpha}
+            alphaTest={0.1}
+          />
           <Text
             position={[-0.85, 0, 0.01]}
             color="#282828"
@@ -60,7 +71,7 @@ export default function Answer({
             {answer.text}
           </Text>
         </a.mesh>
-      </group>
-    </Interactive>
+      </Interactive>
+    </group>
   )
 }

@@ -1,5 +1,7 @@
+/* eslint-disable no-param-reassign */
 import { Text, useTexture } from '@react-three/drei'
 import { useSpring, a } from '@react-spring/three'
+import { NearestFilter } from 'three'
 
 export default function Question({
   scale = 1,
@@ -9,7 +11,10 @@ export default function Question({
   visible,
   onClick,
 }) {
-  const bgAlpha = useTexture('/textures/info/questionAlpha.png')
+  const bgAlpha = useTexture('/textures/info/questionAlpha.png', (texture) => {
+    texture.magFilter = NearestFilter
+    texture.minFilter = NearestFilter
+  })
 
   const styles = useSpring({
     outerScale: visible ? 1.2 : 0,
@@ -27,10 +32,11 @@ export default function Question({
       <a.mesh scale={styles.outerScale} position={[0, 0, -0.02]}>
         <planeBufferGeometry args={[1.85, 0.75]} />
         <meshBasicMaterial
-          color="#006DB6"
+          color="#73A9CE"
           transparent
           alphaMap={bgAlpha}
-          opacity={0.5}
+          opacity={1}
+          alphaTest={0.1}
         />
       </a.mesh>
       <a.mesh scale={styles.innerScale} position={[0, 0, -0.01]}>
@@ -40,6 +46,7 @@ export default function Question({
           transparent
           alphaMap={bgAlpha}
           opacity={1}
+          alphaTest={0.1}
         />
       </a.mesh>
       <a.mesh scale={styles.baseScale}>
