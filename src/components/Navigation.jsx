@@ -28,6 +28,7 @@ export default function Navigation({ show, setLocation }) {
         <a.mesh
           position={pos}
           scale={0.1}
+          rotation={[0.4, 0, 0]}
           onClick={() => setLocation('/xr/menu')}
         >
           <planeGeometry />
