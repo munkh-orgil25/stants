@@ -16,10 +16,6 @@ export default function First({ env, setCurrent, visible }) {
   const [animate, setAnimate] = useState(true)
   const [infoVisible, setInfoVisible] = useState(false)
 
-  useEffect(() => {
-    player.position.set(0, 0, 0)
-  }, [])
-
   const handleNext = () => {
     setAnimate(false)
   }
@@ -51,6 +47,7 @@ export default function First({ env, setCurrent, visible }) {
 
   useEffect(() => {
     if (visible) {
+      player.position.set(0, 0, 0)
       setAnimate(true)
     }
   }, [visible])

@@ -25,7 +25,7 @@ export default function Navigation({ show, setLocation }) {
         onSelect={() => setLocation('/xr/menu')}
       >
         <a.mesh
-          position={[0, -0.5, -1]}
+          position={[0, 0, -1]}
           scale={0.1}
           onClick={() => setLocation('/xr/menu')}
         >

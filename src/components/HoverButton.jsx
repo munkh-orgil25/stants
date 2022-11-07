@@ -17,6 +17,7 @@ export default function HoverButton({
   rotation = [0, 0, 0],
   text = '',
   onClick,
+  long = false,
 }) {
   const [hovered, setHovered] = useState(false)
 
@@ -118,23 +119,43 @@ export default function HoverButton({
         </a.mesh>
 
         {/* DESCRIPTION */}
-        <a.mesh position={[0, -1.5, 0]} scale={description.descriptionScale}>
-          <planeBufferGeometry args={[2, 0.75, 1]} />
-          <meshBasicMaterial color="#006DB6" />
-          <Text
-            position={[0, 0, 0.001]}
-            color="#fff"
-            fontSize={0.45}
-            anchorX="center"
-            anchorY="middle"
-            font="/fonts/variable.ttf"
-            outlineColor="#fff"
-            outlineWidth={0}
-            maxWidth={20}
-          >
-            {text}
-          </Text>
-        </a.mesh>
+        {long ? (
+          <a.mesh position={[0, 2, 0]} scale={description.descriptionScale}>
+            <planeBufferGeometry args={[4, 1.1]} />
+            <meshBasicMaterial color="#006DB6" />
+            <Text
+              position={[0, 0, 0.1]}
+              color="#fff"
+              fontSize={0.3}
+              anchorX="center"
+              anchorY="middle"
+              font="/fonts/variable.ttf"
+              outlineColor="#fff"
+              outlineWidth={0}
+              maxWidth={3.5}
+            >
+              {text}
+            </Text>
+          </a.mesh>
+        ) : (
+          <a.mesh position={[0, -1.5, 0]} scale={description.descriptionScale}>
+            <planeBufferGeometry args={[2, 0.75, 1]} />
+            <meshBasicMaterial color="#006DB6" />
+            <Text
+              position={[0, 0, 0.001]}
+              color="#fff"
+              fontSize={0.45}
+              anchorX="center"
+              anchorY="middle"
+              font="/fonts/variable.ttf"
+              outlineColor="#fff"
+              outlineWidth={0}
+              maxWidth={20}
+            >
+              {text}
+            </Text>
+          </a.mesh>
+        )}
       </a.group>
     </Interactive>
   )
