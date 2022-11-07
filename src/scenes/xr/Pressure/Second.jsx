@@ -41,6 +41,7 @@ export default function Second({ env, setCurrent, visible }) {
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,
+        onRest: () => video.play(),
       })
     } else {
       setShow(false)
@@ -65,8 +66,8 @@ export default function Second({ env, setCurrent, visible }) {
       <Interactive onSelect={handlePrev}>
         <HoverButton
           arrow
-          position={[0, 0.3, -3]}
-          rotation={[0, Math.PI, 0]}
+          position={[0, -0.5, -2]}
+          rotation={[0, 0, 0]}
           scale={0.1}
           text="Буцах"
           onClick={handlePrev}
