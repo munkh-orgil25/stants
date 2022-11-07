@@ -33,7 +33,7 @@ export default function XRStairs() {
 
   useEffect(() => {
     if (env1 && env2) {
-      setLoading(false)
+      setLoading(true)
     }
   }, [env1, env2])
 

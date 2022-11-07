@@ -186,8 +186,8 @@ export default function First({ env, setCurrent, visible }) {
 
       {/* Quiz */}
       <HoverButton
-        position={[1.5, -0.5, -2.5]}
-        rotation={[0, 0.25, 0]}
+        position={[2, -0.5, -2.5]}
+        rotation={[0, 0, 0]}
         scale={0.2}
         text="Шалгах"
         onClick={openQuiz}
@@ -238,7 +238,7 @@ export default function First({ env, setCurrent, visible }) {
       <Interactive onSelect={handleNext}>
         <HoverButton
           arrow
-          position={[0, 0, -2.5]}
+          position={[2, 1, -3]}
           rotation={[0, -0.5, 0]}
           scale={0.2}
           text="Шилжих"

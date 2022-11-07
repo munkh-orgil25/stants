@@ -5,7 +5,6 @@ import { a, useTrail } from '@react-spring/three'
 import { Text } from '@react-three/drei'
 
 function XRLoading() {
-  const { player, isPresenting } = useXR()
   const ref = useRef()
   const [animate, setAnimate] = useState(false)
 
@@ -13,18 +12,6 @@ function XRLoading() {
     opacity: animate ? 0.8 : 0.4,
     onRest: () => setAnimate(!animate),
   })
-
-  useEffect(() => {
-    if (isPresenting) {
-      player.children[0].add(ref.current)
-      setAnimate(true)
-    }
-
-    return () => {
-      setAnimate(false)
-      player.children[0].children.length = 0
-    }
-  }, [isPresenting])
 
   return (
     <group>
@@ -35,8 +22,8 @@ function XRLoading() {
 
       <group
         ref={ref}
-        position={[-3, 0, 0]}
-        rotation={[0, Math.PI * 0.5, 0]}
+        position={[0, 0, -3]}
+        rotation={[0, 0, Math.PI * 0.5]}
         scale={0.1}
       >
         {trails.map((styles, index) => (
