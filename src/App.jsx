@@ -33,7 +33,7 @@ function App() {
     <div className="main">
       <div className="home_section">
         <div className="background">
-          <img src="/images/bg2.png" alt="background" />
+          <img src="/images/bg1.png" alt="background" />
         </div>
 
         <Route path="/">

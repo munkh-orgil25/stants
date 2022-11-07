@@ -21,7 +21,7 @@ export default function XRMenu({ setLocation }) {
 
   return (
     <group>
-      <mesh scale={20} rotation={[0, -1.9, 0]}>
+      <mesh scale={20} rotation={[0, 2.5, 0]}>
         <sphereGeometry />
         <meshBasicMaterial side={BackSide} map={envMap} />
       </mesh>
