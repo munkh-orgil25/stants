@@ -12,7 +12,6 @@ export default function Second({ env, setCurrent, visible }) {
   }))
 
   const handlePrev = () => {
-    // setIntro(false)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },

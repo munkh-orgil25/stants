@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Route, useLocation } from 'wouter'
+import { Link, Route, useLocation } from 'wouter'
 import { Canvas } from '@react-three/fiber'
 import { Controllers, XR, XRButton } from '@react-three/xr'
 import { OrbitControls } from '@react-three/drei'
@@ -43,12 +43,6 @@ function App() {
         <Route path="/menu">
           <Menu />
         </Route>
-
-        {/* <Scope base="/xr">
-          <XRCanvasWrapper>
-            <XRApp />
-          </XRCanvasWrapper>
-        </Scope> */}
 
         <Scope base="/1">
           <WebCanvasWrapper>

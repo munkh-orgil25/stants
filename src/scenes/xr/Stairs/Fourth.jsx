@@ -25,20 +25,6 @@ export default function Fourth({ env, setCurrent, visible }) {
     })
   }
 
-  const handleNext = () => {
-    api.start({
-      from: { scale: 20, opacity: 1, objScale: 0.1 },
-      to: { scale: 0, opacity: 0, objScale: 0 },
-      config: config.slow,
-      onChange: () => {
-        if (spring.opacity.get() < 0.3) {
-          setShow(false)
-          setCurrent(5)
-        }
-      },
-    })
-  }
-
   useEffect(() => {
     if (visible) {
       setShow(true)
@@ -70,7 +56,7 @@ export default function Fourth({ env, setCurrent, visible }) {
         scale={0.15}
         text="Багаж хэрэглэх үеийн хамгаалах хэрэгсэл"
         long
-        onClick={handleNext}
+        onClick={() => {}}
       />
 
       <HoverButton
@@ -79,7 +65,7 @@ export default function Fourth({ env, setCurrent, visible }) {
         scale={0.15}
         text="Жижиг гар багажны тавцан"
         long
-        onClick={handleNext}
+        onClick={() => {}}
       />
 
       <HoverButton
@@ -88,7 +74,7 @@ export default function Fourth({ env, setCurrent, visible }) {
         scale={0.15}
         text="Механик гар багаж"
         long
-        onClick={handleNext}
+        onClick={() => {}}
       />
 
       <HoverButton
@@ -98,11 +84,11 @@ export default function Fourth({ env, setCurrent, visible }) {
         text="Цахилгаан гар багаж"
         long
         arrow
-        onClick={handleNext}
+        onClick={() => {}}
       />
 
       {/* TP */}
-      <Interactive onSelect={handleNext}>
+      <Interactive onSelect={handlePrev}>
         <HoverButton
           arrow
           position={[3, -0.5, 0.5]}

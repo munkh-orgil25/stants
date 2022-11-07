@@ -88,9 +88,9 @@ export default function First({ env, setCurrent, visible }) {
       <Interactive onSelect={handleNext}>
         <HoverButton
           arrow
-          position={[-4, 1, -1]}
+          position={[-4, 0.75, -0.95]}
           rotation={[0, 1.5, 0]}
-          scale={0.2}
+          scale={0.17}
           text="Шилжих"
           onClick={handleNext}
         />

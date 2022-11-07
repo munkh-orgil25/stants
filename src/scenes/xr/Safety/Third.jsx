@@ -12,7 +12,6 @@ export default function Third({ env, setCurrent, visible }) {
   }))
 
   const handlePrev = () => {
-    // setIntro(false)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -81,7 +80,7 @@ export default function Third({ env, setCurrent, visible }) {
       <Interactive onSelect={handlePrev}>
         <HoverButton
           arrow
-          position={[2.3, -0.5, -2.99]}
+          position={[2.3, -0.2, -2.99]}
           rotation={[0, -0.7, 0]}
           scale={0.1}
           text="Буцах"
