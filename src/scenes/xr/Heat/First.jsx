@@ -91,6 +91,7 @@ export default function First({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[0.7, 1.5, -3]}
           rotation={[0, 0, 0]}
           scale={0.12}

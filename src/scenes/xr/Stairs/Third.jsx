@@ -71,6 +71,7 @@ export default function Third({ env, setCurrent, visible }) {
           rotation={[0, 0.5, 0]}
           scale={0.15}
           text="Шилжих"
+          arrow
           onClick={handleNext}
         />
       </Interactive>
@@ -82,6 +83,7 @@ export default function Third({ env, setCurrent, visible }) {
           rotation={[0, -2.2, 0]}
           scale={0.1}
           text="Буцах"
+          arrow
           onClick={handlePrev}
         />
       </Interactive>

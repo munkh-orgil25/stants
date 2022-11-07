@@ -51,6 +51,7 @@ export default function Sixth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[0, 0.3, -2.62]}
           rotation={[0, 0, 0]}
           scale={spring.objScale}

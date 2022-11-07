@@ -68,6 +68,7 @@ export default function Fourth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[-2.3, -0.5, -2.98]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
@@ -79,6 +80,7 @@ export default function Fourth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[2.35, -0.5, -2.98]}
           rotation={[0, -0.5, 0]}
           scale={0.1}

@@ -18,6 +18,7 @@ export default function HoverButton({
   text = '',
   onClick,
   long = false,
+  arrow = false,
 }) {
   const [hovered, setHovered] = useState(false)
 
@@ -52,6 +53,7 @@ export default function HoverButton({
     texture.minFilter = NearestFilter
   })
   const searchAlpha = useTexture('/textures/button/searchAlpha.png')
+  const arrowAlpha = useTexture('/textures/button/arrow.png')
 
   useChain(
     hovered
@@ -109,15 +111,25 @@ export default function HoverButton({
           />
         </a.mesh>
 
-        {/* SEARCH */}
-        <a.mesh position={[0, 0, 0.1]} scale={description.searchScale}>
-          <planeBufferGeometry />
-          <meshBasicMaterial
-            color="#006DB6"
-            transparent
-            alphaMap={searchAlpha}
-          />
-        </a.mesh>
+        {arrow ? (
+          <a.mesh position={[0, 0, 0.1]} scale={description.searchScale}>
+            <planeBufferGeometry />
+            <meshBasicMaterial
+              color="#006DB6"
+              transparent
+              alphaMap={arrowAlpha}
+            />
+          </a.mesh>
+        ) : (
+          <a.mesh position={[0, 0, 0.1]} scale={description.searchScale}>
+            <planeBufferGeometry />
+            <meshBasicMaterial
+              color="#006DB6"
+              transparent
+              alphaMap={searchAlpha}
+            />
+          </a.mesh>
+        )}
 
         {/* DESCRIPTION */}
         {long ? (

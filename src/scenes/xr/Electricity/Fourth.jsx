@@ -65,6 +65,7 @@ export default function Fourth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[0, 0.3, -2.7]}
           rotation={[0, 0, 0]}
           scale={spring.objScale}
@@ -76,6 +77,7 @@ export default function Fourth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[0.4, 0.2, 2.7]}
           rotation={[0, Math.PI, 0]}
           scale={spring.objScale}

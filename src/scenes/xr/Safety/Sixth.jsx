@@ -68,6 +68,7 @@ export default function Sixth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[-2.35, -0.35, -2.96]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
@@ -79,6 +80,7 @@ export default function Sixth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[3.25, 0.1, -3]}
           rotation={[0, -0.5, 0]}
           scale={0.1}

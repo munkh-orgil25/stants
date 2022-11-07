@@ -236,6 +236,7 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[-0.1, 0.3, -3]}
           rotation={[0, 0, 0]}
           scale={0.1}
@@ -247,6 +248,7 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[0.25, 0.3, 3]}
           rotation={[0, Math.PI, 0]}
           scale={0.1}

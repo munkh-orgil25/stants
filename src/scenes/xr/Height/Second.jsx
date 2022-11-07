@@ -229,6 +229,7 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[0, -2, -3]}
           rotation={[-1, 0, 0]}
           scale={0.2}

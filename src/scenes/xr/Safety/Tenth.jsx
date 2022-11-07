@@ -204,6 +204,7 @@ export default function Tenth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[-2, 2.5, -0.3]}
           rotation={[0, 1.3, 0]}
           scale={spring.objScale}

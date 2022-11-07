@@ -68,6 +68,7 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[-1, 2, -3]}
           rotation={[0, 0.5, 0]}
           scale={0.2}
@@ -79,6 +80,7 @@ export default function Second({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[0, 0.3, 3]}
           rotation={[0, Math.PI, 0]}
           scale={0.1}

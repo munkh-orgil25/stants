@@ -68,6 +68,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[-2.15, -0.35, -2.99]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
@@ -79,6 +80,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[2.3, -0.5, -2.99]}
           rotation={[0, -0.7, 0]}
           scale={0.1}

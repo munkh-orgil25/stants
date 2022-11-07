@@ -70,6 +70,7 @@ export default function Fifth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[0, 0, -1.8]}
           rotation={[-0.5, 0, 0]}
           scale={spring.objScale}
@@ -81,6 +82,7 @@ export default function Fifth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[2, 1, -0.5]}
           rotation={[0, -1.2, 0]}
           scale={spring.objScale}

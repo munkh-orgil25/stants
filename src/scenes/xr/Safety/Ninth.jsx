@@ -68,6 +68,7 @@ export default function Ninth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[-2.7, -0.4, -3]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
@@ -79,6 +80,7 @@ export default function Ninth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[2.5, 0, -2.94]}
           rotation={[0, -0.5, 0]}
           scale={0.1}

@@ -68,6 +68,7 @@ export default function Eighth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[-2, 0.5, -3]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
@@ -79,6 +80,7 @@ export default function Eighth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[2.5, 0.5, -2.95]}
           rotation={[0, -0.5, 0]}
           scale={0.1}

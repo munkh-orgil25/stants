@@ -97,12 +97,14 @@ export default function Fourth({ env, setCurrent, visible }) {
         scale={0.15}
         text="Цахилгаан гар багаж"
         long
+        arrow
         onClick={handleNext}
       />
 
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[3, -0.5, 0.5]}
           rotation={[0, -1.5, 0]}
           scale={0.15}

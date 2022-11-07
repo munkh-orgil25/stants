@@ -65,6 +65,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[0.1, 0.4, -2.8]}
           rotation={[0, 0, 0]}
           scale={spring.objScale}
@@ -76,6 +77,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[0.1, 0.4, 2.5]}
           rotation={[0, Math.PI, 0]}
           scale={spring.objScale}

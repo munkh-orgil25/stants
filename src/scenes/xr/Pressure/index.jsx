@@ -13,10 +13,10 @@ export default function XRPressure({ setLocation, location }) {
   const textureLoader = new TextureLoader()
 
   useEffect(() => {
-    textureLoader.load('/textures/4/1.jpg', (texture) => {
+    textureLoader.load('/textures/4/1.png', (texture) => {
       setEnv1(texture)
     })
-    textureLoader.load('/textures/4/2.jpg', (texture) => {
+    textureLoader.load('/textures/4/2.png', (texture) => {
       setEnv2(texture)
     })
   }, [])

@@ -68,6 +68,7 @@ export default function Seventh({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[-2.8, -0.75, -2.96]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
@@ -79,6 +80,7 @@ export default function Seventh({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[3, -0.75, -2.96]}
           rotation={[0, -0.5, 0]}
           scale={0.1}

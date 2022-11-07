@@ -21,12 +21,13 @@ export default function XRMenu({ setLocation }) {
 
   return (
     <group>
-      <mesh scale={20} rotation={[0, 2.5, 0]}>
+      <mesh scale={20} rotation={[0, -1.75, 0]}>
         <sphereGeometry />
         <meshBasicMaterial side={BackSide} map={envMap} />
       </mesh>
 
       {/* LINKS */}
+      {/* <group position={[0, 0, 0]} rotation={[0, -2.2, 0]}> */}
       <Interactive onSelect={() => setLocation(`/xr/1`)}>
         <XRCard
           onClick={() => setLocation(`/xr/1`)}
@@ -180,6 +181,7 @@ export default function XRMenu({ setLocation }) {
           }
         />
       </Interactive>
+      {/* </group> */}
     </group>
   )
 }

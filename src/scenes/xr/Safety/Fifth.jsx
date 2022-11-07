@@ -68,6 +68,7 @@ export default function Fifth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
+          arrow
           position={[-1.9, -0.5, -2.97]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
@@ -79,6 +80,7 @@ export default function Fifth({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
+          arrow
           position={[2.05, -0.5, -2.97]}
           rotation={[0, -0.5, 0]}
           scale={0.1}
