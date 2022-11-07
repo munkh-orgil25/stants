@@ -26,19 +26,19 @@ export default function XRApp() {
       <Route path="/xr/menu">
         <XRMenu setLocation={setLocation} location={location} />
       </Route>
-      <Scope base="/xr/1">
+      <Scope base="/xr/5">
         <XRHeight setLocation={setLocation} location={location} />
       </Scope>
       <Scope base="/xr/2">
         <XRElectricity setLocation={setLocation} location={location} />
       </Scope>
-      <Scope base="/xr/3">
+      <Scope base="/xr/1">
         <XRHeat setLocation={setLocation} location={location} />
       </Scope>
       <Scope base="/xr/4">
         <XRSafety setLocation={setLocation} location={location} />
       </Scope>
-      <Scope base="/xr/5">
+      <Scope base="/xr/3">
         <XRStairs setLocation={setLocation} location={location} />
       </Scope>
       <Scope base="/xr/6">
