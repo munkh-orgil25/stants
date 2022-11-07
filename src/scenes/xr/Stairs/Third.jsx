@@ -65,26 +65,26 @@ export default function Third({ env, setCurrent, visible }) {
       </a.mesh>
 
       {/* TP */}
-      <Interactive onSelect={handleNext}>
+      <Interactive onSelect={handlePrev}>
         <HoverButton
           position={[-2.2, -0.5, -3]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
-          text="Шилжих"
+          text="Буцах"
           arrow
-          onClick={handleNext}
+          onClick={handlePrev}
         />
       </Interactive>
 
       {/* TP */}
-      <Interactive onSelect={handlePrev}>
+      <Interactive onSelect={handleNext}>
         <HoverButton
           position={[1, -0.25, 1.5]}
           rotation={[0, -2.2, 0]}
           scale={0.1}
-          text="Буцах"
+          text="Шилжих"
           arrow
-          onClick={handlePrev}
+          onClick={handleNext}
         />
       </Interactive>
     </group>
