@@ -7,7 +7,7 @@ import Second from './Second'
 import Third from './Third'
 import Fourth from './Fourth'
 
-export default function XRStairs({ setLocation, location }) {
+export default function XRStairs() {
   const [current, setCurrent] = useState(1)
   const [env1, setEnv1] = useState(null)
   const [env2, setEnv2] = useState(null)

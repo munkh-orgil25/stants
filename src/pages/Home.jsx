@@ -26,7 +26,7 @@ function Home({ supported, setStartXr }) {
             }}
             onClick={() => setStartXr(true)}
           >
-            Эхлэх XR
+            Эхлэх
           </XRButton>
         ) : (
           <Link href="/menu">

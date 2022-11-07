@@ -8,24 +8,20 @@ import Second from './Second'
 export default function XRPressure({ setLocation, location }) {
   const [current, setCurrent] = useState(1)
   const [env1, setEnv1] = useState(null)
-  const [env2, setEnv2] = useState(null)
   const [loading, setLoading] = useState(true)
   const textureLoader = new TextureLoader()
 
   useEffect(() => {
-    textureLoader.load('/textures/4/1.png', (texture) => {
+    textureLoader.load('/textures/6/1.png', (texture) => {
       setEnv1(texture)
-    })
-    textureLoader.load('/textures/4/2.png', (texture) => {
-      setEnv2(texture)
     })
   }, [])
 
   useEffect(() => {
-    if (env1 && env2) {
+    if (env1) {
       setLoading(false)
     }
-  }, [env1, env2])
+  }, [env1])
 
   if (loading) {
     return <XRLoading />
@@ -34,7 +30,7 @@ export default function XRPressure({ setLocation, location }) {
   return (
     <>
       <First visible={current === 1} env={env1} setCurrent={setCurrent} />
-      <Second visible={current === 2} env={env2} setCurrent={setCurrent} />
+      <Second visible={current === 2} setCurrent={setCurrent} />
     </>
   )
 }
