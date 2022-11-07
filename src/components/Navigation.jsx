@@ -13,8 +13,9 @@ export default function Navigation({ show, setLocation }) {
     txtScale: hovered ? 0.1 : 0,
   })
 
-  const { scale } = useSpring({
+  const { scale, pos } = useSpring({
     scale: show ? 1 : 0,
+    pos: show ? [0, 0, -1] : [0, -10, -1],
   })
 
   return (
@@ -25,7 +26,7 @@ export default function Navigation({ show, setLocation }) {
         onSelect={() => setLocation('/xr/menu')}
       >
         <a.mesh
-          position={[0, 0, -1]}
+          position={pos}
           scale={0.1}
           onClick={() => setLocation('/xr/menu')}
         >
