@@ -42,12 +42,11 @@ export default function First({ env, setCurrent, visible }) {
   })
 
   // OJBECTS
-
   useChain(animate ? [opacityApi, scaleApi] : [scaleApi, opacityApi], [0, 0.4])
 
   useEffect(() => {
     if (visible) {
-      player.position.set(0, 0, 0)
+      player.position.set(0, -1.2, 0)
       setAnimate(true)
     }
   }, [visible])
@@ -59,7 +58,7 @@ export default function First({ env, setCurrent, visible }) {
         scale={scale}
         material-opacity={opacity}
         position={[0, 0, 0]}
-        rotation={[0, 1.5, 0]}
+        rotation={[0, -1.3, 0]}
       >
         <sphereGeometry />
         <meshBasicMaterial map={env} transparent side={BackSide} />
@@ -67,8 +66,8 @@ export default function First({ env, setCurrent, visible }) {
 
       {/* INFO */}
       <HoverButton
-        position={[1, 0.25, -2.5]}
-        rotation={[0, -0.25, 0]}
+        position={[-1.3, 0.25, -2.5]}
+        rotation={[0, 0.5, 0]}
         scale={0.2}
         text="Унших"
         onClick={() => setInfoVisible(true)}
@@ -78,7 +77,7 @@ export default function First({ env, setCurrent, visible }) {
           visible={infoVisible}
           onClick={() => setInfoVisible(false)}
           scale={1}
-          position={[0, 0.6, -2]}
+          position={[0, 0.8, -2]}
           rotation={[0, 0, 0]}
           title="Өндөрт шат тавцан дээр ажиллах"
           text="1,3 метрээс дээш өндөрт зориулалтын (нэмэлт бэхлэгээ хийгдсэн, пайзтай, шат тавцанг акт үйлдэж хүлээлцсэн гэх мэт) шат тавьсан дээр ажил гүйцэтгэх ёстой. Та өндөр ажил гүйцэтгэх үед өнөөдрийн бүсийг тогтмол зүүж амин цэг, амин олсноос бүсийг бэхлэж ажил гүйцэтгэх ёстой. Өндөр .  Биё биендээ хяналт тавьж, өндөөр биет унагаахгүй болгоомжтой ажил гүйцэтгэх."
@@ -88,8 +87,8 @@ export default function First({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-0.5, 2.5, -3]}
-          rotation={[0, 0.25, 0]}
+          position={[3, 0.5, -3]}
+          rotation={[0, -0.5, 0]}
           scale={0.2}
           text="Шилжих"
           onClick={handleNext}

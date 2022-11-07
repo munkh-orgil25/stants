@@ -12,7 +12,6 @@ export default function Third({ env, setCurrent, visible }) {
   }))
 
   const handlePrev = () => {
-    // setIntro(false)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -59,7 +58,7 @@ export default function Third({ env, setCurrent, visible }) {
         scale={spring.scale}
         material-opacity={spring.opacity}
         position={[0, 0, 0]}
-        rotation={[0, -1.75, 0]}
+        rotation={[0, -2.1, 0]}
       >
         <sphereGeometry />
         <meshBasicMaterial side={BackSide} map={env} transparent />
@@ -68,7 +67,7 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handleNext}>
         <HoverButton
-          position={[-2.2, -0.5, -2.99]}
+          position={[-2.2, -0.5, -3]}
           rotation={[0, 0.5, 0]}
           scale={0.15}
           text="Шилжих"
@@ -79,8 +78,8 @@ export default function Third({ env, setCurrent, visible }) {
       {/* TP */}
       <Interactive onSelect={handlePrev}>
         <HoverButton
-          position={[2.3, -0.5, -2.99]}
-          rotation={[0, -0.7, 0]}
+          position={[1, -0.25, 1.5]}
+          rotation={[0, -2.2, 0]}
           scale={0.1}
           text="Буцах"
           onClick={handlePrev}

@@ -8,7 +8,7 @@ import Third from './Third'
 import Fourth from './Fourth'
 
 export default function XRStairs({ setLocation, location }) {
-  const [current, setCurrent] = useState(4)
+  const [current, setCurrent] = useState(1)
   const [env1, setEnv1] = useState(null)
   const [env2, setEnv2] = useState(null)
   const [env3, setEnv3] = useState(null)

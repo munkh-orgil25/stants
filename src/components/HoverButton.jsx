@@ -9,7 +9,7 @@ import {
   useSpringRef,
 } from '@react-spring/three'
 import { Interactive } from '@react-three/xr'
-import { NearestFilter } from 'three'
+import { DoubleSide, NearestFilter } from 'three'
 
 export default function HoverButton({
   position = [0, 0, 0],
@@ -82,6 +82,7 @@ export default function HoverButton({
             transparent
             alphaMap={baseAlpha}
             alphaTest={0.1}
+            side={DoubleSide}
           />
         </a.mesh>
 
