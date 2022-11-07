@@ -46,7 +46,7 @@ export default function XRMenu({ setLocation }) {
               outlineWidth={0.002}
               maxWidth={0.6}
             >
-              ХАЛТИРЖ УНАХ
+              ХАЛТИРАХ АЮУЛ
             </Text>
           }
         />
