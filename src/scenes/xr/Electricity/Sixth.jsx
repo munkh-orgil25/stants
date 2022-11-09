@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
-import { Interactive } from '@react-three/xr'
-import HoverButton from '../../../components/HoverButton'
+import { useXR } from '@react-three/xr'
+import MenuBar from '../../../components/MenuBar'
 
-export default function Sixth({ env, setCurrent, visible }) {
+export default function Sixth({ env, setCurrent, visible, setMenu }) {
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 41, objScale: 0.1, opacity: 0 },
   }))
+  const { player } = useXR()
+  const menuRef = useRef()
+  const handleMenu = () => {
+    player.children[0].remove(menuRef.current)
+    setMenu()
+  }
 
   const handlePrev = () => {
     api.start({
@@ -18,6 +24,7 @@ export default function Sixth({ env, setCurrent, visible }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
+          player.children[0].remove(menuRef.current)
           setCurrent(5)
         }
       },
@@ -26,6 +33,7 @@ export default function Sixth({ env, setCurrent, visible }) {
 
   useEffect(() => {
     if (visible) {
+      player.children[0].add(menuRef.current)
       setShow(true)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
@@ -48,17 +56,7 @@ export default function Sixth({ env, setCurrent, visible }) {
         <meshBasicMaterial side={BackSide} map={env} transparent />
       </a.mesh>
 
-      {/* TP */}
-      <Interactive onSelect={handlePrev}>
-        <HoverButton
-          arrow
-          position={[0, 0.3, -2.62]}
-          rotation={[0, 0, 0]}
-          scale={spring.objScale}
-          text="Буцах"
-          onClick={handlePrev}
-        />
-      </Interactive>
+      <MenuBar onPrev={handlePrev} onMenu={handleMenu} ref={menuRef} type={3} />
     </group>
   )
 }

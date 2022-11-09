@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { TextureLoader } from 'three'
-import MenuBar from '../../../components/MenuBar'
 import XRLoading from '../../../components/XRLoading'
-import Fifth from './Fifth'
 // scenes
 import First from './First'
 import Fourth from './Fourth'
+import Fifth from './Fifth'
 import Second from './Second'
 import Sixth from './Sixth'
 import Third from './Third'
