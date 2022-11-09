@@ -93,6 +93,8 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
   useEffect(() => {
     if (visible) {
       setShow(true)
+      player.children[0].add(menuRef.current)
+      player.position.set(0, -1.2, 0)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,

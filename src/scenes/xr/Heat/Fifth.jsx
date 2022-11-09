@@ -51,7 +51,7 @@ export default function Fifth({ env, setCurrent, visible, setMenu }) {
     if (visible) {
       setShow(true)
       player.children[0].add(menuRef.current)
-      player.position.set(0, 1, 0)
+      player.position.set(0, 0.75, 0)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,
