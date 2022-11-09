@@ -12,9 +12,8 @@ import Seventh from './Seventh'
 import Eighth from './Eighth'
 import Ninth from './Ninth'
 import Tenth from './Tenth'
-import Navigation from '../../../components/Navigation'
 
-export default function XRSafety({ setLocation, location }) {
+export default function XRSafety({ setLocation }) {
   const [current, setCurrent] = useState(1)
   const [env1, setEnv1] = useState(null)
   const [env2, setEnv2] = useState(null)
@@ -28,6 +27,8 @@ export default function XRSafety({ setLocation, location }) {
   const [env10, setEnv10] = useState(null)
   const [loading, setLoading] = useState(true)
   const textureLoader = new TextureLoader()
+
+  const setMenu = () => setLocation('/xr/menu')
 
   useEffect(() => {
     textureLoader.load('/textures/4/1.png', (texture) => {
@@ -85,16 +86,66 @@ export default function XRSafety({ setLocation, location }) {
 
   return (
     <>
-      <First visible={current === 1} env={env1} setCurrent={setCurrent} />
-      <Second visible={current === 2} env={env2} setCurrent={setCurrent} />
-      <Third visible={current === 3} env={env3} setCurrent={setCurrent} />
-      <Fourth visible={current === 4} env={env4} setCurrent={setCurrent} />
-      <Fifth visible={current === 5} env={env5} setCurrent={setCurrent} />
-      <Sixth visible={current === 6} env={env6} setCurrent={setCurrent} />
-      <Seventh visible={current === 7} env={env7} setCurrent={setCurrent} />
-      <Eighth visible={current === 8} env={env8} setCurrent={setCurrent} />
-      <Ninth visible={current === 9} env={env9} setCurrent={setCurrent} />
-      <Tenth visible={current === 10} env={env10} setCurrent={setCurrent} />
+      <First
+        visible={current === 1}
+        env={env1}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Second
+        visible={current === 2}
+        env={env2}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Third
+        visible={current === 3}
+        env={env3}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Fourth
+        visible={current === 4}
+        env={env4}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Fifth
+        visible={current === 5}
+        env={env5}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Sixth
+        visible={current === 6}
+        env={env6}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Seventh
+        visible={current === 7}
+        env={env7}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Eighth
+        visible={current === 8}
+        env={env8}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Ninth
+        visible={current === 9}
+        env={env9}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Tenth
+        visible={current === 10}
+        env={env10}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
     </>
   )
 }

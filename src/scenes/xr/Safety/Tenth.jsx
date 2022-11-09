@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
-import { Interactive } from '@react-three/xr'
+import { Interactive, useXR } from '@react-three/xr'
 import HoverButton from '../../../components/HoverButton'
 import FinalResult from '../../../components/FinalResult'
 import Result from '../../../components/Result'
 import Quiz from '../../../components/Quiz'
+import MenuBar from '../../../components/MenuBar'
 
 const questions = [
   {
@@ -63,13 +64,24 @@ const questions = [
   },
 ]
 
-export default function Tenth({ env, setCurrent, visible }) {
+export default function Tenth({ env, setCurrent, visible, setMenu }) {
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 41, objScale: 0.1, opacity: 0 },
   }))
 
+  const { player } = useXR()
+  const menuRef = useRef()
+  const handleMenu = () => {
+    player.children[0].remove(menuRef.current)
+    setMenu()
+  }
+  const { scale } = useSpring({
+    scale: show ? 1 : 0,
+  })
+
   const handlePrev = () => {
+    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -92,6 +104,9 @@ export default function Tenth({ env, setCurrent, visible }) {
       })
     } else {
       setShow(false)
+      if (menuRef.current) {
+        player.children[0].remove(menuRef.current)
+      }
     }
   }, [visible])
 
@@ -201,17 +216,13 @@ export default function Tenth({ env, setCurrent, visible }) {
         <meshBasicMaterial transparent color="#282828" side={BackSide} />
       </a.mesh>
 
-      {/* TP */}
-      <Interactive onSelect={handlePrev}>
-        <HoverButton
-          arrow
-          position={[-2, 2.5, -0.3]}
-          rotation={[0, 1.3, 0]}
-          scale={spring.objScale}
-          text="Буцах"
-          onClick={handlePrev}
-        />
-      </Interactive>
+      <MenuBar
+        scale={scale}
+        onPrev={handlePrev}
+        onMenu={handleMenu}
+        ref={menuRef}
+        type={3}
+      />
     </group>
   )
 }

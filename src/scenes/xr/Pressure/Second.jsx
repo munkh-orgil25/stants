@@ -46,6 +46,7 @@ export default function Second({ setCurrent, visible, setMenu }) {
 
   useEffect(() => {
     if (visible) {
+      player.children[0].add(menuRef.current)
       setShow(true)
       player.position.set(0, -1.2, 0)
       api.start({

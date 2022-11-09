@@ -1,5 +1,5 @@
 import { Interactive, useXR } from '@react-three/xr'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   a,
   config,
@@ -8,15 +8,25 @@ import {
   useSpringRef,
 } from '@react-spring/three'
 import { BackSide } from 'three'
-import HoverButton from '../../../components/HoverButton'
 import InfoText from '../../../components/InfoText'
+import MenuBar from '../../../components/MenuBar'
 
-export default function First({ env, setCurrent, visible }) {
+export default function First({ env, setCurrent, visible, setMenu }) {
   const { player } = useXR()
   const [animate, setAnimate] = useState(true)
   const [infoVisible, setInfoVisible] = useState(false)
 
+  const menuRef = useRef()
+  const handleMenu = () => {
+    player.children[0].remove(menuRef.current)
+    setMenu()
+  }
+  const { menuScale } = useSpring({
+    menuScale: animate ? 1 : 0,
+  })
+
   const handleNext = () => {
+    player.children[0].remove(menuRef.current)
     setAnimate(false)
   }
 
@@ -47,7 +57,10 @@ export default function First({ env, setCurrent, visible }) {
   useEffect(() => {
     if (visible) {
       player.position.set(0, -1.2, 0)
+      player.children[0].add(menuRef.current)
       setAnimate(true)
+    } else if (menuRef.current) {
+      player.children[0].remove(menuRef.current)
     }
   }, [visible])
 
@@ -64,14 +77,6 @@ export default function First({ env, setCurrent, visible }) {
         <meshBasicMaterial map={env} transparent side={BackSide} />
       </a.mesh>
 
-      {/* INFO */}
-      <HoverButton
-        position={[-1.3, 0.25, -2.5]}
-        rotation={[0, 0.5, 0]}
-        scale={0.2}
-        text="Унших"
-        onClick={() => setInfoVisible(true)}
-      />
       <Interactive onSelect={() => setInfoVisible(false)}>
         <InfoText
           visible={infoVisible}
@@ -84,17 +89,14 @@ export default function First({ env, setCurrent, visible }) {
         />
       </Interactive>
 
-      {/* TP */}
-      <Interactive onSelect={handleNext}>
-        <HoverButton
-          arrow
-          position={[3, 0.5, -3]}
-          rotation={[0, -0.5, 0]}
-          scale={0.2}
-          text="Шилжих"
-          onClick={handleNext}
-        />
-      </Interactive>
+      <MenuBar
+        scale={menuScale}
+        onNext={handleNext}
+        onInfo={() => setInfoVisible(true)}
+        onMenu={handleMenu}
+        ref={menuRef}
+        type={1}
+      />
     </group>
   )
 }

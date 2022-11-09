@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { Interactive, useXR } from '@react-three/xr'
+import { useState, useEffect, useRef } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
-import { useXR } from '@react-three/xr'
+import HoverButton from '../../../components/HoverButton'
 import MenuBar from '../../../components/MenuBar'
 
 export default function Fifth({ env, setCurrent, visible, setMenu }) {
   const { player } = useXR()
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
-    from: { scale: 41, objScale: 0, opacity: 0 },
+    from: { scale: 40, objScale: 0, opacity: 0 },
   }))
-
   const menuRef = useRef()
   const handleMenu = () => {
     player.children[0].remove(menuRef.current)
@@ -52,9 +52,9 @@ export default function Fifth({ env, setCurrent, visible, setMenu }) {
 
   useEffect(() => {
     if (visible) {
-      player.children[0].add(menuRef.current)
       setShow(true)
-      player.position.set(0, 0.75, 0)
+      player.children[0].add(menuRef.current)
+      player.position.set(0, -1.2, 0)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,
