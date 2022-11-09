@@ -26,11 +26,11 @@ export default function First({ env, setCurrent, visible }) {
   }
 
   const scaleApi = useSpringRef()
-  const { scale } = useSpring({
+  const { scale, menuScale } = useSpring({
     ref: scaleApi,
     config: config.slow,
-    from: { scale: animate ? 5 : 20 },
-    to: { scale: animate ? 20 : 5 },
+    from: { scale: animate ? 5 : 20, menuScale: animate ? 0 : 1 },
+    to: { scale: animate ? 20 : 5, menuScale: animate ? 1 : 0 },
   })
 
   const opacityApi = useSpringRef()
@@ -95,14 +95,13 @@ export default function First({ env, setCurrent, visible }) {
           arrow
           position={[0.7, 1.5, -3]}
           rotation={[0, 0, 0]}
-          scale={0.12}
+          scale={1}
           text="Шилжих"
           onClick={handleNext}
         />
       </Interactive>
 
-      {/* MENU */}
-      <MenuBar />
+      <MenuBar color="blue" onClick={handleNext} scale={menuScale} />
     </group>
   )
 }

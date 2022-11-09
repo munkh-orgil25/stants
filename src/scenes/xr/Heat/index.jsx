@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { TextureLoader } from 'three'
+import MenuBar from '../../../components/MenuBar'
 import XRLoading from '../../../components/XRLoading'
 import Fifth from './Fifth'
 // scenes

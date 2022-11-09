@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
+import MenuBar from '../../../components/MenuBar'
 
 export default function Second({ env, setCurrent, visible }) {
   const { player } = useXR()
@@ -66,7 +67,7 @@ export default function Second({ env, setCurrent, visible }) {
       </a.mesh>
 
       {/* TP */}
-      <Interactive onSelect={handleNext}>
+      {/* <Interactive onSelect={handleNext}>
         <HoverButton
           arrow
           position={[-1, 2, -3]}
@@ -75,10 +76,10 @@ export default function Second({ env, setCurrent, visible }) {
           text="Шилжих"
           onClick={handleNext}
         />
-      </Interactive>
+      </Interactive> */}
 
       {/* TP */}
-      <Interactive onSelect={handlePrev}>
+      {/* <Interactive onSelect={handlePrev}>
         <HoverButton
           arrow
           position={[0, 0.3, 3]}
@@ -87,7 +88,9 @@ export default function Second({ env, setCurrent, visible }) {
           text="Буцах"
           onClick={handlePrev}
         />
-      </Interactive>
+      </Interactive> */}
+
+      <MenuBar color="pink" onClick={handlePrev} scale={spring.objScale} />
     </group>
   )
 }

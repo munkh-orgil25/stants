@@ -1,35 +1,33 @@
 import { useTexture } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
-import { useXR } from '@react-three/xr'
+import { Interactive, useXR } from '@react-three/xr'
 import React, { useEffect, useRef } from 'react'
+import { a } from '@react-spring/three'
 
-export default function MenuBar() {
+export default function MenuBar({ color, scale, onClick }) {
   const { player, isPresenting } = useXR()
   const ref = useRef()
 
   const bg4 = useTexture('/textures/menu/base.png')
 
-  // useFrame(({ camera }) => {
-  //   ref.current.position.copy(camera.position)
-  //   ref.current.quaternion.copy(camera.quaternion)
-
-  //   ref.current.translateX(-1)
-  // })
-
   useEffect(() => {
     if (isPresenting) {
-      // console.log(player.children)
       player.children[0].add(ref.current)
-      console.log(player.children)
     }
   }, [isPresenting])
 
   return (
-    <group ref={ref}>
-      <mesh position={[0, 0, -1.5]} rotation={[0, 0, 0]}>
-        <planeGeometry args={[2, 0.5]} />
-        <meshBasicMaterial transparent alphaMap={bg4} alphaTest={0.1} />
-      </mesh>
-    </group>
+    <a.group ref={ref} scale={scale}>
+      <Interactive onSelect={onClick}>
+        <mesh position={[0, 0, -1.5]} rotation={[0, 0, 0]} onClick={onClick}>
+          <planeGeometry args={[2, 0.5]} />
+          <meshBasicMaterial
+            transparent
+            alphaMap={bg4}
+            alphaTest={0.1}
+            color={color}
+          />
+        </mesh>
+      </Interactive>
+    </a.group>
   )
 }
