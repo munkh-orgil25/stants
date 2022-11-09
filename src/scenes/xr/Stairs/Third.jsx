@@ -29,7 +29,7 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(1)
+          setCurrent(2)
         }
       },
     })
@@ -44,7 +44,7 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(3)
+          setCurrent(4)
         }
       },
     })
