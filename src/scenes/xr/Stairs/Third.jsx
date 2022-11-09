@@ -1,9 +1,7 @@
-import { Interactive, useXR } from '@react-three/xr'
-import { useState, useEffect, useRef } from 'react'
+import { useXR } from '@react-three/xr'
+import { useState, useEffect } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
-import HoverButton from '../../../components/HoverButton'
-import MenuBar from '../../../components/MenuBar'
 import NavBar from '../../../components/NavBar'
 
 export default function Second({ env, setCurrent, visible, setMenu }) {

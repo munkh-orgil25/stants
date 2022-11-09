@@ -7,7 +7,7 @@ import Second from './Second'
 import Third from './Third'
 import Fourth from './Fourth'
 
-export default function XRStairs() {
+export default function XRStairs({ setLocation }) {
   const [current, setCurrent] = useState(1)
   const [env1, setEnv1] = useState(null)
   const [env2, setEnv2] = useState(null)
@@ -15,6 +15,8 @@ export default function XRStairs() {
   const [env4, setEnv4] = useState(null)
   const [loading, setLoading] = useState(true)
   const textureLoader = new TextureLoader()
+
+  const setMenu = () => setLocation('/xr/menu')
 
   useEffect(() => {
     textureLoader.load('/textures/5/1.png', (texture) => {
@@ -43,10 +45,30 @@ export default function XRStairs() {
 
   return (
     <>
-      <First visible={current === 1} env={env1} setCurrent={setCurrent} />
-      <Second visible={current === 2} env={env2} setCurrent={setCurrent} />
-      <Third visible={current === 3} env={env3} setCurrent={setCurrent} />
-      <Fourth visible={current === 4} env={env4} setCurrent={setCurrent} />
+      <First
+        visible={current === 1}
+        env={env1}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Second
+        visible={current === 2}
+        env={env2}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Third
+        visible={current === 3}
+        env={env3}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Fourth
+        visible={current === 4}
+        env={env4}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
     </>
   )
 }

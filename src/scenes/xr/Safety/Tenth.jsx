@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
-import { Interactive, useXR } from '@react-three/xr'
 import HoverButton from '../../../components/HoverButton'
 import FinalResult from '../../../components/FinalResult'
 import Result from '../../../components/Result'
 import Quiz from '../../../components/Quiz'
-import MenuBar from '../../../components/MenuBar'
+import NavBar from '../../../components/NavBar'
 
 const questions = [
   {
@@ -70,19 +69,12 @@ export default function Tenth({ env, setCurrent, visible, setMenu }) {
     from: { scale: 41, objScale: 0.1, opacity: 0 },
   }))
 
-  const { player } = useXR()
-  const menuRef = useRef()
-  const handleMenu = () => {
-    player.children[0].remove(menuRef.current)
-    setMenu()
-  }
   const { scale, pos } = useSpring({
     scale: show ? 1 : 0,
     pos: show ? [0, 0, -1.5] : [0, -10, -2],
   })
 
   const handlePrev = () => {
-    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -105,9 +97,6 @@ export default function Tenth({ env, setCurrent, visible, setMenu }) {
       })
     } else {
       setShow(false)
-      if (menuRef.current) {
-        player.children[0].remove(menuRef.current)
-      }
     }
   }, [visible])
 
@@ -217,12 +206,11 @@ export default function Tenth({ env, setCurrent, visible, setMenu }) {
         <meshBasicMaterial transparent color="#282828" side={BackSide} />
       </a.mesh>
 
-      <MenuBar
+      <NavBar
         pos={pos}
         scale={scale}
         onPrev={handlePrev}
-        onMenu={handleMenu}
-        ref={menuRef}
+        onMenu={setMenu}
         type={3}
       />
     </group>

@@ -1,5 +1,5 @@
 import { Interactive, useXR } from '@react-three/xr'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import {
   a,
   config,
