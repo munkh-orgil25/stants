@@ -22,6 +22,7 @@ export default function Third({ env, setCurrent, visible, setMenu }) {
 
   const handlePrev = () => {
     player.children[0].remove(menuRef.current)
+    console.log(player.children[0])
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -61,6 +62,9 @@ export default function Third({ env, setCurrent, visible, setMenu }) {
       })
     } else {
       setShow(false)
+      if (menuRef.current) {
+        player.children[0].remove(menuRef.current)
+      }
     }
   }, [visible])
 

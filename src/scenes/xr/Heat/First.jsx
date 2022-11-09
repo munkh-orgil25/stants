@@ -60,6 +60,8 @@ export default function First({ env, setCurrent, visible, setMenu }) {
       player.position.set(0, -1.2, 0)
       player.children[0].add(menuRef.current)
       setAnimate(true)
+    } else if (menuRef.current) {
+      player.children[0].remove(menuRef.current)
     }
   }, [visible])
 
