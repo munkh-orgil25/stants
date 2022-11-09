@@ -1,3 +1,4 @@
+import { useXR } from '@react-three/xr'
 import { useEffect, useState } from 'react'
 import { TextureLoader } from 'three'
 import XRLoading from '../../../components/XRLoading'
