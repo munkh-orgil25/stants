@@ -13,7 +13,7 @@ export default function MenuBar() {
     ref.current.position.copy(camera.position)
     ref.current.quaternion.copy(camera.quaternion)
 
-    ref.current.translateX(-2)
+    ref.current.translateX(0)
   })
 
   useEffect(() => {
