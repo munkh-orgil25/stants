@@ -60,7 +60,7 @@ function App() {
         <div className="canvas">
           <XRCanvas>
             <XRApp />
-            <DefaultXRControllers />
+            <DefaultXRControllers rayMaterial={{ color: '#006DB6' }} />
             <OrbitControls />
           </XRCanvas>
         </div>

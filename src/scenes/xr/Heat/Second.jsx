@@ -74,30 +74,6 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
         <meshBasicMaterial side={BackSide} map={env} transparent />
       </a.mesh>
 
-      {/* TP */}
-      {/* <Interactive onSelect={handleNext}>
-        <HoverButton
-          arrow
-          position={[-1, 2, -3]}
-          rotation={[0, 0.5, 0]}
-          scale={0.2}
-          text="Шилжих"
-          onClick={handleNext}
-        />
-      </Interactive> */}
-
-      {/* TP */}
-      {/* <Interactive onSelect={handlePrev}>
-        <HoverButton
-          arrow
-          position={[0, 0.3, 3]}
-          rotation={[0, Math.PI, 0]}
-          scale={0.1}
-          text="Буцах"
-          onClick={handlePrev}
-        />
-      </Interactive> */}
-
       <MenuBar
         onPrev={handlePrev}
         onNext={handleNext}
