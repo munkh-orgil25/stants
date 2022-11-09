@@ -21,6 +21,8 @@ export default function XRHeat({ setLocation }) {
   const [loading, setLoading] = useState(true)
   const textureLoader = new TextureLoader()
 
+  const setMenu = () => setLocation('/xr/menu')
+
   useEffect(() => {
     textureLoader.load('/textures/3/1.jpg', (texture) => {
       setEnv1(texture)
@@ -54,12 +56,42 @@ export default function XRHeat({ setLocation }) {
 
   return (
     <>
-      <First visible={current === 1} env={env1} setCurrent={setCurrent} />
-      <Second visible={current === 2} env={env2} setCurrent={setCurrent} />
-      <Third visible={current === 3} env={env3} setCurrent={setCurrent} />
-      <Fourth visible={current === 4} env={env4} setCurrent={setCurrent} />
-      <Fifth visible={current === 5} env={env5} setCurrent={setCurrent} />
-      <Sixth visible={current === 6} env={env6} setCurrent={setCurrent} />
+      <First
+        visible={current === 1}
+        env={env1}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Second
+        visible={current === 2}
+        env={env2}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Third
+        visible={current === 3}
+        env={env3}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Fourth
+        visible={current === 4}
+        env={env4}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Fifth
+        visible={current === 5}
+        env={env5}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Sixth
+        visible={current === 6}
+        env={env6}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
     </>
   )
 }

@@ -12,16 +12,16 @@ import HoverButton from '../../../components/HoverButton'
 import Info from './Info'
 import MenuBar from '../../../components/MenuBar'
 
-export default function First({ env, setCurrent, visible }) {
+export default function First({ env, setCurrent, visible, setMenu }) {
   const [animate, setAnimate] = useState(true)
   const [infoVisible, setInfoVisible] = useState(false)
 
-  const { player, isPresenting } = useXR()
+  const { player } = useXR()
   const menuRef = useRef()
-
-  useEffect(() => {
-    player.position.set(0, -1.2, 0)
-  }, [])
+  const handleMenu = () => {
+    player.children[0].remove(menuRef.current)
+    setMenu()
+  }
 
   const handleNext = () => {
     setAnimate(false)
@@ -29,11 +29,11 @@ export default function First({ env, setCurrent, visible }) {
   }
 
   const scaleApi = useSpringRef()
-  const { scale, menuScale } = useSpring({
+  const { scale } = useSpring({
     ref: scaleApi,
     config: config.slow,
-    from: { scale: animate ? 5 : 20, menuScale: animate ? 0 : 1 },
-    to: { scale: animate ? 20 : 5, menuScale: animate ? 1 : 0 },
+    from: { scale: animate ? 5 : 20 },
+    to: { scale: animate ? 20 : 5 },
   })
 
   const opacityApi = useSpringRef()
@@ -73,14 +73,6 @@ export default function First({ env, setCurrent, visible }) {
         <meshBasicMaterial map={env} transparent side={BackSide} />
       </a.mesh>
 
-      {/* INFO */}
-      <HoverButton
-        position={[-1.5, 1, -2.5]}
-        rotation={[0, 0.25, 0]}
-        scale={0.2}
-        text="Унших"
-        onClick={() => setInfoVisible(true)}
-      />
       <Interactive onSelect={() => setInfoVisible(false)}>
         <Info
           visible={infoVisible}
@@ -93,19 +85,13 @@ export default function First({ env, setCurrent, visible }) {
         />
       </Interactive>
 
-      {/* TP */}
-      <Interactive onSelect={handleNext}>
-        <HoverButton
-          arrow
-          position={[0.7, 1.5, -3]}
-          rotation={[0, 0, 0]}
-          scale={1}
-          text="Шилжих"
-          onClick={handleNext}
-        />
-      </Interactive>
-
-      <MenuBar color="blue" onClick={handleNext} ref={menuRef} />
+      <MenuBar
+        onNext={handleNext}
+        onInfo={() => setInfoVisible(true)}
+        onMenu={handleMenu}
+        ref={menuRef}
+        type={1}
+      />
     </group>
   )
 }

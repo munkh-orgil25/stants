@@ -5,13 +5,17 @@ import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
 import MenuBar from '../../../components/MenuBar'
 
-export default function Second({ env, setCurrent, visible }) {
+export default function Second({ env, setCurrent, visible, setMenu }) {
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 40, objScale: 0, opacity: 0 },
   }))
   const { player } = useXR()
   const menuRef = useRef()
+  const handleMenu = () => {
+    player.children[0].remove(menuRef.current)
+    setMenu()
+  }
 
   const handlePrev = () => {
     // setIntro(false)
@@ -94,7 +98,13 @@ export default function Second({ env, setCurrent, visible }) {
         />
       </Interactive> */}
 
-      <MenuBar color="pink" onClick={handlePrev} ref={menuRef} />
+      <MenuBar
+        onPrev={handlePrev}
+        onNext={handleNext}
+        onMenu={handleMenu}
+        ref={menuRef}
+        type={2}
+      />
     </group>
   )
 }

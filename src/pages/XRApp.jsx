@@ -55,7 +55,7 @@ export default function XRApp() {
         </mesh>
       </Interactive>
 
-      <Navigation show={navVisible} setLocation={setLocation} />
+      {/* <Navigation show={navVisible} setLocation={setLocation} /> */}
     </>
   )
 }
