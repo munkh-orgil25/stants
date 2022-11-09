@@ -10,6 +10,7 @@ import {
 import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
 import Info from './Info'
+import MenuBar from '../../../components/MenuBar'
 
 export default function First({ env, setCurrent, visible }) {
   const { player } = useXR()
@@ -99,6 +100,9 @@ export default function First({ env, setCurrent, visible }) {
           onClick={handleNext}
         />
       </Interactive>
+
+      {/* MENU */}
+      <MenuBar />
     </group>
   )
 }

@@ -717,10 +717,10 @@
     suspend-react "^0.0.8"
     zustand "^3.7.1"
 
-"@react-three/xr@^5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@react-three/xr/-/xr-5.0.4.tgz#4c34db9d6ad30ae77dbccc0da5d7033731f7c0d6"
-  integrity sha512-8C72Uk33G1ccXrr7Ohl1/g7cwHaeBRKB7SmjoXUUItP4bLaCpLhUPsWTyQfBBa9DMFGax8lqKYPYD6WzRvbUOA==
+"@react-three/xr@4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@react-three/xr/-/xr-4.1.1.tgz#cc7e7b57353bdf440fb03e326c5fba17e884940d"
+  integrity sha512-DgjvGa3aiP63cJMb+25pMA+7AGC5jRvkHAwRrNENtUArghkdl90O8+mBk2KzEvcy/hMMiBi+854vIgdxYE4HWA==
   dependencies:
     three-stdlib "^2.12.1"
     zustand "^3.7.1"
