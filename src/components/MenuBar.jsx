@@ -10,11 +10,9 @@ export default function MenuBar() {
   const bg4 = useTexture('/textures/menu/base.png')
 
   useFrame(({ camera }) => {
-    // Move mesh to be flush with camera
     ref.current.position.copy(camera.position)
     ref.current.quaternion.copy(camera.quaternion)
 
-    // Apply offset
     ref.current.translateX(-2)
   })
 
@@ -26,7 +24,7 @@ export default function MenuBar() {
 
   return (
     <group ref={ref}>
-      <mesh position={[0, 0, 1]} rotation={[Math.PI * 0.5, Math.PI * 0.5, 0]}>
+      <mesh position={[0, 0, 0]} rotation={[Math.PI * 0.5, Math.PI * 0.5, 0]}>
         <planeGeometry args={[2, 0.5]} />
         <meshBasicMaterial transparent alphaMap={bg4} alphaTest={0.1} />
       </mesh>

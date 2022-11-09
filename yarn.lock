@@ -593,7 +593,7 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@react-spring/animated@~9.5.5":
+"@react-spring/animated@~9.5.2", "@react-spring/animated@~9.5.5":
   version "9.5.5"
   resolved "https://registry.yarnpkg.com/@react-spring/animated/-/animated-9.5.5.tgz#d3bfd0f62ed13a337463a55d2c93bb23c15bbf3e"
   integrity sha512-glzViz7syQ3CE6BQOwAyr75cgh0qsihm5lkaf24I0DfU63cMm/3+br299UEYkuaHNmfDfM414uktiPlZCNJbQA==
@@ -601,7 +601,7 @@
     "@react-spring/shared" "~9.5.5"
     "@react-spring/types" "~9.5.5"
 
-"@react-spring/core@~9.5.5":
+"@react-spring/core@~9.5.2", "@react-spring/core@~9.5.5":
   version "9.5.5"
   resolved "https://registry.yarnpkg.com/@react-spring/core/-/core-9.5.5.tgz#1d8a4c64630ee26b2295361e1eedfd716a85b4ae"
   integrity sha512-shaJYb3iX18Au6gkk8ahaF0qx0LpS0Yd+ajb4asBaAQf6WPGuEdJsbsNSgei1/O13JyEATsJl20lkjeslJPMYA==
@@ -636,7 +636,7 @@
   resolved "https://registry.yarnpkg.com/@react-spring/rafz/-/rafz-9.5.5.tgz#62a49c5e294104b79db2a8afdf4f3a274c7f44ca"
   integrity sha512-F/CLwB0d10jL6My5vgzRQxCNY2RNyDJZedRBK7FsngdCmzoq3V4OqqNc/9voJb9qRC2wd55oGXUeXv2eIaFmsw==
 
-"@react-spring/shared@~9.5.5":
+"@react-spring/shared@~9.5.2", "@react-spring/shared@~9.5.5":
   version "9.5.5"
   resolved "https://registry.yarnpkg.com/@react-spring/shared/-/shared-9.5.5.tgz#9be0b391d546e3e184a24ecbaf40acbaeab7fc73"
   integrity sha512-YwW70Pa/YXPOwTutExHZmMQSHcNC90kJOnNR4G4mCDNV99hE98jWkIPDOsgqbYx3amIglcFPiYKMaQuGdr8dyQ==
@@ -644,7 +644,17 @@
     "@react-spring/rafz" "~9.5.5"
     "@react-spring/types" "~9.5.5"
 
-"@react-spring/three@^9.3.1", "@react-spring/three@^9.5.5", "@react-spring/three@~9.5.5":
+"@react-spring/three@9.5.2":
+  version "9.5.2"
+  resolved "https://registry.yarnpkg.com/@react-spring/three/-/three-9.5.2.tgz#965ff4e729929ebbb9a1f8e84f3f4acb6acec4f9"
+  integrity sha512-3H7Lv8BJZ3dajh0yJA3m9rEbqz5ZNrTCAkhVOeLqgvBlcWU5qVs4luYA1Z7H4vZnLqVtzv+kHAyg3XIpuTOXhQ==
+  dependencies:
+    "@react-spring/animated" "~9.5.2"
+    "@react-spring/core" "~9.5.2"
+    "@react-spring/shared" "~9.5.2"
+    "@react-spring/types" "~9.5.2"
+
+"@react-spring/three@^9.3.1", "@react-spring/three@~9.5.5":
   version "9.5.5"
   resolved "https://registry.yarnpkg.com/@react-spring/three/-/three-9.5.5.tgz#c6fbee977007d1980406db20a28ac3f5dc2ce153"
   integrity sha512-9kTIaSceqFIl5EIrdwM7Z53o5I+9BGNVzbp4oZZYMao+GMAWOosnlQdDG5GeqNsIqfW9fZCEquGqagfKAxftcA==
@@ -654,7 +664,7 @@
     "@react-spring/shared" "~9.5.5"
     "@react-spring/types" "~9.5.5"
 
-"@react-spring/types@~9.5.5":
+"@react-spring/types@~9.5.2", "@react-spring/types@~9.5.5":
   version "9.5.5"
   resolved "https://registry.yarnpkg.com/@react-spring/types/-/types-9.5.5.tgz#c8e94f1b9232ca7cb9d860ea67762ec401b1de14"
   integrity sha512-7I/qY8H7Enwasxr4jU6WmtNK+RZ4Z/XvSlDvjXFVe7ii1x0MoSlkw6pD7xuac8qrHQRm9BTcbZNyeeKApYsvCg==
@@ -703,14 +713,13 @@
     utility-types "^3.10.0"
     zustand "^3.5.13"
 
-"@react-three/fiber@^8.8.10":
-  version "8.8.10"
-  resolved "https://registry.yarnpkg.com/@react-three/fiber/-/fiber-8.8.10.tgz#1a862a93f9b4db674f9c8b89f87e2c55b554d319"
-  integrity sha512-4Uxo4wxWkIPGFsRVkdILi/ANV/161KBSmqeMhaTpPjbjL+gNpC7z1vTUs7BI45iKcS+EhwUPUcFUxLnxelQbGw==
+"@react-three/fiber@8.3.1":
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/@react-three/fiber/-/fiber-8.3.1.tgz#83379ba5bf5d21a130023ed6de651b0bf467e14a"
+  integrity sha512-5I1fcnE/3Y89MBNtC58N4ZEm962NqlFwBChhS09AVBz9PmD51uwY0z4y6WPMoVVKhUG39CS6iSbTPQwZygkerA==
   dependencies:
     "@babel/runtime" "^7.17.8"
     "@types/react-reconciler" "^0.26.7"
-    its-fine "^1.0.6"
     react-reconciler "^0.27.0"
     react-use-measure "^2.1.1"
     scheduler "^0.21.0"
@@ -756,13 +765,6 @@
   version "0.26.7"
   resolved "https://registry.yarnpkg.com/@types/react-reconciler/-/react-reconciler-0.26.7.tgz#0c4643f30821ae057e401b0d9037e03e8e9b2a36"
   integrity sha512-mBDYl8x+oyPX/VBb3E638N0B7xG+SPk/EAMcVPeexqus/5aTpTphQi0curhhshOqRrc9t6OPoJfEUkbymse/lQ==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-reconciler@^0.28.0":
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/@types/react-reconciler/-/react-reconciler-0.28.0.tgz#513acbed173140e958c909041ca14eb40412077f"
-  integrity sha512-5cjk9ottZAj7eaTsqzPUIlrVbh3hBAO2YaEL1rkjHKB3xNAId7oU8GhzvAX+gfmlfoxTwJnBjPxEHyxkEA1Ffg==
   dependencies:
     "@types/react" "*"
 
@@ -2045,13 +2047,6 @@ isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==
 
-its-fine@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/its-fine/-/its-fine-1.0.6.tgz#087b14d71137816dab676d8b57c35a6cd5d2b021"
-  integrity sha512-VZJZPwVT2kxe5KQv+TxCjojfLiUIut8zXDNLTxcM7gJ/xQ/bSPk5M0neZ+j3myy45KKkltY1mm1jyJgx3Fxsdg==
-  dependencies:
-    "@types/react-reconciler" "^0.28.0"
-
 js-sdsl@^4.1.4:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/js-sdsl/-/js-sdsl-4.1.5.tgz#1ff1645e6b4d1b028cd3f862db88c9d887f26e2a"
@@ -2836,10 +2831,10 @@ three-stdlib@^2.12.1, three-stdlib@^2.17.3:
     potpack "^1.0.1"
     zstddec "^0.0.2"
 
-three@^0.145.0:
-  version "0.145.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.145.0.tgz#a613d71e75effc2aed88be630027ca01e2b6502e"
-  integrity sha512-EKoHQEtEJ4CB6b2BGMBgLZrfwLjXcSUfoI/MiIXUuRpeYsfK5aPWbYhdtIVWOH+x6X0TouldHKHBuc/LAiFzAw==
+three@0.143.0:
+  version "0.143.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.143.0.tgz#1455bca132cc2b20beb7f41d313e10c29e5ed9df"
+  integrity sha512-oKcAGYHhJ46TGEuHjodo2n6TY2R6lbvrkp+feKZxqsUL/WkH7GKKaeu6RHeyb2Xjfk2dPLRKLsOP0KM2VgT8Zg==
 
 tiny-inflate@^1.0.3:
   version "1.0.3"
