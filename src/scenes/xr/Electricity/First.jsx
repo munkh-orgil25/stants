@@ -22,7 +22,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
     setMenu()
   }
   const { menuScale } = useSpring({
-    scale: animate ? 1 : 0,
+    menuScale: animate ? 1 : 0,
   })
 
   const handleNext = () => {
