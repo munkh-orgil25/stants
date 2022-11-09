@@ -243,15 +243,13 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
         <meshBasicMaterial transparent color="#282828" side={BackSide} />
       </a.mesh>
 
-      {show ? (
-        <MenuBar
-          onPrev={handlePrev}
-          onNext={handleNext}
-          onMenu={handleMenu}
-          ref={menuRef}
-          type={2}
-        />
-      ) : null}
+      <MenuBar
+        onPrev={handlePrev}
+        onNext={handleNext}
+        onMenu={handleMenu}
+        ref={menuRef}
+        type={2}
+      />
     </group>
   )
 }
