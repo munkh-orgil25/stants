@@ -168,6 +168,9 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       setActiveQuiz(1)
     } else {
       setShowFinal(true)
+      if (menuRef.current) {
+        player.children[0].remove(menuRef.current)
+      }
     }
   }
 

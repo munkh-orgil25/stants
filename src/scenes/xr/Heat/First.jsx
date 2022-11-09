@@ -46,7 +46,6 @@ export default function First({ env, setCurrent, visible, setMenu }) {
     to: { opacity: animate ? 1 : 0 },
     onChange: () => {
       if (opacity.get() < 0.25 && !animate) {
-        player.children[0].remove(menuRef.current)
         setCurrent(2)
       }
     },

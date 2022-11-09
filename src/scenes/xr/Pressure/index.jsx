@@ -5,11 +5,13 @@ import XRLoading from '../../../components/XRLoading'
 import First from './First'
 import Second from './Second'
 
-export default function XRPressure({ setLocation, location }) {
+export default function XRPressure({ setLocation }) {
   const [current, setCurrent] = useState(1)
   const [env1, setEnv1] = useState(null)
   const [loading, setLoading] = useState(true)
   const textureLoader = new TextureLoader()
+
+  const setMenu = () => setLocation('/xr/menu')
 
   useEffect(() => {
     textureLoader.load('/textures/6/1.png', (texture) => {
@@ -29,8 +31,17 @@ export default function XRPressure({ setLocation, location }) {
 
   return (
     <>
-      <First visible={current === 1} env={env1} setCurrent={setCurrent} />
-      <Second visible={current === 2} setCurrent={setCurrent} />
+      <First
+        visible={current === 1}
+        env={env1}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
+      <Second
+        visible={current === 2}
+        setCurrent={setCurrent}
+        setMenu={setMenu}
+      />
     </>
   )
 }

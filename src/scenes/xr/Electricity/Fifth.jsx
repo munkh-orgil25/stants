@@ -59,6 +59,9 @@ export default function Fifth({ env, setCurrent, visible, setMenu }) {
       })
     } else {
       setShow(false)
+      if (menuRef.current) {
+        player.children[0].remove(menuRef.current)
+      }
     }
   }, [visible])
 
