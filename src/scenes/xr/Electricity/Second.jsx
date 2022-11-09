@@ -172,7 +172,7 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
   useEffect(() => {
     if (visible) {
       setShow(true)
-      player.children[0].remove(menuRef.current)
+      player.children[0].add(menuRef.current)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,
