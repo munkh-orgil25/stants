@@ -8,6 +8,7 @@ const MenuBar = forwardRef(
   (
     {
       type,
+      scale = 1,
       onInfo = () => {},
       onMenu = () => {},
       onNext = () => {},
@@ -24,7 +25,7 @@ const MenuBar = forwardRef(
 
     if (type === 1) {
       return (
-        <group ref={ref} position={[0, 0, -1.5]}>
+        <a.group scale={scale} ref={ref} position={[0, 0, -1.5]}>
           <mesh rotation={[0, 0, 0]}>
             <planeGeometry args={[1.5, 0.5]} />
             <meshBasicMaterial
@@ -44,13 +45,13 @@ const MenuBar = forwardRef(
           <Interactive onSelect={onNext}>
             <Button position={[0.5, 0, 0.001]} icon={next} />
           </Interactive>
-        </group>
+        </a.group>
       )
     }
 
     if (type === 2) {
       return (
-        <group ref={ref} position={[0, 0, -1.5]}>
+        <a.group scale={scale} ref={ref} position={[0, 0, -1.5]}>
           <mesh rotation={[0, 0, 0]}>
             <planeGeometry args={[1.5, 0.5]} />
             <meshBasicMaterial
@@ -70,12 +71,12 @@ const MenuBar = forwardRef(
           <Interactive onSelect={onNext}>
             <Button position={[0.5, 0, 0.001]} icon={next} />
           </Interactive>
-        </group>
+        </a.group>
       )
     }
 
     return (
-      <group ref={ref} position={[0, 0, -1.5]}>
+      <a.group scale={scale} ref={ref} position={[0, 0, -1.5]}>
         <mesh rotation={[0, 0, 0]}>
           <planeGeometry args={[1, 0.5]} />
           <meshBasicMaterial
@@ -92,7 +93,7 @@ const MenuBar = forwardRef(
         <Interactive onSelect={onMenu}>
           <Button position={[0.22, 0, 0.001]} icon={house} />
         </Interactive>
-      </group>
+      </a.group>
     )
   }
 )

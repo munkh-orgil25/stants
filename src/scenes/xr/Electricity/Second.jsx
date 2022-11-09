@@ -93,6 +93,9 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
     player.children[0].remove(menuRef.current)
     setMenu()
   }
+  const { scale } = useSpring({
+    scale: show ? 1 : 0,
+  })
 
   const handlePrev = () => {
     player.children[0].remove(menuRef.current)
@@ -243,6 +246,7 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       </a.mesh>
 
       <MenuBar
+        scale={scale}
         onPrev={handlePrev}
         onNext={handleNext}
         onMenu={handleMenu}

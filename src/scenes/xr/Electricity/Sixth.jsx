@@ -15,6 +15,9 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
     player.children[0].remove(menuRef.current)
     setMenu()
   }
+  const { scale } = useSpring({
+    scale: show ? 1 : 0,
+  })
 
   const handlePrev = () => {
     player.children[0].remove(menuRef.current)
@@ -56,7 +59,13 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
         <meshBasicMaterial side={BackSide} map={env} transparent />
       </a.mesh>
 
-      <MenuBar onPrev={handlePrev} onMenu={handleMenu} ref={menuRef} type={3} />
+      <MenuBar
+        scale={scale}
+        onPrev={handlePrev}
+        onMenu={handleMenu}
+        ref={menuRef}
+        type={3}
+      />
     </group>
   )
 }
