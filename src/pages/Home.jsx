@@ -1,6 +1,6 @@
 import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import { Controllers, XR, XRButton } from '@react-three/xr'
+import { XRButton } from '@react-three/xr'
 import { useState } from 'react'
 import { Link } from 'wouter'
 import XRApp from './XRApp'

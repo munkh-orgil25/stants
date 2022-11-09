@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, Route, useLocation } from 'wouter'
-import { Canvas } from '@react-three/fiber'
-import { Controllers, XR, XRButton } from '@react-three/xr'
+import { DefaultXRControllers, XRCanvas, XRButton } from '@react-three/xr'
 import { OrbitControls } from '@react-three/drei'
 import WebCanvasWrapper from './components/WebCanvasWrapper'
 import Home from './pages/Home'
@@ -59,13 +58,11 @@ function App() {
 
       {startXr ? (
         <div className="canvas">
-          <Canvas>
-            <XR>
-              <XRApp />
-              <Controllers />
-            </XR>
+          <XRCanvas>
+            <XRApp />
+            <DefaultXRControllers />
             <OrbitControls />
-          </Canvas>
+          </XRCanvas>
         </div>
       ) : null}
 
