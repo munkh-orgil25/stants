@@ -83,8 +83,8 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(5)
           player.children[0].remove(menuRef.current)
+          setCurrent(5)
         }
       },
     })
@@ -93,8 +93,8 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
   useEffect(() => {
     if (visible) {
       setShow(true)
-      player.children[0].add(menuRef.current)
       player.position.set(0, -1.2, 0)
+      player.children[0].add(menuRef.current)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,

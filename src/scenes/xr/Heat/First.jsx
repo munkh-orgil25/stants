@@ -23,8 +23,8 @@ export default function First({ env, setCurrent, visible, setMenu }) {
   }
 
   const handleNext = () => {
-    setAnimate(false)
     player.children[0].remove(menuRef.current)
+    setAnimate(false)
   }
 
   const scaleApi = useSpringRef()

@@ -25,8 +25,8 @@ export default function Third({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(2)
           player.children[0].remove(menuRef.current)
+          setCurrent(2)
         }
       },
     })
@@ -40,8 +40,8 @@ export default function Third({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(4)
           player.children[0].remove(menuRef.current)
+          setCurrent(4)
         }
       },
     })

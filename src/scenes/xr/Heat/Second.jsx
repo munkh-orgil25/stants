@@ -26,8 +26,8 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(1)
           player.children[0].remove(menuRef.current)
+          setCurrent(1)
         }
       },
     })
@@ -41,8 +41,8 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          setCurrent(3)
           player.children[0].remove(menuRef.current)
+          setCurrent(3)
         }
       },
     })
