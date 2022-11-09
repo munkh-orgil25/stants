@@ -17,6 +17,7 @@ export default function Third({ env, setCurrent, visible, setMenu }) {
   }
 
   const handlePrev = () => {
+    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -24,7 +25,6 @@ export default function Third({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          player.children[0].remove(menuRef.current)
           setCurrent(2)
         }
       },
@@ -32,6 +32,7 @@ export default function Third({ env, setCurrent, visible, setMenu }) {
   }
 
   const handleNext = () => {
+    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 0, opacity: 0, objScale: 0 },
@@ -39,7 +40,6 @@ export default function Third({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          player.children[0].remove(menuRef.current)
           setCurrent(4)
         }
       },
