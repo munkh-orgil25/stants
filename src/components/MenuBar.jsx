@@ -13,6 +13,7 @@ const MenuBar = forwardRef(
       onMenu = () => {},
       onNext = () => {},
       onPrev = () => {},
+      pos = [0, 0, -1.5],
     },
     ref
   ) => {
@@ -25,7 +26,7 @@ const MenuBar = forwardRef(
 
     if (type === 1) {
       return (
-        <a.group scale={scale} ref={ref} position={[0, 0, -1.5]}>
+        <a.group scale={scale} ref={ref} position={pos}>
           <mesh rotation={[0, 0, 0]}>
             <planeGeometry args={[1.5, 0.5]} />
             <meshBasicMaterial
@@ -51,7 +52,7 @@ const MenuBar = forwardRef(
 
     if (type === 2) {
       return (
-        <a.group scale={scale} ref={ref} position={[0, 0, -1.5]}>
+        <a.group scale={scale} ref={ref} position={pos}>
           <mesh rotation={[0, 0, 0]}>
             <planeGeometry args={[1.5, 0.5]} />
             <meshBasicMaterial
@@ -76,7 +77,7 @@ const MenuBar = forwardRef(
     }
 
     return (
-      <a.group scale={scale} ref={ref} position={[0, 0, -1.5]}>
+      <a.group scale={scale} ref={ref} position={pos}>
         <mesh rotation={[0, 0, 0]}>
           <planeGeometry args={[1, 0.5]} />
           <meshBasicMaterial

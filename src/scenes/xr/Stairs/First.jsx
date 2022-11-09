@@ -21,8 +21,9 @@ export default function First({ env, setCurrent, visible, setMenu }) {
     player.children[0].remove(menuRef.current)
     setMenu()
   }
-  const { menuScale } = useSpring({
+  const { menuScale, pos } = useSpring({
     menuScale: animate ? 1 : 0,
+    pos: animate ? [0, 0, -1.5] : [0, -10, -2],
   })
 
   const handleNext = () => {
@@ -90,6 +91,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
       </Interactive>
 
       <MenuBar
+        pos={pos}
         scale={menuScale}
         onNext={handleNext}
         onInfo={() => setInfoVisible(true)}

@@ -83,8 +83,9 @@ export default function Fourth({ env, setCurrent, visible, setMenu }) {
     player.children[0].remove(menuRef.current)
     setMenu()
   }
-  const { scale } = useSpring({
+  const { scale, pos } = useSpring({
     scale: show ? 1 : 0,
+    pos: show ? [0, 0, -1.5] : [0, -10, -2],
   })
 
   const handlePrev = () => {
@@ -263,6 +264,7 @@ export default function Fourth({ env, setCurrent, visible, setMenu }) {
       </a.mesh>
 
       <MenuBar
+        pos={pos}
         scale={scale}
         onPrev={handlePrev}
         onMenu={handleMenu}
