@@ -16,8 +16,12 @@ export default function Fifth({ env, setCurrent, visible, setMenu }) {
     player.children[0].remove(menuRef.current)
     setMenu()
   }
+  const { scale } = useSpring({
+    scale: show ? 1 : 0,
+  })
 
   const handlePrev = () => {
+    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -25,7 +29,6 @@ export default function Fifth({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          player.children[0].remove(menuRef.current)
           setCurrent(4)
         }
       },
@@ -33,6 +36,7 @@ export default function Fifth({ env, setCurrent, visible, setMenu }) {
   }
 
   const handleNext = () => {
+    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 0, opacity: 0, objScale: 0 },
@@ -40,7 +44,6 @@ export default function Fifth({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          player.children[0].remove(menuRef.current)
           setCurrent(6)
         }
       },
@@ -49,9 +52,9 @@ export default function Fifth({ env, setCurrent, visible, setMenu }) {
 
   useEffect(() => {
     if (visible) {
+      player.children[0].add(menuRef.current)
       setShow(true)
       player.position.set(0, 0.75, 0)
-      player.children[0].add(menuRef.current)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
         config: config.slow,
@@ -74,6 +77,7 @@ export default function Fifth({ env, setCurrent, visible, setMenu }) {
       </a.mesh>
 
       <MenuBar
+        scale={scale}
         onPrev={handlePrev}
         onNext={handleNext}
         onMenu={handleMenu}

@@ -74,8 +74,12 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
     player.children[0].remove(menuRef.current)
     setMenu()
   }
+  const { scale } = useSpring({
+    scale: show ? 1 : 0,
+  })
 
   const handlePrev = () => {
+    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -83,7 +87,6 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          player.children[0].remove(menuRef.current)
           setCurrent(5)
         }
       },
@@ -210,7 +213,13 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
         <meshBasicMaterial transparent color="#282828" side={BackSide} />
       </a.mesh>
 
-      <MenuBar onPrev={handlePrev} onMenu={handleMenu} ref={menuRef} type={3} />
+      <MenuBar
+        scale={scale}
+        onPrev={handlePrev}
+        onMenu={handleMenu}
+        ref={menuRef}
+        type={3}
+      />
     </group>
   )
 }

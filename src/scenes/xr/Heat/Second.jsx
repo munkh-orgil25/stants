@@ -15,9 +15,12 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
     player.children[0].remove(menuRef.current)
     setMenu()
   }
+  const { scale } = useSpring({
+    scale: show ? 1 : 0,
+  })
 
   const handlePrev = () => {
-    // setIntro(false)
+    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -25,7 +28,6 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          player.children[0].remove(menuRef.current)
           setCurrent(1)
         }
       },
@@ -33,6 +35,7 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
   }
 
   const handleNext = () => {
+    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 0, opacity: 0, objScale: 0 },
@@ -40,7 +43,6 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       onChange: () => {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
-          player.children[0].remove(menuRef.current)
           setCurrent(3)
         }
       },
@@ -74,6 +76,7 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       </a.mesh>
 
       <MenuBar
+        scale={scale}
         onPrev={handlePrev}
         onNext={handleNext}
         onMenu={handleMenu}

@@ -92,6 +92,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
         scale={menuScale}
         onNext={handleNext}
         onMenu={handleMenu}
+        onInfo={() => setInfoVisible(true)}
         ref={menuRef}
         type={1}
       />
