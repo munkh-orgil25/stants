@@ -1,5 +1,5 @@
 import { Interactive, useXR } from '@react-three/xr'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   a,
   config,
@@ -13,9 +13,11 @@ import Info from './Info'
 import MenuBar from '../../../components/MenuBar'
 
 export default function First({ env, setCurrent, visible }) {
-  const { player } = useXR()
   const [animate, setAnimate] = useState(true)
   const [infoVisible, setInfoVisible] = useState(false)
+
+  const { player, isPresenting } = useXR()
+  const menuRef = useRef()
 
   useEffect(() => {
     player.position.set(0, -1.2, 0)
@@ -23,6 +25,7 @@ export default function First({ env, setCurrent, visible }) {
 
   const handleNext = () => {
     setAnimate(false)
+    player.children[0].remove(menuRef.current)
   }
 
   const scaleApi = useSpringRef()
@@ -52,6 +55,7 @@ export default function First({ env, setCurrent, visible }) {
   useEffect(() => {
     if (visible) {
       player.position.set(0, -1.2, 0)
+      player.children[0].add(menuRef.current)
       setAnimate(true)
     }
   }, [visible])
@@ -101,7 +105,7 @@ export default function First({ env, setCurrent, visible }) {
         />
       </Interactive>
 
-      <MenuBar color="blue" onClick={handleNext} scale={menuScale} />
+      <MenuBar color="blue" onClick={handleNext} ref={menuRef} />
     </group>
   )
 }

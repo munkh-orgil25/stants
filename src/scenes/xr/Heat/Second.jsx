@@ -1,16 +1,17 @@
 import { Interactive, useXR } from '@react-three/xr'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
 import MenuBar from '../../../components/MenuBar'
 
 export default function Second({ env, setCurrent, visible }) {
-  const { player } = useXR()
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 40, objScale: 0, opacity: 0 },
   }))
+  const { player } = useXR()
+  const menuRef = useRef()
 
   const handlePrev = () => {
     // setIntro(false)
@@ -22,6 +23,7 @@ export default function Second({ env, setCurrent, visible }) {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
           setCurrent(1)
+          player.children[0].remove(menuRef.current)
         }
       },
     })
@@ -36,6 +38,7 @@ export default function Second({ env, setCurrent, visible }) {
         if (spring.opacity.get() < 0.3) {
           setShow(false)
           setCurrent(3)
+          player.children[0].remove(menuRef.current)
         }
       },
     })
@@ -44,6 +47,7 @@ export default function Second({ env, setCurrent, visible }) {
   useEffect(() => {
     if (visible) {
       setShow(true)
+      player.children[0].add(menuRef.current)
       player.position.set(0, 0, 0)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
@@ -90,7 +94,7 @@ export default function Second({ env, setCurrent, visible }) {
         />
       </Interactive> */}
 
-      <MenuBar color="pink" onClick={handlePrev} scale={spring.objScale} />
+      <MenuBar color="pink" onClick={handlePrev} ref={menuRef} />
     </group>
   )
 }
