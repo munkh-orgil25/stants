@@ -32,7 +32,7 @@ function NavBar({
   if (type === 1) {
     return (
       <a.group scale={scale} ref={ref} position={pos}>
-        <group position={[0, -1, 0]} rotation={[-0.15, 0, 0]} scale={0.5}>
+        <group position={[0, -0.75, 0]} rotation={[-0.25, 0, 0]} scale={0.5}>
           <mesh rotation={[0, 0, 0]}>
             <planeGeometry args={[1.5, 0.5]} />
             <meshBasicMaterial
@@ -60,7 +60,7 @@ function NavBar({
   if (type === 2) {
     return (
       <a.group scale={scale} ref={ref} position={pos}>
-        <group position={[0, -1, 0]} rotation={[-0.15, 0, 0]} scale={0.5}>
+        <group position={[0, -0.75, 0]} rotation={[-0.25, 0, 0]} scale={0.5}>
           <mesh rotation={[0, 0, 0]}>
             <planeGeometry args={[1.5, 0.5]} />
             <meshBasicMaterial
@@ -87,7 +87,7 @@ function NavBar({
 
   return (
     <a.group scale={scale} ref={ref} position={pos}>
-      <group position={[0, -1, 0]} rotation={[-0.15, 0, 0]} scale={0.5}>
+      <group position={[0, -0.75, 0]} rotation={[-0.25, 0, 0]} scale={0.5}>
         <mesh rotation={[0, 0, 0]}>
           <planeGeometry args={[1, 0.5]} />
           <meshBasicMaterial
