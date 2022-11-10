@@ -19,6 +19,10 @@ export default function XRMenu({ setLocation }) {
     player.position.set(0, 0, 0)
   }, [])
 
+  useEffect(() => {
+    player.children[0].children = []
+  }, [player])
+
   return (
     <group>
       <mesh scale={20} rotation={[0, -1.75, 0]}>
