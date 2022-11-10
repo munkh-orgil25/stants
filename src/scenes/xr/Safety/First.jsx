@@ -21,6 +21,11 @@ export default function First({ env, setCurrent, visible, setMenu }) {
     pos: animate ? [0, 0, -1.5] : [0, -10, -2],
   })
 
+  const handleMenu = () => {
+    setAnimate(false)
+    setMenu()
+  }
+
   const handleNext = () => {
     setAnimate(false)
   }
@@ -86,7 +91,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
         scale={menuScale}
         onNext={handleNext}
         onInfo={() => setInfoVisible(true)}
-        onMenu={setMenu}
+        onMenu={handleMenu}
         type={1}
       />
     </group>

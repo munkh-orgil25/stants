@@ -15,6 +15,10 @@ export default function Seventh({ env, setCurrent, visible, setMenu }) {
     scale: show ? 1 : 0,
     pos: show ? [0, 0, -1.5] : [0, -10, -2],
   })
+  const handleMenu = () => {
+    setShow(false)
+    setMenu()
+  }
 
   const handlePrev = () => {
     api.start({
@@ -74,7 +78,7 @@ export default function Seventh({ env, setCurrent, visible, setMenu }) {
         scale={scale}
         onPrev={handlePrev}
         onNext={handleNext}
-        onMenu={setMenu}
+        onMenu={handleMenu}
         type={2}
       />
     </group>

@@ -74,6 +74,11 @@ export default function Tenth({ env, setCurrent, visible, setMenu }) {
     pos: show ? [0, 0, -1.5] : [0, -10, -2],
   })
 
+  const handleMenu = () => {
+    setShow(false)
+    setMenu()
+  }
+
   const handlePrev = () => {
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
@@ -210,7 +215,7 @@ export default function Tenth({ env, setCurrent, visible, setMenu }) {
         pos={pos}
         scale={scale}
         onPrev={handlePrev}
-        onMenu={setMenu}
+        onMenu={handleMenu}
         type={3}
       />
     </group>
