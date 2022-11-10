@@ -1,12 +1,11 @@
-import { useXR } from '@react-three/xr'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
 import Result from '../../../components/Result'
 import Quiz from '../../../components/Quiz'
 import FinalResult from '../../../components/FinalResult'
-import MenuBar from '../../../components/MenuBar'
+import NavBar from '../../../components/NavBar'
 
 const questions = [
   {
@@ -87,18 +86,13 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
   const [spring, api] = useSpring(() => ({
     from: { scale: 40, objScale: 0, opacity: 0 },
   }))
-  const { player } = useXR()
-  const menuRef = useRef()
-  const handleMenu = () => {
-    player.children[0].remove(menuRef.current)
-    setMenu()
-  }
-  const { scale } = useSpring({
+
+  const { scale, pos } = useSpring({
     scale: show ? 1 : 0,
+    pos: show ? 1 : 0,
   })
 
   const handlePrev = () => {
-    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -113,7 +107,6 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
   }
 
   const handleNext = () => {
-    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 0, opacity: 0, objScale: 0 },
@@ -168,15 +161,11 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       setActiveQuiz(1)
     } else {
       setShowFinal(true)
-      if (menuRef.current) {
-        player.children[0].remove(menuRef.current)
-      }
     }
   }
 
   useEffect(() => {
     if (visible) {
-      player.children[0].add(menuRef.current)
       setShow(true)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
@@ -184,9 +173,6 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       })
     } else {
       setShow(false)
-      if (menuRef.current) {
-        player.children[0].remove(menuRef.current)
-      }
     }
   }, [visible])
 
@@ -251,12 +237,12 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
         <meshBasicMaterial transparent color="#282828" side={BackSide} />
       </a.mesh>
 
-      <MenuBar
+      <NavBar
+        pos={pos}
         scale={scale}
         onPrev={handlePrev}
         onNext={handleNext}
-        onMenu={handleMenu}
-        ref={menuRef}
+        onMenu={setMenu}
         type={2}
       />
     </group>

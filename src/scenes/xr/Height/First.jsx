@@ -1,5 +1,5 @@
 import { Interactive, useXR } from '@react-three/xr'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import {
   a,
   config,
@@ -8,26 +8,20 @@ import {
   useSpringRef,
 } from '@react-spring/three'
 import { BackSide } from 'three'
-import HoverButton from '../../../components/HoverButton'
 import InfoText from '../../../components/InfoText'
-import MenuBar from '../../../components/MenuBar'
+import NavBar from '../../../components/NavBar'
 
 export default function First({ env, setCurrent, visible, setMenu }) {
   const { player } = useXR()
   const [animate, setAnimate] = useState(true)
   const [infoVisible, setInfoVisible] = useState(false)
 
-  const menuRef = useRef()
-  const handleMenu = () => {
-    player.children[0].remove(menuRef.current)
-    setMenu()
-  }
-  const { menuScale } = useSpring({
+  const { menuScale, pos } = useSpring({
     menuScale: animate ? 1 : 0,
+    pos: animate ? [0, 0, -1.5] : [0, -10, -2],
   })
 
   const handleNext = () => {
-    player.children[0].remove(menuRef.current)
     setAnimate(false)
   }
 
@@ -59,10 +53,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
   useEffect(() => {
     if (visible) {
       player.position.set(0, 0, 0)
-      player.children[0].add(menuRef.current)
       setAnimate(true)
-    } else if (menuRef.current) {
-      player.children[0].remove(menuRef.current)
     }
   }, [visible])
 
@@ -91,12 +82,12 @@ export default function First({ env, setCurrent, visible, setMenu }) {
         />
       </Interactive>
 
-      <MenuBar
+      <NavBar
+        pos={pos}
         scale={menuScale}
         onNext={handleNext}
         onInfo={() => setInfoVisible(true)}
-        onMenu={handleMenu}
-        ref={menuRef}
+        onMenu={setMenu}
         type={1}
       />
     </group>

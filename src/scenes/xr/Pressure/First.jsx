@@ -1,5 +1,5 @@
 import { Interactive, useXR } from '@react-three/xr'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import {
   a,
   config,
@@ -13,7 +13,7 @@ import InfoText from '../../../components/InfoText'
 import Result from '../../../components/Result'
 import FinalResult from '../../../components/FinalResult'
 import Quiz from '../../../components/Quiz'
-import MenuBar from '../../../components/MenuBar'
+import NavBar from '../../../components/NavBar'
 
 const questions = [
   {
@@ -73,17 +73,12 @@ export default function First({ env, setCurrent, visible, setMenu }) {
   const [animate, setAnimate] = useState(true)
   const [infoVisible, setInfoVisible] = useState(false)
 
-  const menuRef = useRef()
-  const handleMenu = () => {
-    player.children[0].remove(menuRef.current)
-    setMenu()
-  }
-  const { menuScale } = useSpring({
+  const { menuScale, pos } = useSpring({
     menuScale: animate ? 1 : 0,
+    pos: animate ? [0, 0, -1.5] : [0, -10, -2],
   })
 
   const handleNext = () => {
-    player.children[0].remove(menuRef.current)
     setAnimate(false)
   }
 
@@ -114,10 +109,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
   useEffect(() => {
     if (visible) {
       player.position.set(0, -1.2, 0)
-      player.children[0].add(menuRef.current)
       setAnimate(true)
-    } else if (menuRef.current) {
-      player.children[0].remove(menuRef.current)
     }
   }, [visible])
 
@@ -240,12 +232,12 @@ export default function First({ env, setCurrent, visible, setMenu }) {
         <meshBasicMaterial transparent color="#282828" side={BackSide} />
       </a.mesh>
 
-      <MenuBar
+      <NavBar
+        pos={pos}
         scale={menuScale}
         onNext={handleNext}
         onInfo={() => setInfoVisible(true)}
-        onMenu={handleMenu}
-        ref={menuRef}
+        onMenu={setMenu}
         type={1}
       />
     </group>

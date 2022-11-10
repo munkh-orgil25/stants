@@ -1,26 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
-import { useXR } from '@react-three/xr'
-import MenuBar from '../../../components/MenuBar'
+import NavBar from '../../../components/NavBar'
 
 export default function Sixth({ env, setCurrent, visible, setMenu }) {
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 41, objScale: 0.1, opacity: 0 },
   }))
-  const { player } = useXR()
-  const menuRef = useRef()
-  const handleMenu = () => {
-    player.children[0].remove(menuRef.current)
-    setMenu()
-  }
-  const { scale } = useSpring({
+
+  const { scale, pos } = useSpring({
     scale: show ? 1 : 0,
+    pos: show ? [0, 0, -1.5] : [0, -10, -2],
   })
 
   const handlePrev = () => {
-    player.children[0].remove(menuRef.current)
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -36,7 +30,6 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
 
   useEffect(() => {
     if (visible) {
-      player.children[0].add(menuRef.current)
       setShow(true)
       api.start({
         to: { scale: 20, objScale: 0.1, opacity: 1 },
@@ -44,9 +37,6 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
       })
     } else {
       setShow(false)
-      if (menuRef.current) {
-        player.children[0].remove(menuRef.current)
-      }
     }
   }, [visible])
 
@@ -62,11 +52,11 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
         <meshBasicMaterial side={BackSide} map={env} transparent />
       </a.mesh>
 
-      <MenuBar
+      <NavBar
+        pos={pos}
         scale={scale}
         onPrev={handlePrev}
-        onMenu={handleMenu}
-        ref={menuRef}
+        onMenu={setMenu}
         type={3}
       />
     </group>
