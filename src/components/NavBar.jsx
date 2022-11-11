@@ -50,7 +50,7 @@ function NavBar({
             <Button position={[0, 0, 0.001]} icon={house} />
           </Interactive>
           <Interactive onSelect={onNext}>
-            <Button position={[0.5, 0, 0.001]} icon={next} />
+            <Button position={[0.5, 0, 0.001]} icon={next} onClick={onNext} />
           </Interactive>
         </group>
       </a.group>
@@ -109,7 +109,7 @@ function NavBar({
   )
 }
 
-function Button({ position, icon }) {
+function Button({ position, icon, onClick }) {
   const alphaMap = useTexture('/textures/menu/cell.png')
   const [hovered, setHovered] = useState(false)
 
@@ -122,7 +122,7 @@ function Button({ position, icon }) {
       onHover={() => setHovered(true)}
       onBlur={() => setHovered(false)}
     >
-      <a.group position={position} scale={styles.scale}>
+      <a.group position={position} scale={styles.scale} onClick={onClick}>
         <mesh position={[0, 0, 0.001]} rotation={[0, 0, 0]}>
           <planeGeometry />
           <meshBasicMaterial

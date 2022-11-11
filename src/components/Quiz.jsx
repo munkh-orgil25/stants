@@ -1,9 +1,5 @@
-import React, { useState } from 'react'
-import { useSpring, a } from '@react-spring/three'
-import { BackSide } from 'three'
 import Answer from './Answer'
 import Question from './Question'
-import Result from './Result'
 
 export default function Quiz({
   quiz,

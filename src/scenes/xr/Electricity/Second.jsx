@@ -82,6 +82,9 @@ const questions = [
 ]
 
 export default function Second({ env, setCurrent, visible, setMenu }) {
+  const failAudio = new Audio('/audio/fail.mp3')
+  const correctAudio = new Audio('/audio/correct.mp3')
+
   const [show, setShow] = useState(false)
   const [spring, api] = useSpring(() => ({
     from: { scale: 40, objScale: 0, opacity: 0 },
@@ -130,19 +133,29 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
   const [showFinal, setShowFinal] = useState(false)
 
   const styles = useSpring({
-    overlay: answered ? 0.45 : 0,
+    overlay: showFinal ? 0.45 : 0,
   })
 
   const handleAnswer = (id) => {
     if (id === questions[activeQuiz - 1].correct) {
-      setCorrect(true)
       setScore(score + 1)
-      setAnswered(true)
-    } else {
-      setCorrect(false)
-      setAnswered(true)
     }
+    if (activeQuiz === 5) {
+      setFinished(true)
+      setShowFinal(true)
+    }
+    setActiveQuiz(activeQuiz + 1)
   }
+
+  useEffect(() => {
+    if (showFinal) {
+      if (score > 2) {
+        correctAudio.play()
+      } else {
+        failAudio.play()
+      }
+    }
+  }, [showFinal])
 
   const handleResultClick = () => {
     if (activeQuiz === 5) {
@@ -220,7 +233,11 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
         position={[0, 1, -2]}
         scale={1}
         visible={showFinal}
-        onClick={() => setShowFinal(false)}
+        onClick={() => {
+          setShowFinal(false)
+          failAudio.pause()
+          correctAudio.pause()
+        }}
         score={score}
         retry={() => {
           setShowFinal(false)
@@ -232,7 +249,7 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       />
 
       {/* OVERLAY */}
-      <a.mesh scale={2.5} material-opacity={styles.overlay} visible={answered}>
+      <a.mesh scale={3.5} material-opacity={styles.overlay} visible>
         <sphereBufferGeometry />
         <meshBasicMaterial transparent color="#282828" side={BackSide} />
       </a.mesh>
