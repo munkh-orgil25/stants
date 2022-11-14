@@ -136,8 +136,17 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
     overlay: showFinal ? 0.45 : 0,
   })
 
+  const openQuiz = () => {
+    if (!finished) {
+      setActiveQuiz(1)
+    } else {
+      setShowFinal(true)
+    }
+  }
+
   const handleAnswer = (id) => {
-    if (id === questions[activeQuiz - 1].correct) {
+    console.log(activeQuiz)
+    if (id === questions[activeQuiz - 1]?.correct) {
       setScore(score + 1)
     }
     if (activeQuiz === 5) {
@@ -169,14 +178,6 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
     }
   }
 
-  const openQuiz = () => {
-    if (!finished) {
-      setActiveQuiz(1)
-    } else {
-      setShowFinal(true)
-    }
-  }
-
   useEffect(() => {
     if (visible) {
       setShow(true)
@@ -188,6 +189,10 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       setShow(false)
     }
   }, [visible])
+
+  useEffect(() => {
+    console.log(activeQuiz)
+  }, [activeQuiz])
 
   return (
     <group visible={show}>

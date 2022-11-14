@@ -1,3 +1,5 @@
+import { a, useSpring } from '@react-spring/three'
+import { useEffect, useState } from 'react'
 import Answer from './Answer'
 import Question from './Question'
 
@@ -6,14 +8,26 @@ export default function Quiz({
   visible,
   position,
   rotation,
-  scale,
   handleClick,
 }) {
+  const [init, setInit] = useState(false)
+
+  const { scale, pos } = useSpring({
+    scale: init ? 1.5 : 0,
+    pos: init ? [0, 0, -2.5] : [0, -10, -3],
+  })
+
+  useEffect(() => {
+    if (visible) {
+      setInit(true)
+    }
+  }, [visible])
+
   return (
-    <group position={position} rotation={rotation} scale={scale}>
+    <a.group position={pos} rotation={rotation} scale={scale}>
       <Question
         visible={visible}
-        onClick={() => {}}
+        // onClick={() => {}}
         scale={1}
         position={[0, 1, 0]}
         text={quiz.question}
@@ -28,6 +42,6 @@ export default function Quiz({
           onClick={handleClick}
         />
       ))}
-    </group>
+    </a.group>
   )
 }
