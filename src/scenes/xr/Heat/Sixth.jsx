@@ -4,7 +4,6 @@ import { BackSide } from 'three'
 import { useXR } from '@react-three/xr'
 import HoverButton from '../../../components/HoverButton'
 import FinalResult from '../../../components/FinalResult'
-import Result from '../../../components/Result'
 import Quiz from '../../../components/Quiz'
 import NavBar from '../../../components/NavBar'
 
@@ -103,10 +102,12 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
 
   // QUIZ
   const [activeQuiz, setActiveQuiz] = useState(0)
-  const [answered, setAnswered] = useState(false)
-  const [correct, setCorrect] = useState(false)
 
-  const [score, setScore] = useState(0)
+  // SCORES
+  const [first, setFirst] = useState(0)
+  const [second, setSecond] = useState(0)
+  const [third, setThird] = useState(0)
+
   const [finished, setFinished] = useState(false)
   const [showFinal, setShowFinal] = useState(false)
 
@@ -117,39 +118,6 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
     overlay: showFinal ? 0.45 : 0,
   })
 
-  const handleAnswer = (id) => {
-    if (id === questions[activeQuiz - 1].correct) {
-      setScore(score + 1)
-    }
-    if (activeQuiz === 5) {
-      setFinished(true)
-      setShowFinal(true)
-    }
-    setActiveQuiz(activeQuiz + 1)
-  }
-
-  useEffect(() => {
-    if (showFinal) {
-      if (score > 2) {
-        correctAudio.play()
-      } else {
-        failAudio.play()
-      }
-    }
-  }, [showFinal])
-
-  const handleResultClick = () => {
-    if (activeQuiz === 3) {
-      setActiveQuiz(0)
-      setFinished(true)
-      setShowFinal(true)
-      setAnswered(false)
-    } else {
-      setActiveQuiz(activeQuiz + 1)
-      setAnswered(false)
-    }
-  }
-
   const openQuiz = () => {
     if (!finished) {
       setActiveQuiz(1)
@@ -157,6 +125,17 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
       setShowFinal(true)
     }
   }
+
+  useEffect(() => {
+    if (showFinal) {
+      const total = first + second + third
+      if (total > 1) {
+        correctAudio.play()
+      } else {
+        failAudio.play()
+      }
+    }
+  }, [showFinal])
 
   return (
     <group visible={show}>
@@ -178,24 +157,27 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
         text="Шалгах"
         onClick={openQuiz}
       />
-      {questions.map((q) => (
-        <Quiz
-          position={[0, 0, -2.5]}
-          rotation={[0, 0, 0]}
-          scale={1.5}
-          key={q.id}
-          quiz={q}
-          visible={q.id === activeQuiz}
-          handleClick={handleAnswer}
-        />
-      ))}
-
-      <Result
-        position={[0, 1, -2]}
-        scale={0.6}
-        visible={answered}
-        correct={correct}
-        onClick={handleResultClick}
+      <Quiz
+        quiz={questions[0]}
+        visible={questions[0].id === activeQuiz}
+        onNext={() => setActiveQuiz(2)}
+        setCorrect={() => setFirst(1)}
+      />
+      <Quiz
+        quiz={questions[1]}
+        visible={questions[1].id === activeQuiz}
+        onNext={() => setActiveQuiz(3)}
+        setCorrect={() => setSecond(1)}
+      />
+      <Quiz
+        quiz={questions[2]}
+        visible={questions[2].id === activeQuiz}
+        onNext={() => {
+          setActiveQuiz(0)
+          setFinished(true)
+          setShowFinal(true)
+        }}
+        setCorrect={() => setThird(1)}
       />
 
       <FinalResult
@@ -207,13 +189,15 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
           failAudio.pause()
           correctAudio.pause()
         }}
-        score={score}
         limit={1}
+        score={first + second + third}
         retry={() => {
           setShowFinal(false)
           setFinished(false)
           setActiveQuiz(1)
-          setScore(0)
+          setFirst(0)
+          setSecond(0)
+          setThird(0)
         }}
         next={handlePrev}
       />

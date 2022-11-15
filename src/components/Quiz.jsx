@@ -3,18 +3,12 @@ import { useEffect, useState } from 'react'
 import Answer from './Answer'
 import Question from './Question'
 
-export default function Quiz({
-  quiz,
-  visible,
-  position,
-  rotation,
-  handleClick,
-}) {
+export default function Quiz({ quiz, visible, rotation, setCorrect, onNext }) {
   const [init, setInit] = useState(false)
 
   const { scale, pos } = useSpring({
     scale: init ? 1.5 : 0,
-    pos: init ? [0, 0, -2.5] : [0, -10, -3],
+    pos: init ? [0, 0, -3.5] : [0, -10, -3.5],
   })
 
   useEffect(() => {
@@ -22,6 +16,14 @@ export default function Quiz({
       setInit(true)
     }
   }, [visible])
+
+  const handleAnswer = (id) => {
+    const { correct } = quiz
+    if (id === correct) {
+      setCorrect()
+    }
+    onNext()
+  }
 
   return (
     <a.group position={pos} rotation={rotation} scale={scale}>
@@ -39,7 +41,7 @@ export default function Quiz({
           scale={1}
           position={[0, 0.7 - answer.id * 0.3, 0]}
           answer={answer}
-          onClick={handleClick}
+          onClick={handleAnswer}
         />
       ))}
     </a.group>

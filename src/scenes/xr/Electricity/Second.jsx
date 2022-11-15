@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { a, config, useSpring } from '@react-spring/three'
 import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
-import Result from '../../../components/Result'
 import Quiz from '../../../components/Quiz'
 import FinalResult from '../../../components/FinalResult'
 import NavBar from '../../../components/NavBar'
@@ -125,10 +124,14 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
 
   // QUIZ
   const [activeQuiz, setActiveQuiz] = useState(0)
-  const [answered, setAnswered] = useState(false)
-  const [correct, setCorrect] = useState(false)
 
-  const [score, setScore] = useState(0)
+  // SCORES
+  const [first, setFirst] = useState(0)
+  const [second, setSecond] = useState(0)
+  const [third, setThird] = useState(0)
+  const [fourth, setFourth] = useState(0)
+  const [fifth, setFifth] = useState(0)
+
   const [finished, setFinished] = useState(false)
   const [showFinal, setShowFinal] = useState(false)
 
@@ -144,39 +147,16 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
     }
   }
 
-  const handleAnswer = (id) => {
-    console.log(activeQuiz)
-    if (id === questions[activeQuiz - 1]?.correct) {
-      setScore(score + 1)
-    }
-    if (activeQuiz === 5) {
-      setFinished(true)
-      setShowFinal(true)
-    }
-    setActiveQuiz(activeQuiz + 1)
-  }
-
   useEffect(() => {
     if (showFinal) {
-      if (score > 2) {
+      const total = first + second + third + fourth + fifth
+      if (total > 2) {
         correctAudio.play()
       } else {
         failAudio.play()
       }
     }
   }, [showFinal])
-
-  const handleResultClick = () => {
-    if (activeQuiz === 5) {
-      setActiveQuiz(0)
-      setFinished(true)
-      setShowFinal(true)
-      setAnswered(false)
-    } else {
-      setActiveQuiz(activeQuiz + 1)
-      setAnswered(false)
-    }
-  }
 
   useEffect(() => {
     if (visible) {
@@ -189,10 +169,6 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
       setShow(false)
     }
   }, [visible])
-
-  useEffect(() => {
-    console.log(activeQuiz)
-  }, [activeQuiz])
 
   return (
     <group visible={show}>
@@ -214,24 +190,40 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
         text="Шалгах"
         onClick={openQuiz}
       />
-      {questions.map((q) => (
-        <Quiz
-          position={[0, 0, -2.5]}
-          rotation={[0, 0, 0]}
-          scale={1.5}
-          key={q.id}
-          quiz={q}
-          visible={q.id === activeQuiz}
-          handleClick={handleAnswer}
-        />
-      ))}
 
-      <Result
-        position={[0, 1, -2]}
-        scale={0.6}
-        visible={answered}
-        correct={correct}
-        onClick={handleResultClick}
+      <Quiz
+        quiz={questions[0]}
+        visible={questions[0].id === activeQuiz}
+        onNext={() => setActiveQuiz(2)}
+        setCorrect={() => setFirst(1)}
+      />
+      <Quiz
+        quiz={questions[1]}
+        visible={questions[1].id === activeQuiz}
+        onNext={() => setActiveQuiz(3)}
+        setCorrect={() => setSecond(1)}
+      />
+      <Quiz
+        quiz={questions[2]}
+        visible={questions[2].id === activeQuiz}
+        onNext={() => setActiveQuiz(4)}
+        setCorrect={() => setThird(1)}
+      />
+      <Quiz
+        quiz={questions[3]}
+        visible={questions[3].id === activeQuiz}
+        onNext={() => setActiveQuiz(5)}
+        setCorrect={() => setFourth(1)}
+      />
+      <Quiz
+        quiz={questions[4]}
+        visible={questions[4].id === activeQuiz}
+        onNext={() => {
+          setActiveQuiz(0)
+          setFinished(true)
+          setShowFinal(true)
+        }}
+        setCorrect={() => setFifth(1)}
       />
 
       <FinalResult
@@ -243,12 +235,16 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
           failAudio.pause()
           correctAudio.pause()
         }}
-        score={score}
+        score={first + second + third + fourth + fifth}
         retry={() => {
           setShowFinal(false)
           setFinished(false)
           setActiveQuiz(1)
-          setScore(0)
+          setFirst(0)
+          setSecond(0)
+          setThird(0)
+          setFourth(0)
+          setFifth(0)
         }}
         next={handleNext}
       />

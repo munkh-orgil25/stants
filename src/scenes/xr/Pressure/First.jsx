@@ -10,7 +10,6 @@ import {
 import { BackSide } from 'three'
 import HoverButton from '../../../components/HoverButton'
 import InfoText from '../../../components/InfoText'
-import Result from '../../../components/Result'
 import FinalResult from '../../../components/FinalResult'
 import Quiz from '../../../components/Quiz'
 import NavBar from '../../../components/NavBar'
@@ -115,39 +114,21 @@ export default function First({ env, setCurrent, visible, setMenu }) {
 
   // QUIZ
   const [activeQuiz, setActiveQuiz] = useState(0)
-  const [answered, setAnswered] = useState(false)
-  const [correct, setCorrect] = useState(false)
 
-  const [score, setScore] = useState(0)
+  // SCORES
+  const [first, setFirst] = useState(0)
+  const [second, setSecond] = useState(0)
+  const [third, setThird] = useState(0)
+
   const [finished, setFinished] = useState(false)
   const [showFinal, setShowFinal] = useState(false)
 
+  const failAudio = new Audio('/audio/fail.mp3')
+  const correctAudio = new Audio('/audio/correct.mp3')
+
   const styles = useSpring({
-    overlay: answered ? 0.45 : 0,
+    overlay: showFinal ? 0.45 : 0,
   })
-
-  const handleAnswer = (id) => {
-    if (id === questions[activeQuiz - 1].correct) {
-      setCorrect(true)
-      setScore(score + 1)
-      setAnswered(true)
-    } else {
-      setCorrect(false)
-      setAnswered(true)
-    }
-  }
-
-  const handleResultClick = () => {
-    if (activeQuiz === 3) {
-      setActiveQuiz(0)
-      setFinished(true)
-      setShowFinal(true)
-      setAnswered(false)
-    } else {
-      setActiveQuiz(activeQuiz + 1)
-      setAnswered(false)
-    }
-  }
 
   const openQuiz = () => {
     if (!finished) {
@@ -156,6 +137,17 @@ export default function First({ env, setCurrent, visible, setMenu }) {
       setShowFinal(true)
     }
   }
+
+  useEffect(() => {
+    if (showFinal) {
+      const total = first + second + third
+      if (total > 1) {
+        correctAudio.play()
+      } else {
+        failAudio.play()
+      }
+    }
+  }, [showFinal])
 
   return (
     <group visible={visible}>
@@ -190,24 +182,27 @@ export default function First({ env, setCurrent, visible, setMenu }) {
         text="Шалгах"
         onClick={openQuiz}
       />
-      {questions.map((q) => (
-        <Quiz
-          position={[0, 0, -2.5]}
-          rotation={[0, 0, 0]}
-          scale={1.5}
-          key={q.id}
-          quiz={q}
-          visible={q.id === activeQuiz}
-          handleClick={handleAnswer}
-        />
-      ))}
-
-      <Result
-        position={[0, 1, -2]}
-        scale={0.6}
-        visible={answered}
-        correct={correct}
-        onClick={handleResultClick}
+      <Quiz
+        quiz={questions[0]}
+        visible={questions[0].id === activeQuiz}
+        onNext={() => setActiveQuiz(2)}
+        setCorrect={() => setFirst(1)}
+      />
+      <Quiz
+        quiz={questions[1]}
+        visible={questions[1].id === activeQuiz}
+        onNext={() => setActiveQuiz(3)}
+        setCorrect={() => setSecond(1)}
+      />
+      <Quiz
+        quiz={questions[2]}
+        visible={questions[2].id === activeQuiz}
+        onNext={() => {
+          setActiveQuiz(0)
+          setFinished(true)
+          setShowFinal(true)
+        }}
+        setCorrect={() => setThird(1)}
       />
 
       <FinalResult
@@ -215,19 +210,21 @@ export default function First({ env, setCurrent, visible, setMenu }) {
         scale={1}
         visible={showFinal}
         onClick={() => setShowFinal(false)}
-        score={score}
+        score={first + second + third}
         limit={1}
         retry={() => {
           setShowFinal(false)
           setFinished(false)
           setActiveQuiz(1)
-          setScore(0)
+          setFirst(0)
+          setSecond(0)
+          setThird(0)
         }}
         next={handleNext}
       />
 
       {/* OVERLAY */}
-      <a.mesh scale={2.5} material-opacity={styles.overlay} visible={answered}>
+      <a.mesh scale={3.5} material-opacity={styles.overlay}>
         <sphereBufferGeometry />
         <meshBasicMaterial transparent color="#282828" side={BackSide} />
       </a.mesh>
