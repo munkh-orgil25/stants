@@ -12,7 +12,7 @@ export default function FinalResult({
   rotation = [0, 0, 0],
   onClick,
   score,
-  limit = 2,
+  limit = 4,
   retry,
   next,
 }) {

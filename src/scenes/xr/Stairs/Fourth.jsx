@@ -129,7 +129,7 @@ export default function Fourth({ env, setCurrent, visible, setMenu }) {
   useEffect(() => {
     if (showFinal) {
       const total = first + second + third
-      if (total > 1) {
+      if (total > 2) {
         correctAudio.play()
       } else {
         failAudio.play()
@@ -161,7 +161,7 @@ export default function Fourth({ env, setCurrent, visible, setMenu }) {
         position={[2.5, -0.5, -1]}
         rotation={[0, -1, 0]}
         scale={0.15}
-        text="Багаж хэрэглэх үеийн хамгаалах хэрэгсэл"
+        text="Цахилгаан гар багаж"
         long
         onClick={() => {}}
       />
@@ -188,9 +188,8 @@ export default function Fourth({ env, setCurrent, visible, setMenu }) {
         position={[2, -0.5, 2]}
         rotation={[0, -2, 0]}
         scale={0.15}
-        text="Цахилгаан гар багаж"
+        text="Багаж хэрэглэх үеийн хамгаалах хэрэгсэл"
         long
-        arrow
         onClick={() => {}}
       />
 
@@ -234,7 +233,7 @@ export default function Fourth({ env, setCurrent, visible, setMenu }) {
           failAudio.pause()
           correctAudio.pause()
         }}
-        limit={1}
+        limit={2}
         score={first + second + third}
         retry={() => {
           setShowFinal(false)

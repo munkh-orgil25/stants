@@ -129,7 +129,7 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
   useEffect(() => {
     if (showFinal) {
       const total = first + second + third
-      if (total > 1) {
+      if (total > 2) {
         correctAudio.play()
       } else {
         failAudio.play()
@@ -189,7 +189,7 @@ export default function Sixth({ env, setCurrent, visible, setMenu }) {
           failAudio.pause()
           correctAudio.pause()
         }}
-        limit={1}
+        limit={2}
         score={first + second + third}
         retry={() => {
           setShowFinal(false)

@@ -26,6 +26,7 @@ export default function Second({ setCurrent, visible, setMenu }) {
   )
 
   const handlePrev = () => {
+    video.pause()
     api.start({
       from: { scale: 20, opacity: 1, objScale: 0.1 },
       to: { scale: 40, opacity: 0, objScale: 0 },
@@ -37,6 +38,11 @@ export default function Second({ setCurrent, visible, setMenu }) {
         }
       },
     })
+  }
+
+  const handleMenu = () => {
+    video.pause()
+    setMenu()
   }
 
   useEffect(() => {
@@ -71,7 +77,7 @@ export default function Second({ setCurrent, visible, setMenu }) {
         pos={pos}
         scale={scale}
         onPrev={handlePrev}
-        onMenu={setMenu}
+        onMenu={handleMenu}
         type={3}
       />
     </group>

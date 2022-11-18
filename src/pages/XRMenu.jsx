@@ -40,13 +40,13 @@ export default function XRMenu({ setLocation }) {
           iconMap={icon1}
           text={
             <Text
-              position={[0.05, -0.1, 0.1]}
-              color="#282828"
+              position={[0, -0.1, 0.01]}
+              color="#ffffff"
               fontSize={0.05}
               anchorX="center"
               anchorY="middle"
               font="/fonts/nunito.ttf"
-              outlineColor="#282828"
+              outlineColor="#ffffff"
               outlineWidth={0.002}
               maxWidth={0.6}
             >
@@ -63,13 +63,13 @@ export default function XRMenu({ setLocation }) {
           iconMap={icon2}
           text={
             <Text
-              position={[0, -0.1, 0.1]}
-              color="#282828"
+              position={[0, -0.1, 0.01]}
+              color="#ffffff"
               fontSize={0.05}
               anchorX="center"
               anchorY="middle"
               font="/fonts/nunito.ttf"
-              outlineColor="#282828"
+              outlineColor="#ffffff"
               outlineWidth={0.002}
               maxWidth={0.6}
             >
@@ -86,13 +86,13 @@ export default function XRMenu({ setLocation }) {
           iconMap={icon3}
           text={
             <Text
-              position={[-0.05, -0.1, 0.1]}
-              color="#282828"
+              position={[0, -0.1, 0.01]}
+              color="#ffffff"
               fontSize={0.05}
               anchorX="center"
               anchorY="middle"
               font="/fonts/nunito.ttf"
-              outlineColor="#282828"
+              outlineColor="#ffffff"
               outlineWidth={0.002}
               maxWidth={0.6}
             >
@@ -109,17 +109,17 @@ export default function XRMenu({ setLocation }) {
           iconMap={icon4}
           text={
             <Text
-              position={[0.05, -0.1, 0.1]}
-              color="#282828"
+              position={[0, -0.1, 0.01]}
+              color="#ffffff"
               fontSize={0.05}
               anchorX="center"
               anchorY="middle"
               font="/fonts/nunito.ttf"
-              outlineColor="#282828"
+              outlineColor="#ffffff"
               outlineWidth={0.002}
               maxWidth={0.6}
             >
-              ОСОЛ АВААР
+              АВААРИЙН ГАРЦ
             </Text>
           }
         />
@@ -133,26 +133,26 @@ export default function XRMenu({ setLocation }) {
           text={
             <>
               <Text
-                position={[0, -0.1, 0.1]}
-                color="#282828"
+                position={[0, -0.1, 0.01]}
+                color="#ffffff"
                 fontSize={0.05}
                 anchorX="center"
                 anchorY="middle"
                 font="/fonts/nunito.ttf"
-                outlineColor="#282828"
+                outlineColor="#ffffff"
                 outlineWidth={0.002}
                 maxWidth={0.6}
               >
                 ӨНДӨР ШАТ ТАВЦАН
               </Text>
               <Text
-                position={[0, -0.165, 0.1]}
-                color="#282828"
+                position={[0, -0.165, 0.01]}
+                color="#ffffff"
                 fontSize={0.05}
                 anchorX="center"
                 anchorY="middle"
                 font="/fonts/nunito.ttf"
-                outlineColor="#282828"
+                outlineColor="#ffffff"
                 outlineWidth={0.002}
                 maxWidth={0.6}
               >
@@ -169,19 +169,34 @@ export default function XRMenu({ setLocation }) {
           bgMap={cardBg}
           iconMap={icon6}
           text={
-            <Text
-              position={[-0.05, -0.1, 0.1]}
-              color="#282828"
-              fontSize={0.05}
-              anchorX="center"
-              anchorY="middle"
-              font="/fonts/nunito.ttf"
-              outlineColor="#282828"
-              outlineWidth={0.002}
-              maxWidth={0.6}
-            >
-              ДАРАЛТАТ САВ
-            </Text>
+            <>
+              <Text
+                position={[0, -0.1, 0.01]}
+                color="#ffffff"
+                fontSize={0.05}
+                anchorX="center"
+                anchorY="middle"
+                font="/fonts/nunito.ttf"
+                outlineColor="#ffffff"
+                outlineWidth={0.002}
+                maxWidth={0.6}
+              >
+                ӨНДРИЙН ХУВИЙН
+              </Text>
+              <Text
+                position={[0, -0.165, 0.01]}
+                color="#ffffff"
+                fontSize={0.05}
+                anchorX="center"
+                anchorY="middle"
+                font="/fonts/nunito.ttf"
+                outlineColor="#ffffff"
+                outlineWidth={0.002}
+                maxWidth={0.6}
+              >
+                ХАМГААЛАХ ХЭРЭГСЭЛ
+              </Text>
+            </>
           }
         />
       </Interactive>

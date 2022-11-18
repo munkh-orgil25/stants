@@ -141,7 +141,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
   useEffect(() => {
     if (showFinal) {
       const total = first + second + third
-      if (total > 1) {
+      if (total > 2) {
         correctAudio.play()
       } else {
         failAudio.play()
@@ -211,7 +211,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
         visible={showFinal}
         onClick={() => setShowFinal(false)}
         score={first + second + third}
-        limit={1}
+        limit={2}
         retry={() => {
           setShowFinal(false)
           setFinished(false)

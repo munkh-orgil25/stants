@@ -150,7 +150,7 @@ export default function Second({ env, setCurrent, visible, setMenu }) {
   useEffect(() => {
     if (showFinal) {
       const total = first + second + third + fourth + fifth
-      if (total > 2) {
+      if (total > 4) {
         correctAudio.play()
       } else {
         failAudio.play()
