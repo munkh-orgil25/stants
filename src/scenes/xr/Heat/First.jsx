@@ -9,7 +9,7 @@ import {
 } from '@react-spring/three'
 import { BackSide } from 'three'
 import Info from './Info'
-import MenuBar from '../../../components/MenuBar'
+import NavBar from '../../../components/NavBar'
 
 export default function First({ env, setCurrent, visible, setMenu }) {
   const { player } = useXR()
@@ -18,7 +18,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
 
   const { menuScale, pos } = useSpring({
     menuScale: animate ? 1 : 0,
-    pos: animate ? [0, -0.5, -1.5] : [0, -10, -2],
+    pos: animate ? [0, 0, -1.5] : [0, -10, -2],
   })
 
   const handleNext = () => {
@@ -81,7 +81,7 @@ export default function First({ env, setCurrent, visible, setMenu }) {
         />
       </Interactive>
 
-      <MenuBar
+      <NavBar
         pos={pos}
         scale={menuScale}
         onNext={handleNext}
